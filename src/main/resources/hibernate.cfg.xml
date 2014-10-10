@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+<session-factory>
+   <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
+   <property name="connection.url">jdbc:postgresql://localhost:5432/hibernatedb</property>
+   <property name="hibernate.connection.username">postgres</property>
+   <property name="hibernate.connection.password">postgres</property>
+   <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
+   <property name="hibernate.show_sql">true</property>
+   <property name="hibernate.hbm2ddl.auto">create</property>
+   <!-- <property name ="hibernate.query.factory_class">org.hibernate.hql.classic.ClassicQueryTranslatorFactory</property> -->
+      <!-- ORM   -->
+      <mapping class="com.shopping.orm.UserOrm"/>
+      <mapping class="com.shopping.orm.UnitsOrm"/>
+      <mapping class="com.shopping.orm.WeightsOrm"/>
+      <mapping class="com.shopping.orm.CategoriesOrm"/>
+      <mapping class="com.shopping.orm.BrandOrm"/>
+      <mapping class="com.shopping.orm.DiscountTypeOrm"/>
+      <mapping class="com.shopping.orm.ProductOrm"/>
+      <mapping class="com.shopping.orm.ProductUnitDetailsOrm"/>
+      
+</session-factory>
+</hibernate-configuration>
