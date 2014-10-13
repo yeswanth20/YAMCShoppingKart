@@ -13,7 +13,7 @@ public class ProductTo {
 	private String productNameTel;
 	private String productNameTamil;
 	private boolean isStockAvailable;
-	private BrandTo brand;
+	private int brand;
 	private String productAutoGenId;
 	
 //	private byte[] productImage;
@@ -82,14 +82,15 @@ public class ProductTo {
 //	public void setProductImage(byte[] productImage) {
 //		this.productImage = productImage;
 //	}
-	public BrandTo getBrand() {
-		return brand;
-	}
-	public void setBrand(BrandTo brand) {
-		this.brand = brand;
-	}
+
 	public UserOrm getCreatedBy() {
 		return createdBy;
+	}
+	public int getBrand() {
+		return brand;
+	}
+	public void setBrand(int brand) {
+		this.brand = brand;
 	}
 	public void setCreatedBy(UserOrm createdBy) {
 		this.createdBy = createdBy;

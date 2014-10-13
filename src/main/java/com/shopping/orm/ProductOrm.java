@@ -1,6 +1,5 @@
 package com.shopping.orm;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
@@ -8,11 +7,11 @@ import java.util.Date;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -21,10 +20,10 @@ import javax.persistence.TemporalType;
 
 @Entity
 @Table(name = "Product")
-public class ProductOrm implements Serializable{
+public class ProductOrm {
 	
-	private static final long serialVersionUID = -4696406355094112769L;
-	@Id @GeneratedValue(strategy = GenerationType.SEQUENCE)
+//	private static final long serialVersionUID = -4696406355094112769L;
+	@Id @GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "id")
 	private int id;
 	@Column(name = "product_auto_gen_id")
@@ -42,13 +41,13 @@ public class ProductOrm implements Serializable{
 	@ManyToOne
 	@JoinColumn(name="brand_id")
 	private BrandOrm brand;
-	@Lob
-	@Column(name = "product_img", columnDefinition = "bytea")
+//	@Lob
+//	@Column(name = "product_img", columnDefinition = "bytea")
 //	@Lob
 //	@Column(name="product_img", nullable = false, columnDefinition="bytea")
-	private byte[] productImage;
-	
-	@OneToMany(mappedBy = "product", cascade= CascadeType.ALL)
+//	private byte[] productImage;
+	@OneToMany(fetch=FetchType.LAZY,mappedBy="product",cascade={CascadeType.ALL},targetEntity=ProductUnitDetailsOrm.class)
+//	@OneToMany(mappedBy = "product", cascade= CascadeType.ALL)
 	private Collection<ProductUnitDetailsOrm> productUnitDetails = new ArrayList<ProductUnitDetailsOrm>();
 
 	//Common  Fields
@@ -151,7 +150,5 @@ public class ProductOrm implements Serializable{
 	public void setProductAutoGenId(String productAutoGenId) {
 		this.productAutoGenId = productAutoGenId;
 	}
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
+
 }

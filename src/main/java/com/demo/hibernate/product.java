@@ -3,26 +3,42 @@ package com.demo.hibernate;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+import com.shopping.daoimpl.ProductDaoimpl;
 import com.shopping.hibernate.HibernateUtil;
 import com.shopping.orm.ProductOrm;
 import com.shopping.orm.ProductUnitDetailsOrm;
+import com.shopping.to.ProductTo;
+import com.shopping.to.ProductUnitDetailsTo;
 
 public class product {
 	
 	public static void main(String[] args) {
-		Session session = HibernateUtil.getSessionFactory().openSession();
+		/*Session session = HibernateUtil.getSessionFactory().openSession();
 		System.out.println("hiiiiiiiiiiiii");
 		ProductOrm e = new ProductOrm();
 		e.setProductNameEng("Aliiiiiiiiii");
-		
+		session.save(e);
 		ProductUnitDetailsOrm productUnitDetailsOrm = new ProductUnitDetailsOrm();
 		productUnitDetailsOrm.setPrice(5.36);
 		e.getProductUnitDetails().add(productUnitDetailsOrm);
+		session.persist(productUnitDetailsOrm);
 		Transaction tx = session.beginTransaction();
-		session.persist(e);
+		
 		tx.commit();
 		session.clear();
-		session.close();
+		session.close();*/
+	
+		
+		ProductTo productTo = new ProductTo();
+		productTo.setProductNameEng("Aliiiiiiiiii");
+		
+		ProductUnitDetailsTo productUnitDetailsTo = new ProductUnitDetailsTo();
+		productUnitDetailsTo.setPrice(5.36);
+		productTo.getProductUnitDetails().add(productUnitDetailsTo);	
+		
+		ProductDaoimpl daoimpl = new ProductDaoimpl();
+		daoimpl.insert(productTo);
+	
 	}
 
 }

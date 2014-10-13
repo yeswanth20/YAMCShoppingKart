@@ -1,57 +1,43 @@
 package com.shopping.to;
 
-import com.shopping.orm.UserOrm;
 
 public class ProductUnitDetailsTo {
 
 	private int id;
-	private UnitsTo unit;
-	private WeightsTo weight;
-	private DiscountTypeTo discountType;
+	private int unit;
+	private int weight;
+	private int discountType;
 	private double discountValue;
 	private double price;
-	private ProductTo product;
+	private int product;
 	//Common  Fields
-	private UserOrm createdBy;
-	private UserOrm modifiedBy;
+	private int createdBy;
+	private int modifiedBy;
 	private String statusMsg;
 	
-	
-	//	Getters & Setters
+//	Getters & Setters
 	public int getId() {
 		return id;
 	}
 	public void setId(int id) {
 		this.id = id;
 	}
-	public double getPrice() {
-		return price;
-	}
-	public void setPrice(double price) {
-		this.price = price;
-	}
-	public ProductTo getProduct() {
-		return product;
-	}
-	public void setProduct(ProductTo product) {
-		this.product = product;
-	}
-	public UnitsTo getUnit() {
+	public int getUnit() {
 		return unit;
 	}
-	public void setUnit(UnitsTo unit) {
+	public void setUnit(int unit) {
 		this.unit = unit;
 	}
-	public WeightsTo getWeight() {
+	public int getWeight() {
 		return weight;
 	}
-	public void setWeight(WeightsTo weight) {
+	public void setWeight(int weight) {
 		this.weight = weight;
 	}
-	public DiscountTypeTo getDiscountType() {
+	public int getDiscountType() {
 		return discountType;
 	}
-	public void setDiscountType(DiscountTypeTo discountType) {
+	public void setDiscountType(int discountType) {
 		this.discountType = discountType;
 	}
 	public double getDiscountValue() {
@@ -60,16 +46,28 @@ public class ProductUnitDetailsTo {
 	public void setDiscountValue(double discountValue) {
 		this.discountValue = discountValue;
 	}
-	public UserOrm getCreatedBy() {
+	public double getPrice() {
+		return price;
+	}
+	public void setPrice(double price) {
+		this.price = price;
+	}
+	public int getProduct() {
+		return product;
+	}
+	public void setProduct(int product) {
+		this.product = product;
+	}
+	public int getCreatedBy() {
 		return createdBy;
 	}
-	public void setCreatedBy(UserOrm createdBy) {
+	public void setCreatedBy(int createdBy) {
 		this.createdBy = createdBy;
 	}
-	public UserOrm getModifiedBy() {
+	public int getModifiedBy() {
 		return modifiedBy;
 	}
-	public void setModifiedBy(UserOrm modifiedBy) {
+	public void setModifiedBy(int modifiedBy) {
 		this.modifiedBy = modifiedBy;
 	}
 	public String getStatusMsg() {
@@ -78,4 +76,8 @@ public class ProductUnitDetailsTo {
 	public void setStatusMsg(String statusMsg) {
 		this.statusMsg = statusMsg;
 	}
+	
+	
+	
+	
 }

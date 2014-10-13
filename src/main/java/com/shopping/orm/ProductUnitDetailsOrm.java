@@ -1,10 +1,10 @@
 package com.shopping.orm;
 
-import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -16,10 +16,10 @@ import javax.persistence.TemporalType;
 
 @Entity
 @Table(name = "Product_unit_details")
-public class ProductUnitDetailsOrm implements Serializable{
+public class ProductUnitDetailsOrm {
 
-	private static final long serialVersionUID = -3337209157496770017L;
-	@Id @GeneratedValue(strategy = GenerationType.SEQUENCE)
+//	private static final long serialVersionUID = -3337209157496770017L;
+	@Id @GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "id")
 	private int id;
 	@ManyToOne
@@ -38,8 +38,8 @@ public class ProductUnitDetailsOrm implements Serializable{
 	private double discountValue;
 	@Column(name = "price")
 	private double price;
-	@ManyToOne
-	@JoinColumn(name = "product_id")
+	@ManyToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name="product_id",nullable=false)
 	private ProductOrm product;
 	//Common  Fields
 	@ManyToOne
