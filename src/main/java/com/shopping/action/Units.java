@@ -1,5 +1,8 @@
 package com.shopping.action;
 
+import java.util.ArrayList;
+import java.util.Collection;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
@@ -16,6 +19,7 @@ import com.shopping.to.UnitsTo;
 
 @Path("/unitService")
 public class Units {
+	// GET TESTING
 	@GET
 	@Path("/get")
 	@Produces(MediaType.APPLICATION_JSON)
@@ -29,6 +33,7 @@ public class Units {
 		return unitTo;
 	}
 
+	// POST TESTING
 	@POST
 	@Path("/post")
 	@Consumes(MediaType.APPLICATION_JSON)
@@ -38,10 +43,11 @@ public class Units {
 		
 	}
 	
+	// UNIT INSERT
 	@POST
 	@Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-	@Path("/insertUnit") 
+	@Path("/insert") 
 	public Response insertUnits(UnitsTo unitTo,@Context HttpServletRequest request){
 		try 
 		{
@@ -55,8 +61,51 @@ public class Units {
 		e.printStackTrace();
 		String error = "ConstraintViolationException";
 		unitTo.setStatusMsg(error);
-		return Response.status(201).entity(error).build();
+		return Response.status(403).entity(error).build();
 		}
 	}
+	
+	// UNIT UPDATE
+	@POST
+	@Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+	@Path("/update") 
+	public Response updateUnits(UnitsTo unitTo,@Context HttpServletRequest request){
+		try 
+		{
+			unitTo=ShoppingCartFactory.getUnitsDao().update(unitTo.getId(), unitTo);
+			unitTo.setStatusMsg("sucess");
+						
+			return Response.status(201).entity(unitTo).build();	
+		}
+		catch (Exception e)
+		{
+		e.printStackTrace();
+		String error = "ConstraintViolationException";
+		unitTo.setStatusMsg(error);
+		return Response.status(403).entity(error).build();
+		}
+	}
+	// UNITS GET ALL
+	@POST
+	@Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+	@Path("/getAll") 
+	public Response getAllUnits(@Context HttpServletRequest request){
+		try 
+		{
+			Collection<UnitsTo> unitTo = new ArrayList<UnitsTo>();
+			unitTo=ShoppingCartFactory.getUnitsDao().getAll();
+						
+			return Response.status(201).entity(unitTo).build();	
+		}
+		catch (Exception e)
+		{
+		e.printStackTrace();
+		String error = "ConstraintViolationException";
+		return Response.status(403).entity(error).build();
+		}
+	}
+	
 
 }
