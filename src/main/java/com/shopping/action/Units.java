@@ -51,9 +51,10 @@ public class Units {
 	public Response insertUnits(UnitsTo unitTo,@Context HttpServletRequest request){
 		try 
 		{
-			unitTo=ShoppingCartFactory.getUnitsDao().insert(unitTo);
+//			unitTo=ShoppingCartFactory.getUnitsDao().insert(unitTo);
+			unitTo=ShoppingCartFactory.getUnitsDao().insert(unitTo,12);
+
 			unitTo.setStatusMsg("sucess");
-						
 			return Response.status(201).entity(unitTo).build();	
 		}
 		catch (Exception e)
@@ -73,7 +74,8 @@ public class Units {
 	public Response updateUnits(UnitsTo unitTo,@Context HttpServletRequest request){
 		try 
 		{
-			unitTo=ShoppingCartFactory.getUnitsDao().update(unitTo.getId(), unitTo);
+//			unitTo=ShoppingCartFactory.getUnitsDao().update(unitTo.getId(),unitTo);
+			unitTo=ShoppingCartFactory.getUnitsDao().update(unitTo.getId(),unitTo,4);
 			unitTo.setStatusMsg("sucess");
 						
 			return Response.status(201).entity(unitTo).build();	
@@ -96,7 +98,25 @@ public class Units {
 		{
 			Collection<UnitsTo> unitTo = new ArrayList<UnitsTo>();
 			unitTo=ShoppingCartFactory.getUnitsDao().getAll();
-						
+			return Response.status(201).entity(unitTo).build();	
+		}
+		catch (Exception e)
+		{
+		e.printStackTrace();
+		String error = "ConstraintViolationException";
+		return Response.status(403).entity(error).build();
+		}
+	}
+	
+	// UNITS SEARCH BY ID
+	@POST
+	@Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+	@Path("/search") 
+	public Response searchUnits(UnitsTo unitTo,@Context HttpServletRequest request){
+		try 
+		{
+			unitTo=ShoppingCartFactory.getUnitsDao().searchById(unitTo.getId());
 			return Response.status(201).entity(unitTo).build();	
 		}
 		catch (Exception e)

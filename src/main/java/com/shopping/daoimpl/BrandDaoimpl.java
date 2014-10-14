@@ -17,7 +17,7 @@ import com.shopping.to.BrandTo;
 
 public class BrandDaoimpl implements BrandDao{
 	
-	public BrandTo insert(BrandTo brandTo) {
+	public BrandTo insert(BrandTo brandTo, int userId) {
 		Session session = null;
 		Transaction tx = null;
 		try {
@@ -48,7 +48,7 @@ public class BrandDaoimpl implements BrandDao{
 		return brandTo;
 	}
 
-	public BrandTo update(int id, BrandTo brandTo) {
+	public BrandTo update(int id, BrandTo brandTo, int userId) {
 		Session session = null;
 		Transaction tx = null;
 		BrandTo sendBrandTo = null;

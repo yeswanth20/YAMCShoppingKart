@@ -16,7 +16,7 @@ import com.shopping.to.UnitsTo;
 
 public class UnitDaoimpl implements UnitsDao{
 
-	public UnitsTo insert(UnitsTo unitsTo) {
+	public UnitsTo insert(UnitsTo unitsTo,int userId) {
 		Session session = null;
 		Transaction tx = null;
 		try {
@@ -48,7 +48,7 @@ public class UnitDaoimpl implements UnitsDao{
 		return unitsTo;
 	}
 
-	public UnitsTo update(int id, UnitsTo unitsTo) {
+	public UnitsTo update(int id, UnitsTo unitsTo, int userId) {
 		Session session = null;
 		Transaction tx = null;
 		UnitsTo sendUnitsTo = null;

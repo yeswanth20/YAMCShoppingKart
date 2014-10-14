@@ -19,7 +19,7 @@ public class Units {
 		UnitsTo to = new UnitsTo();
 		to.setUnitName("khudrathasad");
 //		daoimpl.update(10, to);
-		daoimpl.insert(to);
+		daoimpl.insert(to,4);
 //		daoimpl.getAll();
 //		session.clear();
 //		session.close();

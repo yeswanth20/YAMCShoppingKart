@@ -9,10 +9,21 @@ public class BrandTo {
 
 	private int createdBy;
 	private int modifiedBy;
+	private String statusMsg;
+
 
 	// Getters & Setters
+	
 	public int getId() {
 		return id;
+	}
+
+	public String getStatusMsg() {
+		return statusMsg;
+	}
+
+	public void setStatusMsg(String statusMsg) {
+		this.statusMsg = statusMsg;
 	}
 
 	public void setId(int id) {

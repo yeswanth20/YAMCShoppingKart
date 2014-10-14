@@ -11,8 +11,9 @@ public class JerseyClientUnits {
 		try {
 			Client client = Client.create();
 			WebResource webResource = client
-					.resource("http://localhost:8080/Shopping/rest/unitService/insertg");
-			String input = "{\"unitName\":\"10GMS\"}";
+					.resource("http://localhost:8080/Shopping/rest/unitService/search");
+			String input = "{\"id\":\"10\"}";
+			
 			ClientResponse response = webResource.type("application/json")
 					.post(ClientResponse.class,input);
 
@@ -20,7 +21,6 @@ public class JerseyClientUnits {
 				throw new RuntimeException("Failed : HTTP error code : "
 						+ response.getStatus());
 			}
-
 			System.out.println("Output from Server .... \n");
 			String output = response.getEntity(String.class);
 			System.out.println(output);
@@ -69,4 +69,9 @@ public class JerseyClientUnits {
 	{"unitName":"KGS","createdBy":0,"modifiedBy":0,"statusMsg":null,"id":20},
 	{"unitName":"LTR","createdBy":0,"modifiedBy":0,"statusMsg":null,"id":21},
 	{"unitName":"10GMS","createdBy":0,"modifiedBy":0,"statusMsg":null,"id":22}]
+	
+	SEARCH BY ID
+	============
+	WebResource webResource = client.resource("http://localhost:8080/Shopping/rest/unitService/search");
+	String input = "{\"id\":\"10\"}";
 */
