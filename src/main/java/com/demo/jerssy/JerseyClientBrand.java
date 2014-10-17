@@ -35,43 +35,46 @@ public class JerseyClientBrand {
 
 }
 /*
-	GET CHECK
-	=========
-	http://localhost:8080/Shopping/rest/unitService/get
-	
-	POST CHECK
-	==========
-	WebResource webResource = client.resource("http://localhost:8080/Shopping/rest/brandService/post");
-	String input = "{\"brandNameEng\":\"Brand\"}";
 	
 	Insert
 	======
 	WebResource webResource = client.resource("http://localhost:8080/Shopping/rest/brandService/insert");
-	String input = "{\"brandNameEng\":\"Brand\"}";
+	String input = "{"brandNameEng":"brandNameEng","brandNameTel":"brandNameTel","brandNameHindi":"brandNameHindi","brandNameTamil":"brandNameTamil"}";
 	
-	O/P ---> {"unitName":"GMS","createdBy":0,"modifiedBy":0,"statusMsg":"sucess","id":10}
+	O/P --->
+	{"id":80,"brandNameEng":"brandNameEng","brandNameTel":"brandNameTel","brandNameHindi":"brandNameHindi","brandNameTamil":"brandNameTamil","createdBy":0,"modifiedBy":0}
+
 
 	
 	Update
 	======
-	WebResource webResource = client.resource("http://localhost:8080/Shopping/rest/unitService/insert");
-	String input = "{\"unitName\":\"GMS\",\"id\":\"10\"}";
+	WebResource webResource = client.resource("http://localhost:8080/Shopping/rest/brandService/update");
+	String input = "{"brandNameEng":"brandNameEng","brandNameTel":"brandNameTel"}";
 	
-	O/P ---> {"unitName":"GMS","createdBy":0,"modifiedBy":0,"statusMsg":"sucess","id":10}
-	
+	O/P ---> 
+	{"id":80,"brandNameEng":"brandNameEng","brandNameTel":"brandNameTel","brandNameHindi":"brandNameHindi","brandNameTamil":"brandNameTamil","createdBy":0,"modifiedBy":0}
+
+	{"id":70,"brandNameEng":"brandNameEng1","brandNameHindi":"brandNameHindi1","createdBy":0,"modifiedBy":0}
+
 	GET LIST
 	========
-	WebResource webResource = client.resource("http://localhost:8080/Shopping/rest/unitService/getAll");
-	//String input = "{\"unitName\":\"GMS\"}";
+	WebResource webResource = client.resource("http://localhost:8080/Shopping/rest/brandService/getAll");
 	
 	O/P --->
-	[{"unitName":"GMS","createdBy":0,"modifiedBy":0,"statusMsg":null,"id":10},
-	{"unitName":"KGS","createdBy":0,"modifiedBy":0,"statusMsg":null,"id":20},
-	{"unitName":"LTR","createdBy":0,"modifiedBy":0,"statusMsg":null,"id":21},
-	{"unitName":"10GMS","createdBy":0,"modifiedBy":0,"statusMsg":null,"id":22}]
+	[
+	{"id":60,"brandNameEng":"brandNameEng","createdBy":0,"modifiedBy":0},
+	{"id":80,"brandNameEng":"brandNameEng","brandNameTel":"brandNameTel","brandNameHindi":"brandNameHindi","brandNameTamil":"brandNameTamil","createdBy":0,"modifiedBy":0},
+	{"id":70,"brandNameEng":"brandNameEng1","brandNameHindi":"brandNameHindi1","createdBy":0,"modifiedBy":0}
+	]
+
+
 	
 	SEARCH BY ID
 	============
-	WebResource webResource = client.resource("http://localhost:8080/Shopping/rest/unitService/search");
-	String input = "{\"id\":\"10\"}";
+	WebResource webResource = client.resource("http://localhost:8080/Shopping/rest/brandService/search");
+    
+    OUTPUT--->
+    {"id":60,"brandNameEng":"brandNameEng","createdBy":0,"modifiedBy":0}
+	{"id":80,"brandNameEng":"brandNameEng","brandNameTel":"brandNameTel","brandNameHindi":"brandNameHindi","brandNameTamil":"brandNameTamil","createdBy":0,"modifiedBy":0}
+
 */

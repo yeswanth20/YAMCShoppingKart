@@ -9,6 +9,7 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.criterion.Restrictions;
 
+import com.google.gson.Gson;
 import com.shopping.dao.CategoriesDao;
 import com.shopping.hibernate.HibernateUtil;
 import com.shopping.orm.CategoriesOrm;
@@ -16,7 +17,7 @@ import com.shopping.to.CategoriesTo;
 
 public class CategoriesDaoimpl implements CategoriesDao{
 
-	public CategoriesTo insert(CategoriesTo categoriesTo) {
+	public CategoriesTo insert(CategoriesTo categoriesTo, int userId) {
 		Session session = null;
 		Transaction tx = null;
 		try {
@@ -54,7 +55,7 @@ public class CategoriesDaoimpl implements CategoriesDao{
 		return categoriesTo;
 	}
 
-	public CategoriesTo update(int id, CategoriesTo categoriesTo) {
+	public CategoriesTo update(int id, CategoriesTo categoriesTo, int userID) {
 		Session session = null;
 		Transaction tx = null;
 		CategoriesTo sendCategoriesTo = null;
@@ -149,10 +150,7 @@ public class CategoriesDaoimpl implements CategoriesDao{
 				categoriesTo.setRootCategory(categoriesOrm.getRootCategory().getId());
 				//Add the Object to the Array List
 				lstCategoriesTo.add(categoriesTo);
-			}
-			
-			System.out.println("lstCategoriesTo:: "+lstCategoriesTo);
-			
+			}			
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
@@ -182,4 +180,10 @@ public class CategoriesDaoimpl implements CategoriesDao{
 		return categoryOrm;
 	}
 
+	public static void main(String[] args) {
+		CategoriesDaoimpl implObj = new CategoriesDaoimpl();
+		CategoriesTo categoriesTo = new CategoriesTo();
+		categoriesTo = implObj.searchById(9);
+		System.out.println(new Gson().toJson(categoriesTo));
+	}
 }

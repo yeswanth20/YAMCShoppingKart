@@ -54,7 +54,7 @@ public class JerseyClientUnits {
 	
 	Update
 	======
-	WebResource webResource = client.resource("http://localhost:8080/Shopping/rest/unitService/insert");
+	WebResource webResource = client.resource("http://localhost:8080/Shopping/rest/unitService/update");
 	String input = "{\"unitName\":\"GMS\",\"id\":\"10\"}";
 	
 	O/P ---> {"unitName":"GMS","createdBy":0,"modifiedBy":0,"statusMsg":"sucess","id":10}

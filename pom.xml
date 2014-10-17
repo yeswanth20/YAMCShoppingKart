@@ -79,6 +79,13 @@
 			<artifactId>jersey-json</artifactId>
 			<version>1.8</version>
 		</dependency>	
-<!-- Web Services End -->		  	
+<!-- Web Services End -->		
+<!-- Gson Jars Start -->
+		<dependency>
+			<groupId>com.google.code.gson</groupId>
+			<artifactId>gson</artifactId>
+			<version>2.2.4</version>
+		</dependency>
+<!-- Gson Jars End -->  	
   </dependencies>
 </project>
