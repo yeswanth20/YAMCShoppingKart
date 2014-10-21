@@ -11,25 +11,24 @@ import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
  
 public class SessionFilter implements Filter {
  
     private ArrayList<String> urlList;
+    private  FilterConfig config = null;
      
     public void destroy() {
     }
  
     public void doFilter(ServletRequest req, ServletResponse res,
-            FilterChain chain) throws IOException, ServletException {
+    		FilterChain chain) throws IOException, ServletException {
         HttpServletRequest request = (HttpServletRequest) req;
-        HttpServletResponse response = (HttpServletResponse) res;
-        String contextPath = request.getContextPath();
-        String jerssyPath = request.getServletPath();
-        String url = contextPath+jerssyPath+request.getPathInfo();
+//        String contextPath = request.getContextPath();
+//        String jerssyPath = request.getServletPath();
+//        String url = contextPath+jerssyPath+request.getPathInfo();
         boolean allowedRequest = false;
-         
+
 //        if(urlList.contains(url)) {
 //            allowedRequest = true;
 //        }
@@ -45,7 +44,12 @@ public class SessionFilter implements Filter {
                 	System.out.println("CCCCCCCCCCCCCCCCC");
                 	HttpSession httpsession=request.getSession();  
                 	httpsession.setAttribute("ipaddress",request.getRemoteHost()); 
-                    chain.doFilter(req, res);
+                	
+                	long before = System.currentTimeMillis();
+                	chain.doFilter(req, res);
+                	long after = System.currentTimeMillis();
+                	
+                	config.getServletContext().log("RESPONSE TIME :" + (after - before) + "ms");
 //                    response.sendRedirect("index.html");
                 }
             }
@@ -56,6 +60,7 @@ public class SessionFilter implements Filter {
     }
  
     public void init(FilterConfig config) throws ServletException {
+    	this.config = config;
         String urls = config.getInitParameter("avoid-urls");
         StringTokenizer token = new StringTokenizer(urls, ",");
  

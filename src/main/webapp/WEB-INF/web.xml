@@ -23,6 +23,11 @@
 		<url-pattern>/rest/*</url-pattern>
 	</servlet-mapping>
 	
+	<!-- Define a session timeout to 3 minutes -->
+	<session-config>
+		<session-timeout>1</session-timeout>
+	</session-config>
+	
 	<!-- Session Management -->
 	<filter>
     	<filter-name>SessionFilter</filter-name>
@@ -39,5 +44,6 @@
 	    <filter-name>SessionFilter</filter-name>
 	    <url-pattern>/*</url-pattern>
 	</filter-mapping>
+	
 
 </web-app>

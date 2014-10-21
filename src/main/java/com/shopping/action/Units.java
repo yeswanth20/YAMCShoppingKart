@@ -27,7 +27,6 @@ public class Units {
 
 		UnitsTo unitTo = new UnitsTo();
 		unitTo.setUnitName("unitName");
-		unitTo.setStatusMsg("status");
 		unitTo.setCreatedBy(1);
 		unitTo.setModifiedBy(1);
 		return unitTo;
@@ -52,14 +51,12 @@ public class Units {
 		try 
 		{
 			unitTo=ShoppingCartFactory.getUnitsDao().insert(unitTo,12);
-			unitTo.setStatusMsg("sucess");
 			return Response.status(201).entity(unitTo).build();	
 		}
 		catch (Exception e)
 		{
 		e.printStackTrace();
 		String error = "ConstraintViolationException";
-		unitTo.setStatusMsg(error);
 		return Response.status(403).entity(error).build();
 		}
 	}
@@ -73,14 +70,12 @@ public class Units {
 		try 
 		{
 			unitTo=ShoppingCartFactory.getUnitsDao().update(unitTo.getId(),unitTo,4);
-			unitTo.setStatusMsg("sucess");
 			return Response.status(201).entity(unitTo).build();	
 		}
 		catch (Exception e)
 		{
 		e.printStackTrace();
 		String error = "ConstraintViolationException";
-		unitTo.setStatusMsg(error);
 		return Response.status(403).entity(error).build();
 		}
 	}

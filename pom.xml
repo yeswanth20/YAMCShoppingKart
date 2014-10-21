@@ -87,5 +87,13 @@
 			<version>2.2.4</version>
 		</dependency>
 <!-- Gson Jars End -->  	
+<!-- slf4j-log4j Start-->
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-log4j12</artifactId>
+			<version>1.6.1</version>
+		</dependency>
+<!-- slf4j-log4j End-->
+
   </dependencies>
 </project>
