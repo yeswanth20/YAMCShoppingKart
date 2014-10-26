@@ -1,23 +1,18 @@
 package com.demo.hibernate;
 
-import org.hibernate.Session;
-import org.hibernate.Transaction;
-
-import com.shopping.hibernate.HibernateUtil;
-import com.shopping.orm.BrandOrm;
+import com.shopping.daoimpl.BrandDaoimpl;
+import com.shopping.to.BrandTo;
 
 public class Brands {
 	
 	public static void main(String[] args) {
-		Session session = HibernateUtil.getSessionFactory().openSession();
-		System.out.println("hiiiiiiiiiiiii");
-		BrandOrm e = new BrandOrm();
-		e.setBrandNameEng("brandNameEng");
-		Transaction tx = session.beginTransaction();
-		session.save(e);
-		tx.commit();
-		session.clear();
-		session.close();
+		BrandTo brandTo = new BrandTo();
+		brandTo.setBrandNameEng("brandNameEng");
+		BrandDaoimpl brandDaoimpl = new BrandDaoimpl();
+//		brandDaoimpl.insert(brandTo, 1);
+//		brandDaoimpl.getAll();
+		brandDaoimpl.delete(20);
+		
 	}
 
 }

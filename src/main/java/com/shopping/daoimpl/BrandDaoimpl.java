@@ -111,8 +111,22 @@ public class BrandDaoimpl implements BrandDao{
 	}
 
 	public boolean delete(int id) {
-		// TODO Auto-generated method stub
-		return false;
+		Session session = null;
+		BrandOrm brandOrm =null;
+		try {
+			//Get Session Factory
+			session = HibernateUtil.getSessionFactory().openSession();
+			brandOrm = (BrandOrm ) session.createCriteria(BrandOrm.class).add(Restrictions.eq("id", id)).uniqueResult();
+			session.delete(brandOrm);
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		finally{
+			session.clear();
+			session.close();
+		}
+		return true;
 	}
 
 	public Collection<BrandTo> getAll() {
