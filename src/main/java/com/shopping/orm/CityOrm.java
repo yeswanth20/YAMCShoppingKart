@@ -15,19 +15,15 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-@Table(name = "Units")
-public class UnitsOrm implements Serializable{
-	private static final long serialVersionUID = 8631961939663219113L;
+@Table(name = "City")
+public class CityOrm implements Serializable{
+
+	private static final long serialVersionUID = -2022449165234079788L;
 	@Id @GeneratedValue(strategy = GenerationType.SEQUENCE)
 	@Column(name = "id")
 	private int id;
-	@Column(name = "unit_name", unique = true)
-	private String unitName;
-	@Column(name = "conversion_value")
-	private String conversionValue;
-	@ManyToOne
-	@JoinColumn(name="basic_unit_id")
-	private UnitsOrm basicUnit;
+	@Column(name = "city_name", unique = true)
+	private String cityName;
 
 	//Common  Fields
 	@ManyToOne
@@ -51,11 +47,11 @@ public class UnitsOrm implements Serializable{
 	public void setId(int id) {
 		this.id = id;
 	}
-	public String getUnitName() {
-		return unitName;
+	public String getCityName() {
+		return cityName;
 	}
-	public void setUnitName(String unitName) {
-		this.unitName = unitName;
+	public void setCityName(String cityName) {
+		this.cityName = cityName;
 	}
 	public UserOrm getCreatedBy() {
 		return createdBy;
@@ -81,18 +77,4 @@ public class UnitsOrm implements Serializable{
 	public void setModifiedDate(Date modifiedDate) {
 		this.modifiedDate = modifiedDate;
 	}
-	public String getConversionValue() {
-		return conversionValue;
-	}
-	public void setConversionValue(String conversionValue) {
-		this.conversionValue = conversionValue;
-	}
-	public UnitsOrm getBasicUnit() {
-		return basicUnit;
-	}
-	public void setBasicUnit(UnitsOrm basicUnit) {
-		this.basicUnit = basicUnit;
-	}
-
-
 }
