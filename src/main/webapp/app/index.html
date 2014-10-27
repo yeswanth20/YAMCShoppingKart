@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html ng-app="shopApp">
+	<head>
+		<title>Shop</title>	
+		<meta charset="UTF-8">
+		<link rel="stylesheet" type="text/css" href="../assets/public/css/bootstrap.css">
+		<link rel="stylesheet" type="text/css" href="../assets/public/css/sb-admin.css">
+	    <link rel="stylesheet" type="text/css" href="../assets/public/css/font-awesome.css" rel="stylesheet" type="text/css">
+		<link rel="stylesheet" type="text/css" href="../assets/public/css/ng-tags-input.css">
+		<link rel="stylesheet" type="text/css" href="../assets/public/css/angular-ui-tree.min.css">
+		
+		<link rel="stylesheet" type="text/css" href="themes/default/app.css">
+	</head>
+	<body>
+		<div class="container-fluid spinner_block" ng-class="{true: 'spinerActive', false: 'spinerInactive'}[spinerisActive]">
+			<div class="spinner">
+				<div class="spinner-container container1">
+					<div class="circle1"></div>
+					<div class="circle2"></div>
+					<div class="circle3"></div>
+					<div class="circle4"></div>
+				</div>
+				<div class="spinner-container container2">
+					<div class="circle1"></div>
+					<div class="circle2"></div>
+					<div class="circle3"></div>
+					<div class="circle4"></div>
+				</div>
+				<div class="spinner-container container3">
+					<div class="circle1"></div>
+					<div class="circle2"></div>
+					<div class="circle3"></div>
+					<div class="circle4"></div>
+				</div>
+			</div>
+		</div>
+
+		<div id="wrapper">
+			<div header></div>
+			<div id="page-wrapper">
+            	<div class="container-fluid workarea">
+					<div ui-view></div>
+				</div>
+			</div>
+		</div>		
+
+		<!--vendor files -->
+		<script type="text/javascript" src="../assets/public/js/angular.js"></script>
+		<script type="text/javascript" src="../assets/public/js/angular-ui-router.js"></script>
+		<script type="text/javascript" src="../assets/public/js/restangular.js"></script>
+		<script type="text/javascript" src="../assets/public/js/lodash.compat.js"></script>
+		<script type="text/javascript" src="../assets/public/js/angular-sanitize.js"></script>
+		<script type="text/javascript" src="../assets/public/js/angular-animate.js"></script>
+		<script type="text/javascript" src="../assets/public/js/angular-ui-tree.js"></script>
+		<script type="text/javascript" src="../assets/public/js/ui-bootstrap-tpls-0.11.1.js"></script>
+		<script type="text/javascript" src="../assets/public/js/ng-tags-input.js"></script>
+		<script type="text/javascript" src="../bower_components/jquery/dist/jquery.js"></script>
+
+		<!--vendor files end -->
+
+		<script type="text/javascript" src="app.js"></script>
+
+		<!-- controllers -->
+		<script type="text/javascript" src="controllers/categories-controller.js"></script>
+		<script type="text/javascript" src="controllers/products-controller.js"></script>
+
+		<!-- directives -->
+		<script type="text/javascript" src="directives/header-directive.js"></script>		
+
+	</body>
+</html>

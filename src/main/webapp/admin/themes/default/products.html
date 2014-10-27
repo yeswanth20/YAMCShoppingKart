@@ -1,0 +1,131 @@
+<h3>Products</h3>
+
+<!-- Nested node template -->
+<script type="text/ng-template" id="nodes_renderer.html">
+  <div ui-tree-handle class="tree-node tree-node-content">
+    <!--<a class="btn btn-success btn-xs" data-nodrag ng-click="toggle(this)"><span class="fa" ng-class="{'fa-caret-right': collapsed, 'fa-caret-down': !collapsed}"></span></a>-->
+    <input type="radio" name="productCategory">
+    {{node.title}}    
+  </div>
+  <ol ui-tree-nodes="" ng-model="node.nodes" ng-class="{hidden: collapsed}">
+    <li ng-repeat="node in node.nodes" ui-tree-node ng-include="'nodes_renderer.html'">
+    </li>
+  </ol>
+</script>
+<div class="row">
+  <!-- <div class="col-md-6">
+    <div ui-tree>
+      <ol ui-tree-nodes="" ng-model="data" id="tree-root">
+        <li ng-repeat="node in data" ui-tree-node ng-include="'nodes_renderer.html'"></li>
+      </ol>
+    </div>
+  </div>   -->
+  <!-- <form role="form"> -->
+    <div class="col-md-6">
+      <form class="form-horizontal" role="form">
+        <div class="form-group">
+            <label class="col-md-3">Category</label>
+            <div class="col-md-9 categoriesProductsWrapper">
+              <div class="categoriesFormDiv">
+                <div ui-tree>
+                  <ol ui-tree-nodes="" ng-model="data" id="tree-root">
+                    <li ng-repeat="node in data" ui-tree-node ng-include="'nodes_renderer.html'"></li>
+                  </ol>
+                </div>
+              </div>
+            </div>
+        </div>
+        
+      </form>
+    </div>
+    <div class="col-md-6">
+      <form class="form-horizontal" role="form">
+        <div class="form-group">
+            <label class="col-sm-3 control-label">Brand</label>
+            <div class="col-md-9">
+              <select class="form-control">
+                <option>Abc</option>
+                <option>Abc</option>
+                <option>Abc</option>
+              </select>
+            </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-3 control-label">English name</label>
+          <div class="col-sm-9">
+            <input type="email" class="form-control" id="inputEmail3" placeholder="English name">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-3 control-label">Telugu name</label>
+          <div class="col-sm-9">
+            <input type="email" class="form-control" id="inputEmail3" placeholder="Telugu name">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-3 control-label">Hindi name</label>
+          <div class="col-sm-9">
+            <input type="email" class="form-control" id="inputEmail3" placeholder="Hindi name">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-3 control-label">Tamil name</label>
+          <div class="col-sm-9">
+            <input type="email" class="form-control" id="inputEmail3" placeholder="Tamil name">
+          </div>
+        </div>        
+        <div class="form-group">
+          <label class="col-sm-3 control-label">Image</label>
+          <div class="col-md-9">
+            <input class="form-control">
+          </div>
+            <!-- <p class="help-block">Example block-level help text here.</p> -->
+        </div>
+      </form>
+    </div>
+    <div class="col-md-12">
+      <div class="table-responsive">
+        <table class="table table-bordered table-hover">
+          <tr>
+            <td>
+              <select class="form-control">
+                <option>Unit</option>
+                <option>Abc</option>
+                <option>Abc</option>
+              </select>
+            </td>
+            <td>
+              <select class="form-control">
+                <option>Weight</option>
+                <option>Abc</option>
+                <option>Abc</option>
+              </select>
+            </td>
+            <td>
+              <select class="form-control">
+                <option>Discount</option>
+                <option>Abc</option>
+                <option>Abc</option>
+              </select>
+            </td>
+            <td>
+              <input class="form-control">
+            </td>
+            <td>
+              <input class="form-control">
+            </td>
+            <td class="text-center">  
+              <a class="btn btn-danger btn-xs" data-nodrag ng-click="remove(this)"><span class="fa fa-minus"></span></a>
+            </td>
+          </tr>
+        </table>
+      </div>      
+    </div>
+    <div class="col-md-12 text-right">
+      <button>Add</button>
+    </div>
+    <div class="col-md-12 text-center">
+      <button type="submit" class="btn btn-primary">Submit</button>
+      <button type="reset" class="btn btn-default">Reset</button>
+    </div>
+</div>

@@ -1,0 +1,66 @@
+<nav class="navbar navbar-fixed-top" role="navigation">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand topBarTitle" >Shop</a>
+        <!-- <span ><i class="fa fa-phone"></i>9999999999</span> -->
+        <form class="navbar-form navbar-left" role="search">
+            <div class="form-group">
+              <input type="text" class="form-control" placeholder="Search">
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+    <!-- Top Menu Items -->
+    <ul class="nav navbar-right top-nav">        
+        <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> John Smith <b class="caret"></b></a>
+            <ul class="dropdown-menu">
+                <li>
+                    <a href="#"><i class="fa fa-fw fa-user"></i> Profile</a>
+                </li>
+                <li>
+                    <a href="#"><i class="fa fa-fw fa-envelope"></i> Inbox</a>
+                </li>
+                <li>
+                    <a href="#"><i class="fa fa-fw fa-gear"></i> Settings</a>
+                </li>
+                <li class="divider"></li>
+                <li>
+                    <a href="#"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
+                </li>
+            </ul>
+        </li>
+    </ul>
+    <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
+    <script type="text/ng-template" id="nodes_renderer.html">
+      <div ui-tree-handle class="tree-node tree-node-content">
+        <a class="btn btn-success btn-xs" ng-click="toggle(this)"><span class="fa" ng-class="{'fa-caret-right': collapsed, 'fa-caret-down': !collapsed}"></span></a>
+        {{node.title}}    
+      </div>
+      <ol ui-tree-nodes="" ng-model="node.nodes" ng-class="{hidden: collapsed}">
+        <li ng-repeat="node in node.nodes" ui-tree-node ng-include="'nodes_renderer.html'">
+        </li>
+      </ol>
+    </script>
+    <div class="collapse navbar-collapse navbar-ex1-collapse">
+        <div class="sideBarCategoriesList">
+            <div ui-tree data-drag-enabled=false >
+              <ol ui-tree-nodes="" ng-model="data" id="tree-root">
+                <li ng-repeat="node in data" ui-tree-node ng-include="'nodes_renderer.html'"></li>
+              </ol>
+            </div>
+        </div>
+        <!-- <ul class="nav navbar-nav side-nav">
+            <li ng-repeat="menu in leftmenu" ng-class="{active:currentPageName==menu.sref}">
+                <a ui-sref="{{menu.sref}}"><i class="fa fa-fw"></i> {{menu.name}}</a>
+            </li>
+        </ul> -->
+    </div>
+    <!-- /.navbar-collapse -->
+</nav>
