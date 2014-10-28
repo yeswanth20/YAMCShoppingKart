@@ -1,0 +1,83 @@
+body {    
+    background-color: #013ADF !important;
+}
+
+.side-nav {
+    background-color: #013ADF !important;
+}
+
+.navbar *{
+	color: #fff !important;
+}
+
+.top-nav>li>a:hover,
+.top-nav>li>a:focus,
+.top-nav>.open>a,
+.top-nav>.open>a:hover,
+.top-nav>.open>a:focus {
+    color: #fff;
+    background-color: #58ACFA !important;
+}
+
+.side-nav li a:hover,
+.side-nav li a:focus {
+    outline: none;
+    background-color: #58ACFA !important;
+}
+
+.leftbar {
+	height: 100% ;
+}
+.angular-ui-tree-handle {
+    background: #f8faff;
+    border: 1px solid #dae2ea;
+    color: #7c9eb2;
+    padding: 10px 10px;
+}
+.workarea {
+	min-height: 600px;
+}
+.categoriesProductsWrapper {	
+	height: 300px;
+	margin-bottom: 10px;
+}
+.categoriesFormDiv {
+	height: 300px;
+	border: 1px solid #ccc;
+	overflow: auto;
+	border-radius: 4px;
+}
+.categoriesFormDiv .angular-ui-tree-handle {
+	background: inherit !important;
+    border: none !important;
+    color: inherit !important;
+    padding: 10px 10px;	
+}
+.categoriesFormDiv .angular-ui-tree-handle {
+	cursor : inherit;
+}
+
+.sideBarCategoriesList {
+	display: block;
+	clear: both;
+    overflow: auto;
+    width: 225px !important;
+}
+.sideBarCategoriesList * {
+    max-width: 225px;
+}
+.sideBarCategoriesList .angular-ui-tree-handle {
+	background: inherit !important;
+    border: none !important;
+    color: inherit !important;
+    padding: 10px 10px;	
+}
+.sideBarCategoriesList .angular-ui-tree-handle {
+	cursor : inherit;
+}
+.navbar {
+    z-index: 0 !important;
+}
+.topBarTitle {
+    width: 225px;
+}

@@ -1,0 +1,44 @@
+<h3>Units</h3>	    
+<div class="row">
+
+	<div class="col-md-12">
+		<button class="btn btn-primary" ng-click="unitsFormDisplayFlag=true" ng-show="!unitsFormDisplayFlag">Add unit</button>
+		<form role="form" ng-show="unitsFormDisplayFlag">
+	        <h4> Add a Unit </h4>
+	        <div class="form-group">
+	            <label>Name</label>
+	            <input class="form-control" ng-model="unitFormData.unitName">
+	            <!-- <p class="help-block">Example block-level help text here.</p> -->
+	        </div>
+	        <button type="submit" class="btn btn-primary" ng-click="createUnit()" ng-show="!unitEditFlag">Submit</button>
+	        <button type="submit" class="btn btn-primary" ng-click="updateUnit()" ng-show="unitEditFlag">Update</button>
+        	<button type="reset" class="btn btn-default">Reset</button>
+	    </form>
+	</div>
+
+	<div class="col-md-12 categoriesTreeDiv">
+	    <div class="table-responsive">
+	        <table class="table table-bordered table-hover">
+	            <thead>
+	                <tr>
+	                    <th class="col-md-1">S.No</th>
+	                    <th>Name</th>	                    
+	                    <th class="col-md-2">Actions</th>	                    
+	                </tr>
+	            </thead>
+	            <tbody>
+	            	<tr ng-repeat="unit in unitsList">
+	            		<td ng-bind="$index+1"></td>
+	            		<td ng-bind="unit.unitName">Abc</td>
+	            		<td>
+    						<a class="btn btn-primary btn-xs" ng-click="editUnit(unit.id)"><span class="fa fa-edit"></span></a>
+	            			<a class="btn btn-danger btn-xs" ng-click="deleteUnit(unit.id)"><span class="fa fa-minus"></span></a>
+    					</td>			
+	            	</tr>            	
+	            </tbody>
+	        </table>
+	    </div>
+	</div>
+
+	
+</div>

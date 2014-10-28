@@ -1,0 +1,75 @@
+<h3>Brands</h3>	    
+<div class="row">
+
+
+	<div class="col-md-12">
+		<button class="btn btn-primary" ng-click="brandsFormShowFlag=true">Add brand</button>
+		<form role="form"  ng-show="brandsFormShowFlag">
+	        <h4> Add a brand</h4>
+	        <div class="form-group">	            
+	            <input class="form-control" placeholder="Brand name" ng-model="brandsFormData.brandName">
+	            <!-- <p class="help-block">Example block-level help text here.</p> -->
+	        </div>
+	        <button type="button" class="btn btn-primary" ng-show="!brandsFormEditFlag" ng-click="createBrand()">Submit</button>
+	        <button type="button" class="btn btn-primary" ng-show="brandsFormEditFlag" ng-click="updateBrand()">Update</button>
+        	<button type="reset" class="btn btn-default">Reset</button>
+	    </form>
+	</div>
+
+	<div class="col-md-12 categoriesTreeDiv" >
+	    <div class="table-responsive">
+	        <table class="table table-bordered table-hover">
+	            <thead>
+	                <tr>
+	                    <th class="col-md-1">S.No</th>
+	                    <th>Name</th>	                    
+	                    <th class="col-md-2">Actions</th>	                    
+	                </tr>
+	            </thead>
+	            <tbody>
+	            	<tr ng-repeat="brand in brandsList">
+	            		<td>{{$index+1}}</td>
+	            		<td ng-bind="brand.brandName"></td>
+	            		<td>
+    						<a class="btn btn-primary btn-xs" ng-click="editBrand(brand.id)"><span class="fa fa-edit"></span></a>
+	            			<a class="btn btn-danger btn-xs" ng-click="deleteBrand(brand.id)"><span class="fa fa-minus"></span></a>
+    					</td>			
+	            	</tr>
+	            	<!-- <tr>
+	            		<td>1</td>
+	            		<td>Denim</td>
+	            		<td>
+    						<a class="btn btn-primary btn-xs" data-nodrag ng-click="newSubItem(this)"><span class="fa fa-edit"></span></a>
+	            			<a class="btn btn-danger btn-xs" data-nodrag ng-click="remove(this)"><span class="fa fa-minus"></span></a>
+    					</td>			
+	            	</tr>
+	            	<tr>
+	            		<td>1</td>
+	            		<td>Denim</td>
+	            		<td>
+    						<a class="btn btn-primary btn-xs" data-nodrag ng-click="newSubItem(this)"><span class="fa fa-edit"></span></a>
+	            			<a class="btn btn-danger btn-xs" data-nodrag ng-click="remove(this)"><span class="fa fa-minus"></span></a>
+    					</td>			
+	            	</tr>
+	            	<tr>
+	            		<td>1</td>
+	            		<td>Denim</td>
+	            		<td>
+    						<a class="btn btn-primary btn-xs" data-nodrag ng-click="newSubItem(this)"><span class="fa fa-edit"></span></a>
+	            			<a class="btn btn-danger btn-xs" data-nodrag ng-click="remove(this)"><span class="fa fa-minus"></span></a>
+    					</td>			
+	            	</tr>
+	            	<tr>
+	            		<td>1</td>
+	            		<td>Denim</td>
+	            		<td>
+    						<a class="btn btn-primary btn-xs" data-nodrag ng-click="newSubItem(this)"><span class="fa fa-edit"></span></a>
+	            			<a class="btn btn-danger btn-xs" data-nodrag ng-click="remove(this)"><span class="fa fa-minus"></span></a>
+    					</td>			
+	            	</tr> -->
+	            </tbody>
+	        </table>
+	    </div>
+	</div>
+	
+</div>
