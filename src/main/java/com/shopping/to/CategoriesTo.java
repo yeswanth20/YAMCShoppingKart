@@ -9,10 +9,6 @@ public class CategoriesTo {
 	private int parentCategory;
 	private int rootCategory;
 
-	//Common  Fields
-	private int createdBy;
-	private int modifiedBy;
-
 
 	public int getId() {
 		return id;
@@ -56,17 +52,4 @@ public class CategoriesTo {
 	public void setRootCategory(int rootCategory) {
 		this.rootCategory = rootCategory;
 	}
-	public int getCreatedBy() {
-		return createdBy;
-	}
-	public void setCreatedBy(int createdBy) {
-		this.createdBy = createdBy;
-	}
-	public int getModifiedBy() {
-		return modifiedBy;
-	}
-	public void setModifiedBy(int modifiedBy) {
-		this.modifiedBy = modifiedBy;
-	}
-
 }

@@ -23,9 +23,9 @@ public class DiscountTypeDaoimpl implements DiscountTypeDao{
 			DiscountTypeOrm discountTypeOrm = new DiscountTypeOrm();
 			
 			discountTypeOrm.setDiscountName(discountTypeTo.getDiscountName());
-			discountTypeOrm.setCreatedBy(new UserDaoimpl().getUserById(discountTypeTo.getCreatedBy()));
+			discountTypeOrm.setCreatedBy(new UserDaoimpl().getUserById(userId));
 			discountTypeOrm.setCreatedDate(new Date());
-			discountTypeOrm.setModifiedBy(new UserDaoimpl().getUserById(discountTypeTo.getModifiedBy()));
+			discountTypeOrm.setModifiedBy(new UserDaoimpl().getUserById(userId));
 			discountTypeOrm.setModifiedDate(new Date());
 
 			tx = session.beginTransaction();
@@ -57,7 +57,7 @@ public class DiscountTypeDaoimpl implements DiscountTypeDao{
 			DiscountTypeOrm  discountTypeOrm = (DiscountTypeOrm)session.load(DiscountTypeOrm.class, new Integer(id));
 
 			discountTypeOrm.setDiscountName(discountTypeTo.getDiscountName());
-			discountTypeOrm.setModifiedBy(new UserDaoimpl().getUserById(discountTypeTo.getModifiedBy()));
+			discountTypeOrm.setModifiedBy(new UserDaoimpl().getUserById(userId));
 			discountTypeOrm.setModifiedDate(new Date());
 
 

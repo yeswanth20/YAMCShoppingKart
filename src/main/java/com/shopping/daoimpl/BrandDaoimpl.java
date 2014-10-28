@@ -27,9 +27,9 @@ public class BrandDaoimpl implements BrandDao{
 			brandOrm.setBrandNameHindi(brandTo.getBrandNameHindi());
 			brandOrm.setBrandNameTamil(brandTo.getBrandNameTamil());
 			brandOrm.setBrandNameTel(brandTo.getBrandNameTel());
-			brandOrm.setCreatedBy(new UserDaoimpl().getUserById(brandTo.getCreatedBy()));
+			brandOrm.setCreatedBy(new UserDaoimpl().getUserById(userId));
 			brandOrm.setCreatedDate(new Date());
-			brandOrm.setModifiedBy(new UserDaoimpl().getUserById(brandTo.getModifiedBy()));
+			brandOrm.setModifiedBy(new UserDaoimpl().getUserById(userId));
 			brandOrm.setModifiedDate(new Date());
 			
 			tx = session.beginTransaction();
@@ -63,7 +63,7 @@ public class BrandDaoimpl implements BrandDao{
 			brandOrm.setBrandNameHindi(brandTo.getBrandNameHindi());
 			brandOrm.setBrandNameTamil(brandTo.getBrandNameTamil());
 			brandOrm.setBrandNameTel(brandTo.getBrandNameTel());
-			brandOrm.setModifiedBy(new UserDaoimpl().getUserById(brandTo.getModifiedBy()));
+			brandOrm.setModifiedBy(new UserDaoimpl().getUserById(userId));
 			brandOrm.setModifiedDate(new Date());
 			
 			//Commit the Transaction

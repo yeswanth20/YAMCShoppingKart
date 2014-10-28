@@ -27,8 +27,6 @@ public class Categories {
 		public CategoriesTo getTrackInJSON() {
 			CategoriesTo categoriesTo = new CategoriesTo();
 			categoriesTo.setCategoryNameEng("categoryNameEng");
-			categoriesTo.setCreatedBy(1);
-			categoriesTo.setModifiedBy(1);
 			return categoriesTo;
 		}
 		

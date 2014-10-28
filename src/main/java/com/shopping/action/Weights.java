@@ -28,8 +28,6 @@ public class Weights {
 			WeightsTo weightsTo = new WeightsTo();
 			weightsTo.setWeightName("weightName");
 			weightsTo.setUnit(12);
-			weightsTo.setCreatedBy(1);
-			weightsTo.setModifiedBy(1);
 			return weightsTo;
 		}
 	

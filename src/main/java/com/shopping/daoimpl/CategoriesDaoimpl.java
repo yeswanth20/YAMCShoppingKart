@@ -33,9 +33,9 @@ public class CategoriesDaoimpl implements CategoriesDao{
 			categoriesOrm.setCategoryNameTel(categoriesTo.getCategoryNameTel());
 			categoriesOrm.setParentCategory(this.getCategoryById(categoriesTo.getParentCategory()));
 			categoriesOrm.setRootCategory(this.getCategoryById(categoriesTo.getRootCategory()));
-			categoriesOrm.setCreatedBy(new UserDaoimpl().getUserById(categoriesTo.getCreatedBy()));
+			categoriesOrm.setCreatedBy(new UserDaoimpl().getUserById(userId));
 			categoriesOrm.setCreatedDate(new Date());
-			categoriesOrm.setModifiedBy(new UserDaoimpl().getUserById(categoriesTo.getModifiedBy()));
+			categoriesOrm.setModifiedBy(new UserDaoimpl().getUserById(userId));
 			categoriesOrm.setModifiedDate(new Date());
 			
 			//Begin transaction & save the object
@@ -55,7 +55,7 @@ public class CategoriesDaoimpl implements CategoriesDao{
 		return categoriesTo;
 	}
 
-	public CategoriesTo update(int id, CategoriesTo categoriesTo, int userID) {
+	public CategoriesTo update(int id, CategoriesTo categoriesTo, int userId) {
 		Session session = null;
 		Transaction tx = null;
 		CategoriesTo sendCategoriesTo = null;
@@ -73,7 +73,7 @@ public class CategoriesDaoimpl implements CategoriesDao{
 			categoriesOrm.setCategoryNameTel(categoriesTo.getCategoryNameTel());
 			categoriesOrm.setParentCategory(this.getCategoryById(categoriesTo.getParentCategory()));
 			categoriesOrm.setRootCategory(this.getCategoryById(categoriesTo.getRootCategory()));
-			categoriesOrm.setModifiedBy(new UserDaoimpl().getUserById(categoriesTo.getModifiedBy()));
+			categoriesOrm.setModifiedBy(new UserDaoimpl().getUserById(userId));
 			categoriesOrm.setModifiedDate(new Date());
 			
 			//Commit the Transaction

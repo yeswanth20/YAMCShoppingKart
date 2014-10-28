@@ -26,8 +26,6 @@ public class DiscountType {
 	public DiscountTypeTo getTrackInJSON() {
 		DiscountTypeTo discountTypeTo = new DiscountTypeTo();
 		discountTypeTo.setDiscountName("discountName");
-		discountTypeTo.setCreatedBy(1);
-		discountTypeTo.setModifiedBy(1);
 		return discountTypeTo;
 	}
 	

@@ -27,8 +27,6 @@ public class Units {
 
 		UnitsTo unitTo = new UnitsTo();
 		unitTo.setUnitName("unitName");
-		unitTo.setCreatedBy(1);
-		unitTo.setModifiedBy(1);
 		return unitTo;
 	}
 
@@ -50,6 +48,7 @@ public class Units {
 	public Response insertUnits(UnitsTo unitTo,@Context HttpServletRequest request){
 		try 
 		{
+			request.getServletContext().getAttribute("sessionDetails");
 			unitTo=ShoppingCartFactory.getUnitsDao().insert(unitTo,12);
 			return Response.status(201).entity(unitTo).build();	
 		}

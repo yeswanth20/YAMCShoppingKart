@@ -27,8 +27,6 @@ public class Brands {
 
 		BrandTo brandTo = new BrandTo();
 		brandTo.setBrandNameEng("brandNameEng");
-		brandTo.setCreatedBy(1);
-		brandTo.setModifiedBy(1);
 		return brandTo;
 	}
 	

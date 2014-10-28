@@ -23,8 +23,7 @@ public class SessionImpl implements ServletContextListener, HttpSessionListener 
 
 	public void sessionCreated(HttpSessionEvent hse) {
 		HttpSession session = hse.getSession();
-		session.setAttribute("sessionID", session.getId());
-		sessionDeatilsMap.put(session.getId(), "11111111111");
+		sessionDeatilsMap.put(session.getId(),(String)session.getAttribute("ipaddress"));
 		objServletContext.setAttribute("sessionDetails", sessionDeatilsMap);
 	}
 

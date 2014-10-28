@@ -8,8 +8,6 @@ import javax.ws.rs.Path;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 
-import com.sun.jersey.api.view.Viewable;
-
 @Path("/accessService")
 public class AuthService {
 	@GET
@@ -28,8 +26,6 @@ public class AuthService {
 	public void logoutAuth(@Context HttpServletRequest request) {
 		//invalidate the session if exists
         HttpSession session = request.getSession();
-        session.setAttribute("ipaddress",request.getRemoteHost()); 
-
         if(session != null){
             session.invalidate();
         }

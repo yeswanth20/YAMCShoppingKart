@@ -42,10 +42,15 @@ public class SessionFilter implements Filter {
 			chain.doFilter(req, res);
 			sessionDetails = (HashMap<String, String>) context
 					.getAttribute("sessionDetails");
+			System.out.println("33333333333333"+sessionDetails.toString());
+
 		} else if (request.getPathInfo().equalsIgnoreCase(
 				"/accessService/login")) {
 			allowedRequest = true;
 			chain.doFilter(req, res);
+			sessionDetails = (HashMap<String, String>) context
+					.getAttribute("sessionDetails");
+			System.out.println("22222222222"+sessionDetails.toString());
 		}
 
 		// if(urlList.contains(url)) {
