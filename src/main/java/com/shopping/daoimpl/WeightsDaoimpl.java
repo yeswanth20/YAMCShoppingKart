@@ -15,7 +15,7 @@ import com.shopping.orm.WeightsOrm;
 import com.shopping.to.WeightsTo;
 
 public class WeightsDaoimpl implements WeightsDao{
-	public WeightsTo insert(WeightsTo weightsTo) {
+	public WeightsTo insert(WeightsTo weightsTo,int userId) {
 		Session session = null;
 		Transaction tx = null;
 		WeightsTo sendWeightsTo = null;
@@ -51,7 +51,7 @@ public class WeightsDaoimpl implements WeightsDao{
 		return sendWeightsTo;
 	}
 
-	public WeightsTo update(int id, WeightsTo weightsTo) {
+	public WeightsTo update(int id, WeightsTo weightsTo,int userId) {
 		Session session = null;
 		Transaction tx = null;
 		WeightsTo  sendWeightsTo= null;

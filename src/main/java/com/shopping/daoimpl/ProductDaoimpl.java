@@ -18,7 +18,7 @@ import com.shopping.to.ProductUnitDetailsTo;
 
 public class ProductDaoimpl implements ProductDao{
 
-	public ProductTo insert(ProductTo productTo) {
+	public ProductTo insert(ProductTo productTo, int userId) {
 		Session session = null;
 		Transaction tx = null;
 		try {
@@ -73,7 +73,7 @@ public class ProductDaoimpl implements ProductDao{
 		return productTo;
 	}
 
-	public ProductTo update(int id, ProductTo productTo) {
+	public ProductTo update(int id, ProductTo productTo, int userId) {
 		Session session = null;
 		Transaction tx = null;
 		try {

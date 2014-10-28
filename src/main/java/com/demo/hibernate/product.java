@@ -1,12 +1,6 @@
 package com.demo.hibernate;
 
-import org.hibernate.Session;
-import org.hibernate.Transaction;
-
 import com.shopping.daoimpl.ProductDaoimpl;
-import com.shopping.hibernate.HibernateUtil;
-import com.shopping.orm.ProductOrm;
-import com.shopping.orm.ProductUnitDetailsOrm;
 import com.shopping.to.ProductTo;
 import com.shopping.to.ProductUnitDetailsTo;
 
@@ -37,7 +31,7 @@ public class product {
 		productTo.getProductUnitDetails().add(productUnitDetailsTo);	
 		
 		ProductDaoimpl daoimpl = new ProductDaoimpl();
-		daoimpl.insert(productTo);
+		daoimpl.insert(productTo,12);
 	
 	}
 

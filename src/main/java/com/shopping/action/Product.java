@@ -14,34 +14,38 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import com.shopping.daofactory.ShoppingCartFactory;
-import com.shopping.to.BrandTo;
+import com.shopping.orm.UserOrm;
+import com.shopping.to.ProductTo;
 
-@Path("/brandService")
-public class Brands {
+@Path("/productService")
+public class Product {
 
 	// GET TESTING
 	@GET
 	@Path("/get")
 	@Produces(MediaType.APPLICATION_JSON)
-	public BrandTo getTrackInJSON() {
+	public ProductTo getTrackInJSON() {
 
-		BrandTo brandTo = new BrandTo();
-		brandTo.setBrandNameEng("brandNameEng");
-		brandTo.setCreatedBy(1);
-		brandTo.setModifiedBy(1);
-		return brandTo;
+		ProductTo productTo = new ProductTo();
+		
+		productTo.setProductNameEng("productNameEng");
+		productTo.setCreatedBy(new UserOrm().getCreatedBy());
+		productTo.setModifiedBy(new UserOrm().getModifiedBy());
+		productTo.setStockAvailable(true);
+		return productTo;
 	}
-	
-	// BRAND INSERT
+
+
+	// UNIT INSERT
 	@POST
 	@Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
 	@Path("/insert") 
-	public Response insertBrand(BrandTo brandTo,@Context HttpServletRequest request){
+	public Response insertProduct(ProductTo productTo,@Context HttpServletRequest request){
 		try 
 		{
-			brandTo=ShoppingCartFactory.getBrandDao().insert(brandTo, 1);
-			return Response.status(201).entity(brandTo).build();	
+			productTo=ShoppingCartFactory.getProductDao().insert(productTo,12);
+			return Response.status(201).entity(productTo).build();	
 		}
 		catch (Exception e)
 		{
@@ -51,17 +55,16 @@ public class Brands {
 		}
 	}
 	
-	
 	// UNIT UPDATE
 	@POST
 	@Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
 	@Path("/update") 
-	public Response updateBrand(BrandTo brandTo,@Context HttpServletRequest request){
+	public Response updateProduct(ProductTo productTo,@Context HttpServletRequest request){
 		try 
 		{
-			brandTo=ShoppingCartFactory.getBrandDao().update(brandTo.getId(),brandTo,4);
-			return Response.status(201).entity(brandTo).build();	
+			productTo=ShoppingCartFactory.getProductDao().update(productTo.getId(),productTo,4);
+			return Response.status(201).entity(productTo).build();	
 		}
 		catch (Exception e)
 		{
@@ -75,12 +78,12 @@ public class Brands {
 	@Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
 	@Path("/getAll") 
-	public Response getAllUnits(@Context HttpServletRequest request){
+	public Response getAllProducts(@Context HttpServletRequest request){
 		try 
 		{
-			Collection<BrandTo> brandTo = new ArrayList<BrandTo>();
-			brandTo=ShoppingCartFactory.getBrandDao().getAll();
-			return Response.status(201).entity(brandTo).build();	
+			Collection<ProductTo> productTo = new ArrayList<ProductTo>();
+			productTo=ShoppingCartFactory.getProductDao().getAll();
+			return Response.status(201).entity(productTo).build();	
 		}
 		catch (Exception e)
 		{
@@ -95,11 +98,11 @@ public class Brands {
 	@Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
 	@Path("/search") 
-	public Response searchUnits(BrandTo brandTo,@Context HttpServletRequest request){
+	public Response searchProducts(ProductTo productTo,@Context HttpServletRequest request){
 		try 
 		{
-			brandTo=ShoppingCartFactory.getBrandDao().searchById(brandTo.getId());
-			return Response.status(201).entity(brandTo).build();	
+			productTo=ShoppingCartFactory.getProductDao().searchById(productTo.getId());
+			return Response.status(201).entity(productTo).build();	
 		}
 		catch (Exception e)
 		{
@@ -109,4 +112,6 @@ public class Brands {
 		}
 	}
 	
+
+
 }

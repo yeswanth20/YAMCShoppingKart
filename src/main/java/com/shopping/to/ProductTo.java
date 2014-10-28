@@ -23,16 +23,9 @@ public class ProductTo {
 	//Common  Fields
 	private UserOrm createdBy;
 	private UserOrm modifiedBy;
-	private String statusMsg;
 	
 	
 	//	Getter & Setters
-	public String getStatusMsg() {
-		return statusMsg;
-	}
-	public void setStatusMsg(String statusMsg) {
-		this.statusMsg = statusMsg;
-	}
 	public int getId() {
 		return id;
 	}

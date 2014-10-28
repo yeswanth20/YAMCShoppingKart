@@ -12,7 +12,7 @@ public class JerseyClientUnits {
 			Client client = Client.create();
 			WebResource webResource = client
 					.resource("http://localhost:8080/Shopping/rest/unitService/insert");
-			String input = "{\"unitName\":\"VVVV\"}";
+			String input = "{\"unitName\":\"jjjjjjjjjjjjjjjjj\"}";
 
 			ClientResponse response = webResource.type("application/json")
 					.post(ClientResponse.class,input);
