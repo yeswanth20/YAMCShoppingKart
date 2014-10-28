@@ -25,13 +25,14 @@ public class AuthService {
 	@GET
 	@Path("/logout")
 	@Consumes(MediaType.APPLICATION_JSON)
-	public Viewable logoutAuth(@Context HttpServletRequest request) {
+	public void logoutAuth(@Context HttpServletRequest request) {
 		//invalidate the session if exists
-        HttpSession session = request.getSession(false);
-        System.out.println("User="+session.getAttribute("user"));
+        HttpSession session = request.getSession();
+        session.setAttribute("ipaddress",request.getRemoteHost()); 
+
         if(session != null){
             session.invalidate();
         }
-        return new Viewable("index.html", null);
+//       return new Viewable("index.html", null);
 	}	
 }
