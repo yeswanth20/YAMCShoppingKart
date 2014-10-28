@@ -23,6 +23,8 @@ public class UserOrm implements Serializable{
 	private int id;
 	@Column(name = "user_name")
 	private String userName;
+	@Column(name="password")
+	private String password;
 
 	//Common  Fields
 	@ManyToOne
@@ -44,7 +46,12 @@ public class UserOrm implements Serializable{
 	public void setId(int id) {
 		this.id = id;
 	}
-	
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
 	public String getUserName() {
 		return userName;
 	}
@@ -75,6 +82,4 @@ public class UserOrm implements Serializable{
 	public void setModifiedDate(Date modifiedDate) {
 		this.modifiedDate = modifiedDate;
 	}
-
-
 }
