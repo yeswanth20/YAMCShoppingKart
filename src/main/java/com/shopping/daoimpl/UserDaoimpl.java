@@ -18,9 +18,7 @@ import org.hibernate.criterion.Restrictions;
 
 import com.shopping.dao.UserDao;
 import com.shopping.hibernate.HibernateUtil;
-import com.shopping.orm.UnitsOrm;
 import com.shopping.orm.UserOrm;
-import com.shopping.to.UnitsTo;
 import com.shopping.to.UsersTo;
 
 public class UserDaoimpl implements UserDao{

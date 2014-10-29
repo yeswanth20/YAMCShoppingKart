@@ -27,7 +27,7 @@ public class Product {
 	public ProductTo getTrackInJSON() {
 
 		ProductTo productTo = new ProductTo();
-		
+
 		productTo.setProductNameEng("productNameEng");
 		productTo.setCreatedBy(new UserOrm().getCreatedBy());
 		productTo.setModifiedBy(new UserOrm().getModifiedBy());
@@ -35,83 +35,80 @@ public class Product {
 		return productTo;
 	}
 
-
 	// UNIT INSERT
 	@POST
 	@Produces(MediaType.APPLICATION_JSON)
-    @Consumes(MediaType.APPLICATION_JSON)
-	@Path("/insert") 
-	public Response insertProduct(ProductTo productTo,@Context HttpServletRequest request){
-		try 
-		{
-			productTo=ShoppingCartFactory.getProductDao().insert(productTo,12);
-			return Response.status(201).entity(productTo).build();	
-		}
-		catch (Exception e)
-		{
-		e.printStackTrace();
-		String error = "ConstraintViolationException";
-		return Response.status(403).entity(error).build();
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Path("/insert")
+	public Response insertProduct(ProductTo productTo,
+			@Context HttpServletRequest request) {
+		try {
+			productTo = ShoppingCartFactory.getProductDao().insert(
+					productTo,
+					Integer.parseInt(request.getSession()
+							.getAttribute("userId").toString()));
+			return Response.status(201).entity(productTo).build();
+		} catch (Exception e) {
+			e.printStackTrace();
+			String error = "ConstraintViolationException";
+			return Response.status(403).entity(error).build();
 		}
 	}
-	
+
 	// UNIT UPDATE
 	@POST
 	@Produces(MediaType.APPLICATION_JSON)
-    @Consumes(MediaType.APPLICATION_JSON)
-	@Path("/update") 
-	public Response updateProduct(ProductTo productTo,@Context HttpServletRequest request){
-		try 
-		{
-			productTo=ShoppingCartFactory.getProductDao().update(productTo.getId(),productTo,4);
-			return Response.status(201).entity(productTo).build();	
-		}
-		catch (Exception e)
-		{
-		e.printStackTrace();
-		String error = "ConstraintViolationException";
-		return Response.status(403).entity(error).build();
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Path("/update")
+	public Response updateProduct(ProductTo productTo,
+			@Context HttpServletRequest request) {
+		try {
+			productTo = ShoppingCartFactory.getProductDao().update(
+					productTo.getId(),
+					productTo,
+					Integer.parseInt(request.getSession()
+							.getAttribute("userId").toString()));
+			return Response.status(201).entity(productTo).build();
+		} catch (Exception e) {
+			e.printStackTrace();
+			String error = "ConstraintViolationException";
+			return Response.status(403).entity(error).build();
 		}
 	}
+
 	// UNITS GET ALL
 	@POST
 	@Produces(MediaType.APPLICATION_JSON)
-    @Consumes(MediaType.APPLICATION_JSON)
-	@Path("/getAll") 
-	public Response getAllProducts(@Context HttpServletRequest request){
-		try 
-		{
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Path("/getAll")
+	public Response getAllProducts(@Context HttpServletRequest request) {
+		try {
 			Collection<ProductTo> productTo = new ArrayList<ProductTo>();
-			productTo=ShoppingCartFactory.getProductDao().getAll();
-			return Response.status(201).entity(productTo).build();	
-		}
-		catch (Exception e)
-		{
-		e.printStackTrace();
-		String error = "Unable to Find Reords";
-		return Response.status(403).entity(error).build();
+			productTo = ShoppingCartFactory.getProductDao().getAll();
+			return Response.status(201).entity(productTo).build();
+		} catch (Exception e) {
+			e.printStackTrace();
+			String error = "Unable to Find Reords";
+			return Response.status(403).entity(error).build();
 		}
 	}
-	
+
 	// UNITS SEARCH BY ID
 	@POST
 	@Produces(MediaType.APPLICATION_JSON)
-    @Consumes(MediaType.APPLICATION_JSON)
-	@Path("/search") 
-	public Response searchProducts(ProductTo productTo,@Context HttpServletRequest request){
-		try 
-		{
-			productTo=ShoppingCartFactory.getProductDao().searchById(productTo.getId());
-			return Response.status(201).entity(productTo).build();	
-		}
-		catch (Exception e)
-		{
-		e.printStackTrace();
-		String error = "Unable to Find Reord";
-		return Response.status(403).entity(error).build();
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Path("/search")
+	public Response searchProducts(ProductTo productTo,
+			@Context HttpServletRequest request) {
+		try {
+			productTo = ShoppingCartFactory.getProductDao().searchById(
+					productTo.getId());
+			return Response.status(201).entity(productTo).build();
+		} catch (Exception e) {
+			e.printStackTrace();
+			String error = "Unable to Find Reord";
+			return Response.status(403).entity(error).build();
 		}
 	}
-	
-
 
 }

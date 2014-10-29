@@ -29,82 +29,81 @@ public class Brands {
 		brandTo.setBrandNameEng("brandNameEng");
 		return brandTo;
 	}
-	
+
 	// BRAND INSERT
 	@POST
 	@Produces(MediaType.APPLICATION_JSON)
-    @Consumes(MediaType.APPLICATION_JSON)
-	@Path("/insert") 
-	public Response insertBrand(BrandTo brandTo,@Context HttpServletRequest request){
-		try 
-		{
-			brandTo=ShoppingCartFactory.getBrandDao().insert(brandTo, 1);
-			return Response.status(201).entity(brandTo).build();	
-		}
-		catch (Exception e)
-		{
-		e.printStackTrace();
-		String error = "ConstraintViolationException";
-		return Response.status(403).entity(error).build();
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Path("/insert")
+	public Response insertBrand(BrandTo brandTo,
+			@Context HttpServletRequest request) {
+		try {
+			brandTo = ShoppingCartFactory.getBrandDao().insert(
+					brandTo,
+					Integer.parseInt(request.getSession()
+							.getAttribute("userId").toString()));
+			return Response.status(201).entity(brandTo).build();
+		} catch (Exception e) {
+			e.printStackTrace();
+			String error = "ConstraintViolationException";
+			return Response.status(403).entity(error).build();
 		}
 	}
-	
-	
+
 	// UNIT UPDATE
 	@POST
 	@Produces(MediaType.APPLICATION_JSON)
-    @Consumes(MediaType.APPLICATION_JSON)
-	@Path("/update") 
-	public Response updateBrand(BrandTo brandTo,@Context HttpServletRequest request){
-		try 
-		{
-			brandTo=ShoppingCartFactory.getBrandDao().update(brandTo.getId(),brandTo,4);
-			return Response.status(201).entity(brandTo).build();	
-		}
-		catch (Exception e)
-		{
-		e.printStackTrace();
-		String error = "ConstraintViolationException";
-		return Response.status(403).entity(error).build();
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Path("/update")
+	public Response updateBrand(BrandTo brandTo,
+			@Context HttpServletRequest request) {
+		try {
+			brandTo = ShoppingCartFactory.getBrandDao().update(
+					brandTo.getId(),
+					brandTo,
+					Integer.parseInt(request.getSession()
+							.getAttribute("userId").toString()));
+			return Response.status(201).entity(brandTo).build();
+		} catch (Exception e) {
+			e.printStackTrace();
+			String error = "ConstraintViolationException";
+			return Response.status(403).entity(error).build();
 		}
 	}
+
 	// UNITS GET ALL
 	@POST
 	@Produces(MediaType.APPLICATION_JSON)
-    @Consumes(MediaType.APPLICATION_JSON)
-	@Path("/getAll") 
-	public Response getAllUnits(@Context HttpServletRequest request){
-		try 
-		{
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Path("/getAll")
+	public Response getAllUnits(@Context HttpServletRequest request) {
+		try {
 			Collection<BrandTo> brandTo = new ArrayList<BrandTo>();
-			brandTo=ShoppingCartFactory.getBrandDao().getAll();
-			return Response.status(201).entity(brandTo).build();	
-		}
-		catch (Exception e)
-		{
-		e.printStackTrace();
-		String error = "Unable to Find Reords";
-		return Response.status(403).entity(error).build();
+			brandTo = ShoppingCartFactory.getBrandDao().getAll();
+			return Response.status(201).entity(brandTo).build();
+		} catch (Exception e) {
+			e.printStackTrace();
+			String error = "Unable to Find Reords";
+			return Response.status(403).entity(error).build();
 		}
 	}
-	
+
 	// UNITS SEARCH BY ID
 	@POST
 	@Produces(MediaType.APPLICATION_JSON)
-    @Consumes(MediaType.APPLICATION_JSON)
-	@Path("/search") 
-	public Response searchUnits(BrandTo brandTo,@Context HttpServletRequest request){
-		try 
-		{
-			brandTo=ShoppingCartFactory.getBrandDao().searchById(brandTo.getId());
-			return Response.status(201).entity(brandTo).build();	
-		}
-		catch (Exception e)
-		{
-		e.printStackTrace();
-		String error = "Unable to Find Reord";
-		return Response.status(403).entity(error).build();
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Path("/search")
+	public Response searchUnits(BrandTo brandTo,
+			@Context HttpServletRequest request) {
+		try {
+			brandTo = ShoppingCartFactory.getBrandDao().searchById(
+					brandTo.getId());
+			return Response.status(201).entity(brandTo).build();
+		} catch (Exception e) {
+			e.printStackTrace();
+			String error = "Unable to Find Reord";
+			return Response.status(403).entity(error).build();
 		}
 	}
-	
+
 }
