@@ -20,7 +20,6 @@ public class SessionFilter implements Filter {
 	private ArrayList<String> urlList;
 	private FilterConfig config = null;
 	private ServletContext context;
-	@SuppressWarnings("unused")
 	private HashMap<String, String> sessionDetails;
 
 	public void destroy() {
@@ -69,7 +68,7 @@ public class SessionFilter implements Filter {
 				}
 			} catch (Exception e) {
 				if (userId == null || sessionId == null) {
-//					chain.doFilter(req, res); ---> Redirect to Login Page
+//					Write code to Redirect to Login Page
 				}
 			}
 
