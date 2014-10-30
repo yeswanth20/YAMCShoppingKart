@@ -4,6 +4,7 @@ import com.shopping.dao.BrandDao;
 import com.shopping.dao.CategoriesDao;
 import com.shopping.dao.DiscountTypeDao;
 import com.shopping.dao.ProductDao;
+import com.shopping.dao.TransactionOrderDao;
 import com.shopping.dao.UnitsDao;
 import com.shopping.dao.UserDao;
 import com.shopping.dao.WeightsDao;
@@ -11,6 +12,7 @@ import com.shopping.daoimpl.BrandDaoimpl;
 import com.shopping.daoimpl.CategoriesDaoimpl;
 import com.shopping.daoimpl.DiscountTypeDaoimpl;
 import com.shopping.daoimpl.ProductDaoimpl;
+import com.shopping.daoimpl.TransactionOrderDaoimpl;
 import com.shopping.daoimpl.UnitDaoimpl;
 import com.shopping.daoimpl.UserDaoimpl;
 import com.shopping.daoimpl.WeightsDaoimpl;
@@ -24,6 +26,7 @@ public class ShoppingCartFactory {
 	public static ProductDao productDao;
 	public static UnitsDao unitsDao;
 	public static WeightsDao weightsDao;
+	public static TransactionOrderDao transactionOrderDao;
 	static{
 		userDao = new UserDaoimpl();
 		brandDao = new BrandDaoimpl();
@@ -32,6 +35,7 @@ public class ShoppingCartFactory {
 		productDao = new ProductDaoimpl();
 		unitsDao = new UnitDaoimpl();
 		weightsDao = new WeightsDaoimpl();
+		transactionOrderDao = new TransactionOrderDaoimpl();
 	}
 
 	
@@ -90,6 +94,15 @@ public class ShoppingCartFactory {
 
 	public static void setUnitsDao(UnitsDao unitsDao) {
 		ShoppingCartFactory.unitsDao = unitsDao;
+	}
+
+	public static TransactionOrderDao getTransactionOrderDao() {
+		return transactionOrderDao;
+	}
+
+	public static void setTransactionOrderDao(
+			TransactionOrderDao transactionOrderDao) {
+		ShoppingCartFactory.transactionOrderDao = transactionOrderDao;
 	}
 	
 	

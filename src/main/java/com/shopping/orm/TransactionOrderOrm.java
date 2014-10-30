@@ -1,5 +1,6 @@
 package com.shopping.orm;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
@@ -21,8 +22,12 @@ import javax.persistence.TemporalType;
 
 @Entity
 @Table(name = "Transaction_Order")
-public class TransactionOrderOrm {
+public class TransactionOrderOrm implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 2885102041112910386L;
 	@Id @GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "id")
 	private int id;
@@ -42,8 +47,8 @@ public class TransactionOrderOrm {
 	private double priceAfterDiscount;
 	@Column(name = "product_count")
 	
-	@OneToOne(fetch=FetchType.LAZY,mappedBy="transactionOrder",cascade={CascadeType.ALL},targetEntity=TransactionOrderAddressOrm.class)
-	private Collection<TransactionOrderAddressOrm> address = new ArrayList<TransactionOrderAddressOrm>();
+	@OneToOne//(fetch=FetchType.LAZY, cascade={CascadeType.ALL},targetEntity=TransactionOrderAddressOrm.class)
+	private TransactionOrderAddressOrm address = new TransactionOrderAddressOrm();
 	
 	@OneToMany(fetch=FetchType.LAZY,mappedBy="transactionOrder",cascade={CascadeType.ALL},targetEntity=TransactionOrderProductListOrm.class)
 	private Collection<TransactionOrderProductListOrm> productList = new ArrayList<TransactionOrderProductListOrm>();
@@ -107,10 +112,11 @@ public class TransactionOrderOrm {
 	public void setPriceAfterDiscount(double priceAfterDiscount) {
 		this.priceAfterDiscount = priceAfterDiscount;
 	}
-	public Collection<TransactionOrderAddressOrm> getAddress() {
+	
+	public TransactionOrderAddressOrm getAddress() {
 		return address;
 	}
-	public void setAddress(Collection<TransactionOrderAddressOrm> address) {
+	public void setAddress(TransactionOrderAddressOrm address) {
 		this.address = address;
 	}
 	public Collection<TransactionOrderProductListOrm> getProductList() {
