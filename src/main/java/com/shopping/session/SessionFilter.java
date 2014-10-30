@@ -54,23 +54,22 @@ public class SessionFilter implements Filter {
 		// other URLS
 		if (!allowedRequest) {
 			HttpSession session = request.getSession(false);
-			String ipaddress = null;
+			String userId = null;
+			String sessionId = null;
 			sessionDetails = (HashMap<String, String>) context
 					.getAttribute("sessionDetails");
 			try {
-				ipaddress = (String) session.getAttribute("ipaddress");
-				long before = System.currentTimeMillis();
-				chain.doFilter(req, res);
-				long after = System.currentTimeMillis();
-				config.getServletContext().log(
-						"RESPONSE TIME :" + (after - before) + "ms");
-			} catch (Exception e) {
-				if (ipaddress == null) {
+				userId = (String) session.getAttribute("userId");
+				sessionId = session.getId();
+				if(sessionDetails.containsKey(sessionId) && sessionDetails.get(sessionId)== userId){
 					long before = System.currentTimeMillis();
 					chain.doFilter(req, res);
 					long after = System.currentTimeMillis();
-					config.getServletContext().log(
-							"RESPONSE TIME :" + (after - before) + "ms");
+					config.getServletContext().log("RESPONSE TIME :" + (after - before) + "ms");
+				}
+			} catch (Exception e) {
+				if (userId == null || sessionId == null) {
+//					chain.doFilter(req, res); ---> Redirect to Login Page
 				}
 			}
 
