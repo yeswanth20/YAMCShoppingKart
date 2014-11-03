@@ -44,7 +44,6 @@ public class UnitDaoimpl implements UnitsDao{
 			session.close();
 			tx =null;
 		}
-		System.out.println(unitsTo.getId());
 		return unitsTo;
 	}
 
