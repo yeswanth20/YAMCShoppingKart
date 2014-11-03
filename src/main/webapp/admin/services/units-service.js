@@ -9,7 +9,7 @@ angular.module('shopApp').service('unitsService',
 				deferred.resolve(unitsList);
 			}
 			else {
-				$http.get(serviceCallBaseUrl+"units")
+				$http.post(serviceCallBaseUrl+"unitService/getAll")
 				.success(function(data, status, headers, config) {				
 					deferred.resolve(data);
 				}).
@@ -22,7 +22,7 @@ angular.module('shopApp').service('unitsService',
 
 		this.postUnits = function(request) {
 			var deferred = $q.defer();
-			$http.post(serviceCallBaseUrl+"units",request)
+			$http.post(serviceCallBaseUrl+"unitService/insert",request)
 			.success(function(data,status,headers,config) {
 				deferred.resolve(data);
 			}).
@@ -34,7 +34,7 @@ angular.module('shopApp').service('unitsService',
 
 		this.putUnits = function(request) {
 			var deferred = $q.defer();
-			$http.put(serviceCallBaseUrl+"units",request)
+			$http.put(serviceCallBaseUrl+"unitService/update",request)
 			.success(function(data,status,headers,config) {
 				deferred.resolve(data);
 			}).
