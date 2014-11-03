@@ -39,10 +39,13 @@ public class Weights {
 	public Response insertWeights(WeightsTo weightsTo,
 			@Context HttpServletRequest request) {
 		try {
+//			weightsTo = ShoppingCartFactory.getWeightsDao().insert(
+//					weightsTo,
+//					Integer.parseInt(request.getSession()
+//							.getAttribute("userId").toString()));
+			
 			weightsTo = ShoppingCartFactory.getWeightsDao().insert(
-					weightsTo,
-					Integer.parseInt(request.getSession()
-							.getAttribute("userId").toString()));
+					weightsTo,1);
 			return Response.status(201).entity(weightsTo).build();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -59,11 +62,16 @@ public class Weights {
 	public Response updateWeight(WeightsTo weightsTo,
 			@Context HttpServletRequest request) {
 		try {
+//			weightsTo = ShoppingCartFactory.getWeightsDao().update(
+//					weightsTo.getId(),
+//					weightsTo,
+//					Integer.parseInt(request.getSession()
+//							.getAttribute("userId").toString()));
+			
 			weightsTo = ShoppingCartFactory.getWeightsDao().update(
 					weightsTo.getId(),
-					weightsTo,
-					Integer.parseInt(request.getSession()
-							.getAttribute("userId").toString()));
+					weightsTo,1);
+			
 			return Response.status(201).entity(weightsTo).build();
 		} catch (Exception e) {
 			e.printStackTrace();

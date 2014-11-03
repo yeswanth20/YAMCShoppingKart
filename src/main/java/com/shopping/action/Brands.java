@@ -38,10 +38,14 @@ public class Brands {
 	public Response insertBrand(BrandTo brandTo,
 			@Context HttpServletRequest request) {
 		try {
+//			brandTo = ShoppingCartFactory.getBrandDao().insert(
+//					brandTo,
+//					Integer.parseInt(request.getSession()
+//							.getAttribute("userId").toString()));
+			
 			brandTo = ShoppingCartFactory.getBrandDao().insert(
-					brandTo,
-					Integer.parseInt(request.getSession()
-							.getAttribute("userId").toString()));
+					brandTo,1);
+			
 			return Response.status(201).entity(brandTo).build();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -58,11 +62,16 @@ public class Brands {
 	public Response updateBrand(BrandTo brandTo,
 			@Context HttpServletRequest request) {
 		try {
+//			brandTo = ShoppingCartFactory.getBrandDao().update(
+//					brandTo.getId(),
+//					brandTo,
+//					Integer.parseInt(request.getSession()
+//							.getAttribute("userId").toString()));
+			
 			brandTo = ShoppingCartFactory.getBrandDao().update(
 					brandTo.getId(),
-					brandTo,
-					Integer.parseInt(request.getSession()
-							.getAttribute("userId").toString()));
+					brandTo,1);
+			
 			return Response.status(201).entity(brandTo).build();
 		} catch (Exception e) {
 			e.printStackTrace();

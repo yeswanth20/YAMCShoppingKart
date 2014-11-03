@@ -47,10 +47,12 @@ public class Units {
 	public Response insertUnits(UnitsTo unitTo,
 			@Context HttpServletRequest request) {
 		try {
+//			unitTo = ShoppingCartFactory.getUnitsDao().insert(
+//					unitTo,
+//					Integer.parseInt(request.getSession()
+//							.getAttribute("userId").toString()));
 			unitTo = ShoppingCartFactory.getUnitsDao().insert(
-					unitTo,
-					Integer.parseInt(request.getSession()
-							.getAttribute("userId").toString()));
+					unitTo,1);
 			return Response.status(201).entity(unitTo).build();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -67,9 +69,11 @@ public class Units {
 	public Response updateUnits(UnitsTo unitTo,
 			@Context HttpServletRequest request) {
 		try {
+//			unitTo = ShoppingCartFactory.getUnitsDao().update(unitTo.getId(),
+//					unitTo, Integer.parseInt(request.getSession()
+//							.getAttribute("userId").toString()));
 			unitTo = ShoppingCartFactory.getUnitsDao().update(unitTo.getId(),
-					unitTo, Integer.parseInt(request.getSession()
-							.getAttribute("userId").toString()));
+					unitTo, 1);
 			return Response.status(201).entity(unitTo).build();
 		} catch (Exception e) {
 			e.printStackTrace();

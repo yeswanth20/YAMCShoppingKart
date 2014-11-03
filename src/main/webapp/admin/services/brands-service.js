@@ -3,7 +3,7 @@ angular.module("shopApp").service("brandsService",
 
 		this.getBrands = function(){
 			var deferred = $q.defer();
-			$http.get(serviceCallBaseUrl+"brands")
+			$http.post(serviceCallBaseUrl+"brandService/getAll")
 			.success(function(data, status, headers, config) {				
 				deferred.resolve(data);
 			}).
@@ -15,7 +15,7 @@ angular.module("shopApp").service("brandsService",
 
 		this.createBrand = function(request){
 			var deferred = $q.defer();
-			$http.post(serviceCallBaseUrl+"brands",request)
+			$http.post(serviceCallBaseUrl+"brandService/insert",request)
 			.success(function(data,status,headers,config) {
 				deferred.resolve(data);
 			}).
@@ -27,7 +27,7 @@ angular.module("shopApp").service("brandsService",
 
 		this.updateBrand = function(request) {
 			var deferred = $q.defer();
-			$http.put(serviceCallBaseUrl+"brands",request)
+			$http.put(serviceCallBaseUrl+"brandService/update",request)
 			.success(function(data,status,headers,config) {
 				deferred.resolve(data);
 			}).

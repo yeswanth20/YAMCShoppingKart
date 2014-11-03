@@ -3,7 +3,7 @@ angular.module("shopApp").service("weightsService",
 
 		this.getWeights = function(){
 			var deferred = $q.defer();
-			$http.get(serviceCallBaseUrl+"weights")
+			$http.post(serviceCallBaseUrl+"weightService/getAll")
 			.success(function(data, status, headers, config) {				
 				deferred.resolve(data);
 			}).
@@ -15,7 +15,7 @@ angular.module("shopApp").service("weightsService",
 
 		this.createWeight = function(request){
 			var deferred = $q.defer();
-			$http.post(serviceCallBaseUrl+"weights",request)
+			$http.post(serviceCallBaseUrl+"weightService/insert",request)
 			.success(function(data,status,headers,config) {
 				deferred.resolve(data);
 			}).
@@ -27,7 +27,7 @@ angular.module("shopApp").service("weightsService",
 
 		this.updateWeight = function(request) {
 			var deferred = $q.defer();
-			$http.put(serviceCallBaseUrl+"weights",request)
+			$http.put(serviceCallBaseUrl+"weightService/update",request)
 			.success(function(data,status,headers,config) {
 				deferred.resolve(data);
 			}).

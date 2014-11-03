@@ -37,10 +37,13 @@ public class Categories {
 	public Response insertCategory(CategoriesTo categoriesTo,
 			@Context HttpServletRequest request) {
 		try {
+//			categoriesTo = ShoppingCartFactory.getCategoriesDao().insert(
+//					categoriesTo,
+//					Integer.parseInt(request.getSession()
+//							.getAttribute("userId").toString()));
+			
 			categoriesTo = ShoppingCartFactory.getCategoriesDao().insert(
-					categoriesTo,
-					Integer.parseInt(request.getSession()
-							.getAttribute("userId").toString()));
+					categoriesTo,1);
 			return Response.status(201).entity(categoriesTo).build();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -57,11 +60,16 @@ public class Categories {
 	public Response updateCategory(CategoriesTo categoriesTo,
 			@Context HttpServletRequest request) {
 		try {
+//			categoriesTo = ShoppingCartFactory.getCategoriesDao().update(
+//					categoriesTo.getId(),
+//					categoriesTo,
+//					Integer.parseInt(request.getSession()
+//							.getAttribute("userId").toString()));
+			
 			categoriesTo = ShoppingCartFactory.getCategoriesDao().update(
 					categoriesTo.getId(),
-					categoriesTo,
-					Integer.parseInt(request.getSession()
-							.getAttribute("userId").toString()));
+					categoriesTo,1);
+			
 			return Response.status(201).entity(categoriesTo).build();
 		} catch (Exception e) {
 			e.printStackTrace();

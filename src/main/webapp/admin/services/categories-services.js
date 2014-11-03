@@ -10,7 +10,7 @@ angular.module("shopApp").service("categoriesService",
 				deferred.resolve(categoriesServiceList);
 			}
 			else {
-				$http.get(serviceCallBaseUrl+"categories")
+				$http.post(serviceCallBaseUrl+"categoryService/getAll")
 				.success(function(data, status, headers, config) {				
 					categoriesServiceList = data;
 					deferred.resolve(data);
@@ -24,7 +24,7 @@ angular.module("shopApp").service("categoriesService",
 
 		this.createCategory = function(request){
 			var deferred = $q.defer();
-			$http.post(serviceCallBaseUrl+"categories",request)
+			$http.post(serviceCallBaseUrl+"categoryService/insert",request)
 			.success(function(data,status,headers,config) {
 				deferred.resolve(data);
 			}).
@@ -36,7 +36,7 @@ angular.module("shopApp").service("categoriesService",
 
 		this.updateCategory = function(request) {
 			var deferred = $q.defer();
-			$http.put(serviceCallBaseUrl+"categories",request)
+			$http.put(serviceCallBaseUrl+"categoryService/update",request)
 			.success(function(data,status,headers,config) {
 				deferred.resolve(data);
 			}).
