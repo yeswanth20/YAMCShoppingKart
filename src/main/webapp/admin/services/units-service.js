@@ -34,7 +34,7 @@ angular.module('shopApp').service('unitsService',
 
 		this.putUnits = function(request) {
 			var deferred = $q.defer();
-			$http.put(serviceCallBaseUrl+"unitService/update",request)
+			$http.post(serviceCallBaseUrl+"unitService/update",request)
 			.success(function(data,status,headers,config) {
 				deferred.resolve(data);
 			}).
@@ -46,7 +46,7 @@ angular.module('shopApp').service('unitsService',
 
 		this.deleteUnits = function(request) {
 			var deferred = $q.defer();
-			$http.delete(serviceCallBaseUrl+"units",request)
+			$http.post(serviceCallBaseUrl+"unitService/delete",request)
 			.success(function(data,status,headers,config) {
 				deferred.resolve(data);
 			}).

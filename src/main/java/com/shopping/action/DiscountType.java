@@ -37,10 +37,14 @@ public class DiscountType {
 	public Response insertDiscountType(DiscountTypeTo discountTypeTo,
 			@Context HttpServletRequest request) {
 		try {
+//			discountTypeTo = ShoppingCartFactory.getDiscountTypeDao().insert(
+//					discountTypeTo,
+//					Integer.parseInt(request.getSession()
+//							.getAttribute("userId").toString()));
+			
 			discountTypeTo = ShoppingCartFactory.getDiscountTypeDao().insert(
-					discountTypeTo,
-					Integer.parseInt(request.getSession()
-							.getAttribute("userId").toString()));
+					discountTypeTo,1);
+			
 			return Response.status(201).entity(discountTypeTo).build();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -57,11 +61,16 @@ public class DiscountType {
 	public Response updateDiscountType(DiscountTypeTo discountTypeTo,
 			@Context HttpServletRequest request) {
 		try {
+//			discountTypeTo = ShoppingCartFactory.getDiscountTypeDao().update(
+//					discountTypeTo.getId(),
+//					discountTypeTo,
+//					Integer.parseInt(request.getSession()
+//							.getAttribute("userId").toString()));
+			
 			discountTypeTo = ShoppingCartFactory.getDiscountTypeDao().update(
 					discountTypeTo.getId(),
-					discountTypeTo,
-					Integer.parseInt(request.getSession()
-							.getAttribute("userId").toString()));
+					discountTypeTo,1);
+			
 			return Response.status(201).entity(discountTypeTo).build();
 		} catch (Exception e) {
 			e.printStackTrace();

@@ -43,10 +43,14 @@ public class Product {
 	public Response insertProduct(ProductTo productTo,
 			@Context HttpServletRequest request) {
 		try {
+//			productTo = ShoppingCartFactory.getProductDao().insert(
+//					productTo,
+//					Integer.parseInt(request.getSession()
+//							.getAttribute("userId").toString()));
+			
 			productTo = ShoppingCartFactory.getProductDao().insert(
-					productTo,
-					Integer.parseInt(request.getSession()
-							.getAttribute("userId").toString()));
+					productTo,1);
+			
 			return Response.status(201).entity(productTo).build();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -63,11 +67,16 @@ public class Product {
 	public Response updateProduct(ProductTo productTo,
 			@Context HttpServletRequest request) {
 		try {
+//			productTo = ShoppingCartFactory.getProductDao().update(
+//					productTo.getId(),
+//					productTo,
+//					Integer.parseInt(request.getSession()
+//							.getAttribute("userId").toString()));
+			
 			productTo = ShoppingCartFactory.getProductDao().update(
 					productTo.getId(),
-					productTo,
-					Integer.parseInt(request.getSession()
-							.getAttribute("userId").toString()));
+					productTo,1);
+			
 			return Response.status(201).entity(productTo).build();
 		} catch (Exception e) {
 			e.printStackTrace();

@@ -27,7 +27,7 @@ angular.module("shopApp").service("weightsService",
 
 		this.updateWeight = function(request) {
 			var deferred = $q.defer();
-			$http.put(serviceCallBaseUrl+"weightService/update",request)
+			$http.post(serviceCallBaseUrl+"weightService/update",request)
 			.success(function(data,status,headers,config) {
 				deferred.resolve(data);
 			}).
@@ -39,7 +39,7 @@ angular.module("shopApp").service("weightsService",
 
 		this.deleteWeight = function(request) {
 			var deferred = $q.defer();
-			$http.delete(serviceCallBaseUrl+"weights",request)
+			$http.post(serviceCallBaseUrl+"weightService/delete",request)
 			.success(function(data,status,headers,config) {
 				deferred.resolve(data);
 			}).
