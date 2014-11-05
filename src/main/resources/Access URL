@@ -57,8 +57,8 @@ CATEGORY
 								"categoryNameHindi":"BRAND HINDI",
 								"categoryNameTel":"BRAND TELUGU",
 								"categoryNameTamil":"BRAND TAMIL",
-								"parentCategory":"parentCategory",
-								"rootCategory":"rootCategory"
+								"parentCategory":1,
+								"rootCategory":2
 								}
 								
 3. UPDATE 	--> http://localhost:8080/Shopping/rest/categoryService/update
@@ -66,8 +66,8 @@ CATEGORY
 								"categoryNameHindi":"BRAND HINDI",
 								"categoryNameTel":"BRAND TELUGU",
 								"categoryNameTamil":"BRAND TAMIL",
-								"parentCategory":"parentCategory",
-								"rootCategory":"rootCategory",
+								"parentCategory":1,
+								"rootCategory":2,
 								"id":1
 								}
 								
@@ -94,22 +94,43 @@ PRODUCT
 =======
 1. GET		--> http://localhost:8080/Shopping/rest/productService/get
 2. INSERT	--> http://localhost:8080/Shopping/rest/productService/insert
-				JSON DATA --> {"productNameEng":"BRAND ENGLISH",
-								"productNameHindi":"BRAND HINDI",
-								"productNameTel":"BRAND TELUGU",
-								"productNameTamil":"BRAND TAMIL",
-								"isStockAvailable":"true",
-								"brand":2								
-								}
+				JSON DATA --> { "productNameHindi": "Product HINDI",
+							    "productNameTel": "Product TELUGU",
+							    "productNameTamil": "Product TAMIL",
+							    "brand": 151,
+							    "productNameEng": "Product ENGLISH",
+							    "productUnitDetails": [{
+							                            "unit" : 90,
+							                            "weight": 10,
+							                            "discountType":180,
+							                            "discountValue": 123,
+							                            "price":122
+														},
+														{
+														second child details if present
+														}
+							                          ],
+							    "stockAvailable": true
+							}
 3. UPDATE 	--> http://localhost:8080/Shopping/rest/productService/update
-				JSON DATA --> {"productNameEng":"BRAND ENGLISH",
-								"productNameHindi":"BRAND HINDI",
-								"productNameTel":"BRAND TELUGU",
-								"productNameTamil":"BRAND TAMIL",
-								"isStockAvailable":"false",
-								"brand":1,
-								"id":1
-								}
+				JSON DATA --> { "productNameHindi": "Product HINDI",
+							    "productNameTel": "Product TELUGU",
+							    "productNameTamil": "Product TAMIL",
+							    "brand": 151,
+							    "productNameEng": "Product ENGLISH",
+							    "productUnitDetails": [{
+							                            "unit" : 90,
+							                            "weight": 10,
+							                            "discountType":180,
+							                            "discountValue": 123,
+							                            "price":122
+														},
+														{
+														second child details if present
+														}
+							                          ],
+							    "stockAvailable": true
+							}
 4. GETALL	--> http://localhost:8080/Shopping/rest/productService/getAll
 
 5. SEARCH	--> http://localhost:8080/Shopping/rest/productService/search

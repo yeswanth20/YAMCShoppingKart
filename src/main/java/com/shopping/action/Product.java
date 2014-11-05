@@ -54,7 +54,7 @@ public class Product {
 			return Response.status(201).entity(productTo).build();
 		} catch (Exception e) {
 			e.printStackTrace();
-			String error = "ConstraintViolationException";
+			String error = "Failed to Insert";
 			return Response.status(403).entity(error).build();
 		}
 	}
@@ -80,7 +80,7 @@ public class Product {
 			return Response.status(201).entity(productTo).build();
 		} catch (Exception e) {
 			e.printStackTrace();
-			String error = "ConstraintViolationException";
+			String error = "Failed to Update";
 			return Response.status(403).entity(error).build();
 		}
 	}
@@ -97,7 +97,7 @@ public class Product {
 			return Response.status(201).entity(productTo).build();
 		} catch (Exception e) {
 			e.printStackTrace();
-			String error = "Unable to Find Reords";
+			String error = "Unable to Find Records";
 			return Response.status(403).entity(error).build();
 		}
 	}
@@ -115,7 +115,7 @@ public class Product {
 			return Response.status(201).entity(productTo).build();
 		} catch (Exception e) {
 			e.printStackTrace();
-			String error = "Unable to Find Reord";
+			String error = "Unable to Find Record";
 			return Response.status(403).entity(error).build();
 		}
 	}

@@ -40,6 +40,7 @@ public class WeightsDaoimpl implements WeightsDao{
 			tx.commit();
 			//Get the Updated Object from the DB
 			weightsTo = this.searchById(weightsOrm.getId());
+			sendWeightsTo = weightsTo;
 			
 		} catch (Exception e) {
 			tx.rollback();

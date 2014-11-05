@@ -93,7 +93,6 @@ public class CategoriesDaoimpl implements CategoriesDao{
 	}
 
 	public boolean delete(int id) {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
@@ -146,8 +145,9 @@ public class CategoriesDaoimpl implements CategoriesDao{
 				categoriesTo.setCategoryNameHindi(categoriesOrm.getCategoryNameHindi());
 				categoriesTo.setCategoryNameTamil(categoriesOrm.getCategoryNameTamil());
 				categoriesTo.setCategoryNameTel(categoriesOrm.getCategoryNameTel());
-				categoriesTo.setParentCategory(categoriesOrm.getParentCategory().getId());
-				categoriesTo.setRootCategory(categoriesOrm.getRootCategory().getId());
+				// if parentCategory and rootCategory are null returning empty LIST
+//				categoriesTo.setParentCategory(categoriesOrm.getParentCategory().getId());
+//				categoriesTo.setRootCategory(categoriesOrm.getRootCategory().getId());
 				//Add the Object to the Array List
 				lstCategoriesTo.add(categoriesTo);
 			}			

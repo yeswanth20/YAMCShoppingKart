@@ -12,7 +12,6 @@ import org.hibernate.criterion.Restrictions;
 import com.shopping.dao.BrandDao;
 import com.shopping.hibernate.HibernateUtil;
 import com.shopping.orm.BrandOrm;
-import com.shopping.orm.UnitsOrm;
 import com.shopping.to.BrandTo;
 
 public class BrandDaoimpl implements BrandDao{
@@ -58,7 +57,7 @@ public class BrandDaoimpl implements BrandDao{
 			tx = session.beginTransaction();
 			
 			//Update the ORM
-			BrandOrm brandOrm = (BrandOrm)session.load(UnitsOrm.class, new Integer(id));
+			BrandOrm brandOrm = (BrandOrm)session.load(BrandOrm.class, new Integer(id));
 			brandOrm.setBrandNameEng(brandTo.getBrandNameEng());
 			brandOrm.setBrandNameHindi(brandTo.getBrandNameHindi());
 			brandOrm.setBrandNameTamil(brandTo.getBrandNameTamil());

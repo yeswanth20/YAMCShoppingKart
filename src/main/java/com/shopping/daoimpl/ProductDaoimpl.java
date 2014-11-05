@@ -45,9 +45,9 @@ public class ProductDaoimpl implements ProductDao{
 				productUnitDetailsOrm.setDiscountType(new DiscountTypeDaoimpl().getDiscountTypeById(productUnitDetailsTo.getDiscountType()));
 				productUnitDetailsOrm.setDiscountValue(productUnitDetailsTo.getDiscountValue());
 				productUnitDetailsOrm.setPrice(productUnitDetailsTo.getPrice());
-				productUnitDetailsOrm.setCreatedBy(new UserDaoimpl().getUserById(productUnitDetailsTo.getCreatedBy()));
+				productUnitDetailsOrm.setCreatedBy(new UserDaoimpl().getUserById(userId));
 				productUnitDetailsOrm.setCreatedDate(new Date());
-				productUnitDetailsOrm.setModifiedBy(new UserDaoimpl().getUserById(productUnitDetailsTo.getModifiedBy()));
+				productUnitDetailsOrm.setModifiedBy(new UserDaoimpl().getUserById(userId));
 				productUnitDetailsOrm.setModifiedDate(new Date());
 				productUnitDetailsOrm.setProduct(productOrm);
 				productOrm.getProductUnitDetails().add(productUnitDetailsOrm);
@@ -103,9 +103,9 @@ public class ProductDaoimpl implements ProductDao{
 				productUnitDetailsOrm.setDiscountType(new DiscountTypeDaoimpl().getDiscountTypeById(productUnitDetailsTo.getDiscountType()));
 				productUnitDetailsOrm.setDiscountValue(productUnitDetailsTo.getDiscountValue());
 				productUnitDetailsOrm.setPrice(productUnitDetailsTo.getPrice());
-				productUnitDetailsOrm.setCreatedBy(new UserDaoimpl().getUserById(productUnitDetailsTo.getCreatedBy()));
+				productUnitDetailsOrm.setCreatedBy(new UserDaoimpl().getUserById(userId));
 				productUnitDetailsOrm.setCreatedDate(new Date());
-				productUnitDetailsOrm.setModifiedBy(new UserDaoimpl().getUserById(productUnitDetailsTo.getModifiedBy()));
+				productUnitDetailsOrm.setModifiedBy(new UserDaoimpl().getUserById(userId));
 				productUnitDetailsOrm.setModifiedDate(new Date());
 				productUnitDetailsOrm.setProduct(productOrm);
 				productOrm.getProductUnitDetails().add(productUnitDetailsOrm);
