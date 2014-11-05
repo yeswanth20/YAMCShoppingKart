@@ -113,4 +113,21 @@ public class DiscountType {
 			return Response.status(403).entity(error).build();
 		}
 	}
+	
+	// DiscountType DELETE
+	@POST
+	@Produces(MediaType.APPLICATION_JSON)
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Path("/delete")
+	public Response deleteUnits(DiscountTypeTo discountTypeTo,
+			@Context HttpServletRequest request) {
+		boolean status = false;
+		try {
+			status = ShoppingCartFactory.getDiscountTypeDao().delete(discountTypeTo.getId());
+			return Response.status(201).entity(status).build();
+		} catch (Exception e) {
+			e.printStackTrace();
+			return Response.status(403).entity(status).build();
+		}
+	}
 }

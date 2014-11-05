@@ -52,7 +52,7 @@ public class Categories {
 		}
 	}
 
-	// UNIT UPDATE
+	// CATEGORY UPDATE
 	@POST
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
@@ -78,7 +78,7 @@ public class Categories {
 		}
 	}
 
-	// UNITS GET ALL
+	// CATEGORY GET ALL
 	@POST
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
@@ -95,7 +95,7 @@ public class Categories {
 		}
 	}
 
-	// UNITS SEARCH BY ID
+	// CATEGORY SEARCH BY ID
 	@POST
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
@@ -112,5 +112,21 @@ public class Categories {
 			return Response.status(403).entity(error).build();
 		}
 	}
-
+	
+	// CATEGORY DELETE
+	@POST
+	@Produces(MediaType.APPLICATION_JSON)
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Path("/delete")
+	public Response deleteUnits(CategoriesTo categoriesTo,
+			@Context HttpServletRequest request) {
+		boolean status = false;
+		try {
+			status = ShoppingCartFactory.getCategoriesDao().delete(categoriesTo.getId());
+			return Response.status(201).entity(status).build();
+		} catch (Exception e) {
+			e.printStackTrace();
+			return Response.status(403).entity(status).build();
+		}
+	}
 }

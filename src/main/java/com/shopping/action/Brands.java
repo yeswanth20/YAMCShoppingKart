@@ -54,7 +54,7 @@ public class Brands {
 		}
 	}
 
-	// UNIT UPDATE
+	// BRAND UPDATE
 	@POST
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
@@ -80,7 +80,7 @@ public class Brands {
 		}
 	}
 
-	// UNITS GET ALL
+	// BRAND GET ALL
 	@POST
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
@@ -97,7 +97,7 @@ public class Brands {
 		}
 	}
 
-	// UNITS SEARCH BY ID
+	// BRAND SEARCH BY ID
 	@POST
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
@@ -115,4 +115,20 @@ public class Brands {
 		}
 	}
 
+	// BRAND DELETE
+	@POST
+	@Produces(MediaType.APPLICATION_JSON)
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Path("/delete")
+	public Response deleteUnits(BrandTo brandTo,
+			@Context HttpServletRequest request) {
+		boolean status = false;
+		try {
+			status = ShoppingCartFactory.getBrandDao().delete(brandTo.getId());
+			return Response.status(201).entity(status).build();
+		} catch (Exception e) {
+			e.printStackTrace();
+			return Response.status(403).entity(status).build();
+		}
+	}
 }

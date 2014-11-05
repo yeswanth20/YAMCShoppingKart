@@ -35,7 +35,7 @@ public class Product {
 		return productTo;
 	}
 
-	// UNIT INSERT
+	// PRODUCT INSERT
 	@POST
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
@@ -59,7 +59,7 @@ public class Product {
 		}
 	}
 
-	// UNIT UPDATE
+	// PRODUCT UPDATE
 	@POST
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
@@ -85,7 +85,7 @@ public class Product {
 		}
 	}
 
-	// UNITS GET ALL
+	// PRODUCT GET ALL
 	@POST
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
@@ -102,7 +102,7 @@ public class Product {
 		}
 	}
 
-	// UNITS SEARCH BY ID
+	// PRODUCT SEARCH BY ID
 	@POST
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
@@ -117,6 +117,23 @@ public class Product {
 			e.printStackTrace();
 			String error = "Unable to Find Reord";
 			return Response.status(403).entity(error).build();
+		}
+	}
+	
+	// PRODUCT DELETE
+	@POST
+	@Produces(MediaType.APPLICATION_JSON)
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Path("/delete")
+	public Response deleteUnits(ProductTo productTo,
+			@Context HttpServletRequest request) {
+		boolean status = false;
+		try {
+			status = ShoppingCartFactory.getProductDao().delete(productTo.getId());
+			return Response.status(201).entity(status).build();
+		} catch (Exception e) {
+			e.printStackTrace();
+			return Response.status(403).entity(status).build();
 		}
 	}
 

@@ -114,5 +114,22 @@ public class Weights {
 			return Response.status(403).entity(error).build();
 		}
 	}
+	
+	// WEIGHT DELETE
+	@POST
+	@Produces(MediaType.APPLICATION_JSON)
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Path("/delete")
+	public Response deleteUnits(WeightsTo weightsTo,
+			@Context HttpServletRequest request) {
+		boolean status = false;
+		try {
+			status = ShoppingCartFactory.getWeightsDao().delete(weightsTo.getId());
+			return Response.status(201).entity(status).build();
+		} catch (Exception e) {
+			e.printStackTrace();
+			return Response.status(403).entity(status).build();
+		}
+	}
 
 }

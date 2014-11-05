@@ -34,7 +34,7 @@ public class Units {
 	@Path("/post")
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response createTrackInJSON(UnitsTo unitTo) {
-		String result = "Track saved : " + unitTo.getUnitName();
+		String result = "Unit Name Received : " + unitTo.getUnitName();
 		return Response.status(201).entity(result).build();
 
 	}
@@ -117,4 +117,20 @@ public class Units {
 		}
 	}
 
+	// UNITS DELETE
+	@POST
+	@Produces(MediaType.APPLICATION_JSON)
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Path("/delete")
+	public Response deleteUnits(UnitsTo unitTo,
+			@Context HttpServletRequest request) {
+		boolean status = false;
+		try {
+			status = ShoppingCartFactory.getUnitsDao().delete(unitTo.getId());
+			return Response.status(201).entity(status).build();
+		} catch (Exception e) {
+			e.printStackTrace();
+			return Response.status(403).entity(status).build();
+		}
+	}
 }
