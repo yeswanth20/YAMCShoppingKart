@@ -11,8 +11,8 @@ public class TxnOrder {
 	
 		
 		TransactionOrderTo transactionOrderTo = new TransactionOrderTo();
-//		transactionOrderTo.setTxnOrderID("Aliiiiiiiiii");
-		transactionOrderTo.setPriceAfterDiscount(12.35);
+		transactionOrderTo.setTxnOrderID("Aliiiiiiiiii");
+//		transactionOrderTo.setPriceAfterDiscount(12.35);
 		
 //		TransactionOrderAddressTo transactionOrderAddressTo = new TransactionOrderAddressTo();
 //		transactionOrderAddressTo.setName("name");

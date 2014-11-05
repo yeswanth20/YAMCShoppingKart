@@ -27,7 +27,7 @@ public class TransactionOrderDaoimpl implements TransactionOrderDao{
 			TransactionOrderOrm transactionOrderOrm = new TransactionOrderOrm();
 			transactionOrderOrm.setTxnOrderID(transactionOrderTo.getTxnOrderID());
 //			transactionOrderOrm.setTransactionStatus();
-			transactionOrderOrm.setTotalPrice(transactionOrderTo.getTotalPrice());
+			/*transactionOrderOrm.setTotalPrice(transactionOrderTo.getTotalPrice());
 //			transactionOrderOrm.setDiscountType(new );
 			transactionOrderOrm.setDiscountValue(transactionOrderTo.getDiscountValue());
 			transactionOrderOrm.setPriceAfterDiscount(transactionOrderTo.getPriceAfterDiscount());
@@ -37,7 +37,7 @@ public class TransactionOrderDaoimpl implements TransactionOrderDao{
 			transactionOrderOrm.setModifiedBy(new UserDaoimpl().getUserById(userId));
 			transactionOrderOrm.setModifiedDate(new Date());
 			//Adding Address
-			/*TransactionOrderAddressTo txnAddressTo = transactionOrderTo.getAddress();
+*/			/*TransactionOrderAddressTo txnAddressTo = transactionOrderTo.getAddress();
 			TransactionOrderAddressOrm txnOrderAddressOrm = new TransactionOrderAddressOrm();
 			txnOrderAddressOrm.setName(txnAddressTo.getName());
 			txnOrderAddressOrm.setHouseNumber(txnAddressTo.getHouseNumber());
