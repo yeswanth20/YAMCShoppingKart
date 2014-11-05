@@ -1,0 +1,119 @@
+UNITS
+=====
+1. GET 		--> http://localhost:8080/Shopping/rest/unitService/get
+2. POST		--> http://localhost:8080/Shopping/rest/unitService/post
+				JSON DATA --> { "unitName":"UNIT 1"}
+3. INSERT	--> http://localhost:8080/Shopping/rest/unitService/insert
+				JSON DATA --> { "unitName":"UNIT 1"}
+4. UPDATE	--> http://localhost:8080/Shopping/rest/unitService/update
+				JSON DATA --> { "id":10}
+5. GETALL	--> http://localhost:8080/Shopping/rest/unitService/getAll
+
+6. SEARCH	--> http://localhost:8080/Shopping/rest/unitService/search
+				JSON DATA --> { "id":10}
+7. DELETE	--> http://localhost:8080/Shopping/rest/unitService/delete
+				JSON DATA --> { "id":10}
+
+WEIGHTS
+=======
+1. GET		--> http://localhost:8080/Shopping/rest/weightService/get
+2. INSERT	--> http://localhost:8080/Shopping/rest/weightService/insert
+				JSON DATA --> {"weightName":"WEIGHT","unit":10}
+3. UPDATE 	--> http://localhost:8080/Shopping/rest/weightService/update
+				JSON DATA --> {"weightName":"WEIGHT","unit":10,"id":1}
+4. GETALL	--> http://localhost:8080/Shopping/rest/weightService/getAll
+
+5. SEARCH	--> http://localhost:8080/Shopping/rest/weightService/search
+				JSON DATA --> { "id":10}
+6. DELETE	--> http://localhost:8080/Shopping/rest/weightService/delete
+				JSON DATA --> { "id":10}
+				
+BRAND
+=======
+1. GET		--> http://localhost:8080/Shopping/rest/brandService/get
+2. INSERT	--> http://localhost:8080/Shopping/rest/brandService/insert
+				JSON DATA --> {"brandNameEng":"BRAND ENGLISH",
+								"brandNameHindi":"BRAND HINDI",
+								"brandNameTel":"BRAND TELUGU",
+								"brandNameTamil":"BRAND TAMIL"}
+								
+3. UPDATE 	--> http://localhost:8080/Shopping/rest/brandService/update
+				JSON DATA --> {"brandNameEng":"BRAND ENGLISH",
+								"brandNameHindi":"BRAND HINDI",
+								"brandNameTel":"BRAND TELUGU",
+								"brandNameTamil":"BRAND TAMIL","id":1}
+								
+4. GETALL	--> http://localhost:8080/Shopping/rest/brandService/getAll
+
+5. SEARCH	--> http://localhost:8080/Shopping/rest/brandService/search
+				JSON DATA --> { "id":10}
+6. DELETE	--> http://localhost:8080/Shopping/rest/brandService/delete
+				JSON DATA --> { "id":10}				
+CATEGORY
+=======
+1. GET		--> http://localhost:8080/Shopping/rest/categoryService/get
+2. INSERT	--> http://localhost:8080/Shopping/rest/categoryService/insert
+				JSON DATA --> {"categoryNameEng":"BRAND ENGLISH",
+								"categoryNameHindi":"BRAND HINDI",
+								"categoryNameTel":"BRAND TELUGU",
+								"categoryNameTamil":"BRAND TAMIL",
+								"parentCategory":"parentCategory",
+								"rootCategory":"rootCategory"
+								}
+								
+3. UPDATE 	--> http://localhost:8080/Shopping/rest/categoryService/update
+				JSON DATA --> {"categoryNameEng":"BRAND ENGLISH",
+								"categoryNameHindi":"BRAND HINDI",
+								"categoryNameTel":"BRAND TELUGU",
+								"categoryNameTamil":"BRAND TAMIL",
+								"parentCategory":"parentCategory",
+								"rootCategory":"rootCategory",
+								"id":1
+								}
+								
+4. GETALL	--> http://localhost:8080/Shopping/rest/categoryService/getAll
+
+5. SEARCH	--> http://localhost:8080/Shopping/rest/categoryService/search
+				JSON DATA --> { "id":10}
+6. DELETE	--> http://localhost:8080/Shopping/rest/categoryService/delete
+				JSON DATA --> { "id":10}				
+DISCOUNT TYPE
+=============
+1. GET		--> http://localhost:8080/Shopping/rest/discountTypeService/get
+2. INSERT	--> http://localhost:8080/Shopping/rest/discountTypeService/insert
+				JSON DATA --> {"discountName":"DISCOUNT NAME"}
+3. UPDATE 	--> http://localhost:8080/Shopping/rest/discountTypeService/update
+				JSON DATA --> {"discountName":"DISCOUNT NAME","id":1}
+4. GETALL	--> http://localhost:8080/Shopping/rest/discountTypeService/getAll
+
+5. SEARCH	--> http://localhost:8080/Shopping/rest/discountTypeService/search
+				JSON DATA --> { "id":10}
+6. DELETE	--> http://localhost:8080/Shopping/rest/discountTypeService/delete
+				JSON DATA --> { "id":10}				
+PRODUCT
+=======
+1. GET		--> http://localhost:8080/Shopping/rest/productService/get
+2. INSERT	--> http://localhost:8080/Shopping/rest/productService/insert
+				JSON DATA --> {"productNameEng":"BRAND ENGLISH",
+								"productNameHindi":"BRAND HINDI",
+								"productNameTel":"BRAND TELUGU",
+								"productNameTamil":"BRAND TAMIL",
+								"isStockAvailable":"true",
+								"brand":2								
+								}
+3. UPDATE 	--> http://localhost:8080/Shopping/rest/productService/update
+				JSON DATA --> {"productNameEng":"BRAND ENGLISH",
+								"productNameHindi":"BRAND HINDI",
+								"productNameTel":"BRAND TELUGU",
+								"productNameTamil":"BRAND TAMIL",
+								"isStockAvailable":"false",
+								"brand":1,
+								"id":1
+								}
+4. GETALL	--> http://localhost:8080/Shopping/rest/productService/getAll
+
+5. SEARCH	--> http://localhost:8080/Shopping/rest/productService/search
+				JSON DATA --> { "id":10}
+6. DELETE	--> http://localhost:8080/Shopping/rest/productService/delete
+				JSON DATA --> { "id":10}		
+				
