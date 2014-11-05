@@ -82,7 +82,7 @@ public class ProductDaoimpl implements ProductDao{
 			tx = session.beginTransaction();
 
 			//Parent Data
-			ProductOrm productOrm = new ProductOrm();
+			ProductOrm productOrm =(ProductOrm)session.load(ProductOrm.class, new Integer(id));
 			productOrm.setProductNameEng(productTo.getProductNameEng());
 			productOrm.setProductNameHindi(productTo.getProductNameHindi());
 			productOrm.setProductNameTamil(productTo.getProductNameTamil());
@@ -113,12 +113,14 @@ public class ProductDaoimpl implements ProductDao{
 
 			}
 			//
-
+			
+			System.out.println(productOrm);
 
 			tx.commit();
 			productTo = this.searchById(id);
 		}
 		catch(Exception e){
+			System.out.println("i am in catch");
 			e.printStackTrace();
 			tx.rollback();
 		}

@@ -24,14 +24,17 @@ public class product {
 	
 		
 		ProductTo productTo = new ProductTo();
-		productTo.setProductNameEng("Aliiiiiiiiii");
+		productTo.setProductNameEng("Aliiiiiiiiii vvvvvvv");
 		
 		ProductUnitDetailsTo productUnitDetailsTo = new ProductUnitDetailsTo();
 		productUnitDetailsTo.setPrice(5.36);
 		productTo.getProductUnitDetails().add(productUnitDetailsTo);	
 		
 		ProductDaoimpl daoimpl = new ProductDaoimpl();
-		daoimpl.insert(productTo,12);
+		//daoimpl.insert(productTo,12);
+		productTo = daoimpl.update(4, productTo, 10);
+		System.out.println("--"+productTo.getProductNameEng());
+		
 	
 	}
 
