@@ -15,6 +15,7 @@ public class ProductTo {
 	private boolean isStockAvailable;
 	private int brand;
 	private String productAutoGenId;
+	private byte[] productImage;
 	
 //	private byte[] productImage;
 	
@@ -69,13 +70,12 @@ public class ProductTo {
 	public void setStockAvailable(boolean isStockAvailable) {
 		this.isStockAvailable = isStockAvailable;
 	}
-//	public byte[] getProductImage() {
-//		return productImage;
-//	}
-//	public void setProductImage(byte[] productImage) {
-//		this.productImage = productImage;
-//	}
-
+	public byte[] getProductImage() {
+		return productImage;
+	}
+	public void setProductImage(byte[] productImage) {
+		this.productImage = productImage;
+	}
 	public UserOrm getCreatedBy() {
 		return createdBy;
 	}
