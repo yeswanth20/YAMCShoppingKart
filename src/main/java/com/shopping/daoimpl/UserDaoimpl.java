@@ -84,7 +84,7 @@ public class UserDaoimpl implements UserDao{
 			tx = session.beginTransaction();
 
 			//Update the ORM
-			UserOrm userOrm = new UserOrm();
+			UserOrm userOrm = (UserOrm) session.load(UserOrm.class, new Integer(id));
 			userOrm.setUserName(usersTo.getUserName());
 			userOrm.setPassword(usersTo.getPassword());
 			userOrm.setModifiedBy(new UserDaoimpl().getUserById(userId));
