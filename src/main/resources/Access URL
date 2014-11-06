@@ -136,5 +136,31 @@ PRODUCT
 5. SEARCH	--> http://localhost:8080/Shopping/rest/productService/search
 				JSON DATA --> { "id":10}
 6. DELETE	--> http://localhost:8080/Shopping/rest/productService/delete
-				JSON DATA --> { "id":10}		
+				JSON DATA --> { "id":10}	
+				
+USERS
+=============
+1. GET		--> http://localhost:8080/Shopping/rest/userService/get
+2. INSERT	--> http://localhost:8080/Shopping/rest/userService/insert
+				JSON DATA --> {"userName": "USER","password": "USER" }
+				
+3. UPDATE 	--> http://localhost:8080/Shopping/rest/userService/update
+				JSON DATA --> {"userName": "USER 1","password": "USER 1","id":1}
+				
+4. GETALL	--> http://localhost:8080/Shopping/rest/userService/getAll
+
+5. SEARCH	--> http://localhost:8080/Shopping/rest/userService/search
+				JSON DATA --> { "id":10}
+				
+6. DELETE	--> http://localhost:8080/Shopping/rest/userService/delete
+				JSON DATA --> { "id":10}	
+				
+LOGIN & LOGOUT
+===============
+1. LOGIN	--> http://localhost:8080/Shopping/rest/accessService/login
+				JSON DATA --> {"userName": "USER","password": "USER" }
+				OUTPUT PRESENT --> SUCESS+userID
+
+2. LOGOUT	--> http://localhost:8080/Shopping/rest/accessService/logout
+				OUTPUT --> LOGOUT SUCESS				
 				

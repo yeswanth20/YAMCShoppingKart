@@ -196,8 +196,6 @@ public class UserDaoimpl implements UserDao{
 				Object logindetails = iterator.next();
 				userId = Integer.parseInt(logindetails.toString());
 
-
-
 			}
 		} catch (Exception e) {
 			// TODO: handle exception
