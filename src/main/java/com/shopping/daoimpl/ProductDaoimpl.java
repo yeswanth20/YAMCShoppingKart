@@ -1,6 +1,8 @@
 package com.shopping.daoimpl;
 
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
@@ -35,8 +37,7 @@ public class ProductDaoimpl implements ProductDao{
 			productOrm.setCreatedDate(new Date());
 			productOrm.setModifiedBy(productTo.getModifiedBy());
 			productOrm.setModifiedDate(new Date());
-			//		session.save(productOrm);
-			//		sproductOrm.setProductImage(productTo.getProductImage());
+			productOrm.setProductImage(productTo.getProductImage());
 			ProductUnitDetailsOrm productUnitDetailsOrm = null;
 			for (ProductUnitDetailsTo productUnitDetailsTo : productTo.getProductUnitDetails()) {
 				productUnitDetailsOrm = new ProductUnitDetailsOrm();
