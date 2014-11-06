@@ -1,5 +1,7 @@
 package com.shopping.action;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.util.ArrayList;
 import java.util.Collection;
 
@@ -48,8 +50,22 @@ public class Product {
 //					Integer.parseInt(request.getSession()
 //							.getAttribute("userId").toString()));
 			
+//			ALTER DATABASE dbname SET bytea_output TO 'escape';
+//			File file = new File("/home/pradeep/Desktop/images.jpg");
+//	        byte[] bFile = new byte[(int) file.length()];
+//	 
+//	        try {
+//	            FileInputStream fileInputStream = new FileInputStream(file);
+//	            fileInputStream.read(bFile);
+//	            fileInputStream.close();
+//	        } catch (Exception e) {
+//	            e.printStackTrace();
+//	        }       
+//	        productTo.setProductImage(bFile);
+			
 			productTo = ShoppingCartFactory.getProductDao().insert(
 					productTo,1);
+			
 			
 			return Response.status(201).entity(productTo).build();
 		} catch (Exception e) {
