@@ -27,7 +27,7 @@ angular.module("shopApp").service("brandsService",
 
 		this.updateBrand = function(request) {
 			var deferred = $q.defer();
-			$http.put(serviceCallBaseUrl+"brandService/update",request)
+			$http.post(serviceCallBaseUrl+"brandService/update",request)
 			.success(function(data,status,headers,config) {
 				deferred.resolve(data);
 			}).
@@ -39,7 +39,7 @@ angular.module("shopApp").service("brandsService",
 
 		this.deleteBrand = function(request) {
 			var deferred = $q.defer();
-			$http.delete(serviceCallBaseUrl+"brands",request)
+			$http.post(serviceCallBaseUrl+"brandService/delete",request)
 			.success(function(data,status,headers,config) {
 				deferred.resolve(data);
 			}).
