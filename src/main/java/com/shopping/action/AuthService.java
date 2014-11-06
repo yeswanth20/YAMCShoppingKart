@@ -3,7 +3,6 @@ package com.shopping.action;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.ws.rs.Consumes;
-import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
@@ -30,8 +29,11 @@ public class AuthService {
 				request.setAttribute("userId", userId);
 				HttpSession httpsession = request.getSession();
 				httpsession.setAttribute("ipaddress", request.getRemoteHost());
+				return Response.status(201).entity("sucess"+userId).build();
 			}
-			return Response.status(201).entity("sucess").build();
+			else{
+				return Response.status(201).entity("Invalid Login").build();
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 			String error = "ConstraintViolationException";
@@ -39,14 +41,16 @@ public class AuthService {
 		}
 	}
 
-	@GET
+	@POST
 	@Path("/logout")
 	@Consumes(MediaType.APPLICATION_JSON)
-	public void logoutAuth(@Context HttpServletRequest request) {
+	public Response logoutAuth(@Context HttpServletRequest request) {
 		// invalidate the session if exists
 		HttpSession session = request.getSession();
 		if (session != null) {
 			session.invalidate();
 		}
+		return Response.status(201).entity("LOGOUT SUCESS").build();
+
 	}
 }

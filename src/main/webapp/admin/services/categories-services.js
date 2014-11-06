@@ -36,7 +36,7 @@ angular.module("shopApp").service("categoriesService",
 
 		this.updateCategory = function(request) {
 			var deferred = $q.defer();
-			$http.put(serviceCallBaseUrl+"categoryService/update",request)
+			$http.post(serviceCallBaseUrl+"categoryService/update",request)
 			.success(function(data,status,headers,config) {
 				deferred.resolve(data);
 			}).
@@ -48,7 +48,7 @@ angular.module("shopApp").service("categoriesService",
 
 		this.deleteCategory = function(request) {
 			var deferred = $q.defer();
-			$http.delete(serviceCallBaseUrl+"categories",request)
+			$http.post(serviceCallBaseUrl+"categoryService/delete",request)
 			.success(function(data,status,headers,config) {
 				deferred.resolve(data);
 			}).
