@@ -125,7 +125,7 @@ public class Product {
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Path("/delete")
-	public Response deleteUnits(ProductTo productTo,
+	public Response deleteProduct(ProductTo productTo,
 			@Context HttpServletRequest request) {
 		boolean status = false;
 		try {

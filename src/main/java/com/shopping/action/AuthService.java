@@ -19,7 +19,7 @@ public class AuthService {
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Path("/login")
-	public Response loginAuth1(UsersTo usersTo,
+	public Response loginAuth(UsersTo usersTo,
 			@Context HttpServletRequest request) {
 		int userId;
 		try {

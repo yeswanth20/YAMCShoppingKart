@@ -119,7 +119,7 @@ public class DiscountType {
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Path("/delete")
-	public Response deleteUnits(DiscountTypeTo discountTypeTo,
+	public Response deleteDiscountType(DiscountTypeTo discountTypeTo,
 			@Context HttpServletRequest request) {
 		boolean status = false;
 		try {

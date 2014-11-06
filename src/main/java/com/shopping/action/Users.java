@@ -37,7 +37,7 @@ public class Users {
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Path("/insert")
-	public Response insertUnits(UsersTo usersTo,
+	public Response insertUsers(UsersTo usersTo,
 			@Context HttpServletRequest request) {
 		try {
 //			usersTo = ShoppingCartFactory.getUserDao().insert(
@@ -58,7 +58,7 @@ public class Users {
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Path("/update")
-	public Response updateUnits(UsersTo usersTo,
+	public Response updateUsers(UsersTo usersTo,
 			@Context HttpServletRequest request) {
 		try {
 //			usersTo = ShoppingCartFactory.getUserDao().update(usersTo.getId(),
@@ -79,7 +79,7 @@ public class Users {
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Path("/getAll")
-	public Response getAllUnits(@Context HttpServletRequest request) {
+	public Response getAllUsers(@Context HttpServletRequest request) {
 		try {
 			Collection<UsersTo> usersTo = new ArrayList<UsersTo>();
 			usersTo = ShoppingCartFactory.getUserDao().getAll();
@@ -96,7 +96,7 @@ public class Users {
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Path("/search")
-	public Response searchUnits(UsersTo usersTo,
+	public Response searchUsers(UsersTo usersTo,
 			@Context HttpServletRequest request) {
 		try {
 			usersTo = ShoppingCartFactory.getUserDao().searchById(
@@ -114,7 +114,7 @@ public class Users {
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Path("/delete")
-	public Response deleteUnits(UsersTo usersTo,
+	public Response deleteUsers(UsersTo usersTo,
 			@Context HttpServletRequest request) {
 		boolean status = false;
 		try {

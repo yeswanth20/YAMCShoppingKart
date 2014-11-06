@@ -120,7 +120,7 @@ public class Weights {
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Path("/delete")
-	public Response deleteUnits(WeightsTo weightsTo,
+	public Response deleteWeights(WeightsTo weightsTo,
 			@Context HttpServletRequest request) {
 		boolean status = false;
 		try {

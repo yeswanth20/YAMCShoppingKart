@@ -120,6 +120,15 @@ public class ShoppingCartFactory {
 	public static void setCityDao(CityDao cityDao) {
 		ShoppingCartFactory.cityDao = cityDao;
 	}
+
+	public static TransactionStatusDao getTransactionStatusDao() {
+		return transactionStatusDao;
+	}
+
+	public static void setTransactionStatusDao(
+			TransactionStatusDao transactionStatusDao) {
+		ShoppingCartFactory.transactionStatusDao = transactionStatusDao;
+	}
 	
 	
 }

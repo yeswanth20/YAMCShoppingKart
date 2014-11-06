@@ -22,7 +22,7 @@ public class Units {
 	@GET
 	@Path("/get")
 	@Produces(MediaType.APPLICATION_JSON)
-	public UnitsTo getTrackInJSON() {
+	public UnitsTo getUnitJSON() {
 
 		UnitsTo unitTo = new UnitsTo();
 		unitTo.setUnitName("unitName");
@@ -33,7 +33,7 @@ public class Units {
 	@POST
 	@Path("/post")
 	@Consumes(MediaType.APPLICATION_JSON)
-	public Response createTrackInJSON(UnitsTo unitTo) {
+	public Response createUnitJSON(UnitsTo unitTo) {
 		String result = "Unit Name Received : " + unitTo.getUnitName();
 		return Response.status(201).entity(result).build();
 

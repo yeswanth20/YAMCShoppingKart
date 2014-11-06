@@ -118,7 +118,7 @@ public class Categories {
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Path("/delete")
-	public Response deleteUnits(CategoriesTo categoriesTo,
+	public Response deleteCategory(CategoriesTo categoriesTo,
 			@Context HttpServletRequest request) {
 		boolean status = false;
 		try {
