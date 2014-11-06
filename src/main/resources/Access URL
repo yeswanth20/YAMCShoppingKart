@@ -162,5 +162,57 @@ LOGIN & LOGOUT
 				OUTPUT PRESENT --> SUCESS+userID
 
 2. LOGOUT	--> http://localhost:8080/Shopping/rest/accessService/logout
-				OUTPUT --> LOGOUT SUCESS				
+				OUTPUT --> LOGOUT SUCESS	
 				
+CITY							
+====
+1. GET		--> http://localhost:8080/Shopping/rest/cityService/get
+2. INSERT	--> http://localhost:8080/Shopping/rest/cityService/insert
+				JSON DATA --> {"cityName": "CITY NAME" }
+				
+3. UPDATE 	--> http://localhost:8080/Shopping/rest/cityService/update
+				JSON DATA --> {"cityName": "CITY NAME 1","id":1}
+				
+4. GETALL	--> http://localhost:8080/Shopping/rest/cityService/getAll
+
+5. SEARCH	--> http://localhost:8080/Shopping/rest/cityService/search
+				JSON DATA --> { "id":10}
+				
+6. DELETE	--> http://localhost:8080/Shopping/rest/cityService/delete
+				JSON DATA --> { "id":10}		
+				
+				
+TRANSACTION STATUS
+==================
+1. GET		--> http://localhost:8080/Shopping/rest/transactionStatusService/get
+2. INSERT	--> http://localhost:8080/Shopping/rest/transactionStatusService/insert
+				JSON DATA --> {"statusName": "STATUS " }
+				
+3. UPDATE 	--> http://localhost:8080/Shopping/rest/transactionStatusService/update
+				JSON DATA --> {"statusName": "STATUS","id":1}
+				
+4. GETALL	--> http://localhost:8080/Shopping/rest/transactionStatusService/getAll
+
+5. SEARCH	--> http://localhost:8080/Shopping/rest/transactionStatusService/search
+				JSON DATA --> { "id":10}
+				
+6. DELETE	--> http://localhost:8080/Shopping/rest/transactionStatusService/delete
+				JSON DATA --> { "id":10}				
+				
+// UNDER PROCESS				
+TRANSACTION ORDER
+==================
+1. GET		--> http://localhost:8080/Shopping/rest/transactionOrderService/get
+2. INSERT	--> http://localhost:8080/Shopping/rest/transactionOrderService/insert
+				JSON DATA --> {"txnOrderID": "TX ORDER " }
+				
+3. UPDATE 	--> http://localhost:8080/Shopping/rest/transactionOrderService/update
+				JSON DATA --> {"txnOrderID": "TX ORDER 1","id":1}
+				
+4. GETALL	--> http://localhost:8080/Shopping/rest/transactionOrderService/getAll
+
+5. SEARCH	--> http://localhost:8080/Shopping/rest/transactionOrderService/search
+				JSON DATA --> { "id":10}
+				
+6. DELETE	--> http://localhost:8080/Shopping/rest/transactionOrderService/delete
+				JSON DATA --> { "id":10}				

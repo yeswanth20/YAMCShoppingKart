@@ -84,7 +84,7 @@ public class Brands {
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Path("/getAll")
-	public Response getAllUnits(@Context HttpServletRequest request) {
+	public Response getAllBrands(@Context HttpServletRequest request) {
 		try {
 			Collection<BrandTo> brandTo = new ArrayList<BrandTo>();
 			brandTo = ShoppingCartFactory.getBrandDao().getAll();
@@ -101,7 +101,7 @@ public class Brands {
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Path("/search")
-	public Response searchUnits(BrandTo brandTo,
+	public Response searchBrands(BrandTo brandTo,
 			@Context HttpServletRequest request) {
 		try {
 			brandTo = ShoppingCartFactory.getBrandDao().searchById(
@@ -119,7 +119,7 @@ public class Brands {
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Path("/delete")
-	public Response deleteUnits(BrandTo brandTo,
+	public Response deleteBrand(BrandTo brandTo,
 			@Context HttpServletRequest request) {
 		boolean status = false;
 		try {

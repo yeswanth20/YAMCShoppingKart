@@ -4,8 +4,9 @@ public class WeightsTo {
 	private int id;
 	private String weightName;
 	private int unit;
-
+	
 	//	getter& Setters
+	
 	public int getId() {
 		return id;
 	}
