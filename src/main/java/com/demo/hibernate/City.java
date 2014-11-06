@@ -11,6 +11,7 @@ public class City {
 		CityDaoimpl cityDaoimpl = new CityDaoimpl();
 		cityDaoimpl.insert(cityTo,1);
 		cityDaoimpl.getAll();
+		System.out.println("");
 		
 	}
 

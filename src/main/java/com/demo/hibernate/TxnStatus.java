@@ -11,6 +11,7 @@ public class TxnStatus {
 		TransactionStatusDaoimpl txnStatusDaoimpl = new TransactionStatusDaoimpl();
 		txnStatusDaoimpl.insert(txnStatusTo,1);
 		txnStatusDaoimpl.getAll();
+		System.out.println("");
 		
 	}
 
