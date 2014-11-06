@@ -10,7 +10,7 @@
 		
 		<link rel="stylesheet" type="text/css" href="app.css">
 	</head>
-	<body>
+	<body ng-controller="appController">
 		<div class="container-fluid spinner_block" ng-class="{true: 'spinerActive', false: 'spinerInactive'}[spinerisActive]">
 			<div class="spinner">
 				<div class="spinner-container container1">
@@ -95,7 +95,24 @@
 			</div>
 			<div>
 				<div class="leftBar">
-					<ul class="nav navbar-nav side-nav leftBarMenu">
+					<script type="text/ng-template" id="nodes_renderer.html">
+					  <div ui-tree-handle class="tree-node tree-node-content">
+					    <a data-nodrag ng-click="toggle(this)">
+					    	<span class="fa" ng-class="{'fa-caret-right': collapsed, 'fa-caret-down': !collapsed}"></span>
+					    </a>
+					    {{node.name}}{{node.id}}
+					  </div>
+					  <ol ui-tree-nodes="" ng-model="node.nodes" ng-class="{hidden: collapsed}">
+					    <li ng-repeat="node in node.nodes" ui-tree-node ng-include="'nodes_renderer.html'">
+					    </li>
+					  </ol>
+					</script>
+					<div ui-tree data-drag-enabled=false>
+				      <ol ui-tree-nodes="" ng-model="categoriesList" id="tree-root">
+				        <li ng-repeat="node in categoriesList" ui-tree-node ng-include="'nodes_renderer.html'"></li>       
+				      </ol>
+				    </div>
+					<!-- <ul class="nav navbar-nav side-nav leftBarMenu">
 						<li>							
 							<i class="fa fa-sort-down"></i>
 							<a href="javascript:void(0);">
@@ -105,9 +122,155 @@
 						<li><a href="javascript:void(0);">Oneoneone</a></li>
 						<li><a href="javascript:void(0);">Oneoneone</a></li>
 						<li><a href="javascript:void(0);">Oneoneone</a></li>						
-					</ul>
+					</ul> -->
 				</div>			
 			</div>			
+			<div>
+				<div class="workspace">
+					<div class="row">
+						<div class="productDisplayDiv">
+							<img src="lemon.jpg">
+							<div class="productTitleDisplay">
+								Product1
+							</div>
+							<div class="productWeightSelect">
+								<select>
+									<option>One</option>
+									<option>Two</option>
+									<option>Three</option>
+									<option>Four</option>
+								</select>
+							</div>
+							<div class="productPriceDiv">
+								<table>
+									<tr>
+										<td>Rs 330</td>
+										<td><input type="number" class="productPriceTextBox"></td>
+										<td><button><i class="fa fa-plus"></i></button></td>
+									</tr>
+								</table>
+							</div>
+						</div>
+						<div class="productDisplayDiv">
+							<img src="tomato.jpg">
+							<div class="productTitleDisplay">
+								Product1
+							</div>
+							<div class="productWeightSelect">
+								<select>
+									<option>One</option>
+									<option>Two</option>
+									<option>Three</option>
+									<option>Four</option>
+								</select>
+							</div>
+							<div class="productPriceDiv">
+								<table>
+									<tr>
+										<td>Rs 330</td>
+										<td><input type="number" class="productPriceTextBox"></td>
+										<td><button><i class="fa fa-plus"></i></button></td>
+									</tr>
+								</table>
+							</div>
+						</div>
+						<div class="productDisplayDiv">
+							<img src="lemon.jpg">
+							<div class="productTitleDisplay">
+								Product1
+							</div>
+							<div class="productWeightSelect">
+								<select>
+									<option>One</option>
+									<option>Two</option>
+									<option>Three</option>
+									<option>Four</option>
+								</select>
+							</div>
+							<div class="productPriceDiv">
+								<table>
+									<tr>
+										<td>Rs 330</td>
+										<td><input type="number" class="productPriceTextBox"></td>
+										<td><button><i class="fa fa-plus"></i></button></td>
+									</tr>
+								</table>
+							</div>
+						</div>
+						<div class="productDisplayDiv">
+							<img src="tomato.jpg">
+							<div class="productTitleDisplay">
+								Product1
+							</div>
+							<div class="productWeightSelect">
+								<select>
+									<option>One</option>
+									<option>Two</option>
+									<option>Three</option>
+									<option>Four</option>
+								</select>
+							</div>
+							<div class="productPriceDiv">
+								<table>
+									<tr>
+										<td>Rs 330</td>
+										<td><input type="number" class="productPriceTextBox"></td>
+										<td><button><i class="fa fa-plus"></i></button></td>
+									</tr>
+								</table>
+							</div>
+						</div>
+						<div class="productsdivider">
+						</div>
+						<div class="productDisplayDiv">
+						<img src="lemon.jpg">
+						<div class="productTitleDisplay">
+							Product1
+						</div>
+						<div class="productWeightSelect">
+							<select>
+								<option>One</option>
+								<option>Two</option>
+								<option>Three</option>
+								<option>Four</option>
+							</select>
+						</div>
+						<div class="productPriceDiv">
+							<table>
+								<tr>
+									<td>Rs 330</td>
+									<td><input type="number" class="productPriceTextBox"></td>
+									<td><button><i class="fa fa-plus"></i></button></td>
+								</tr>
+							</table>
+						</div>
+						</div>
+						<div class="productDisplayDiv">
+							<img src="tomato.jpg">
+							<div class="productTitleDisplay">
+								Product1
+							</div>
+							<div class="productWeightSelect">
+								<select>
+									<option>One</option>
+									<option>Two</option>
+									<option>Three</option>
+									<option>Four</option>
+								</select>
+							</div>
+							<div class="productPriceDiv">
+								<table>
+									<tr>
+										<td>Rs 330</td>
+										<td><input type="number" class="productPriceTextBox"></td>
+										<td><button><i class="fa fa-plus"></i></button></td>
+									</tr>
+								</table>
+							</div>
+						</div>
+					</div>						
+				</div>
+			</div>
 		</div>
 
 		<!--vendor files -->

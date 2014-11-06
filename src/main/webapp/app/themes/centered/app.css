@@ -52,10 +52,10 @@
 }
 .leftBar li a {
 	margin-left: 20px;
-	padding: 10px !important;
+	padding: 0px !important;
 }
 .leftBar li a:hover {
-	background-color: #83b9e2 !important;
+	/*background-color: #83b9e2 !important;*/
 }
 
 .leftBar li i {
@@ -66,21 +66,9 @@
 	float: left;
 	z-index: 200;
 }
-.leftBar li i:hover {
-	/*background-color: #EEEEEE;*/
-	background-color: #83b9e2;
+.leftBar .angular-ui-tree-handle {
+	cursor: pointer;
 }
-/*.leftBarMenu li {
-	cursor : pointer;
-}
-.leftBarMenu li a {
-	float: left;
-}
-.leftBarMenu li i {
-	float: right;
-	padding-top: 15px;
-	padding-right: 10px;
-}*/
 .brandsMenuDiv {
 	height: 40px;
 	/*border: 1px solid #999;*/
@@ -95,12 +83,17 @@
 }
 .productDisplayDiv {
 	height: 250px;
-	border: 1px solid #999;
+	border-right: 1px solid #999;
 	color: #000000;
 	margin: 5px;
 	width: 23% !important;
 	float: left;
 	padding: 10px;
+}
+.productsdivider {
+	width: 95%;
+	border-bottom: 1px solid #000000;
+	float: left; 
 }
 .productTitleDisplay {
 	text-align: center;
