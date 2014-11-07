@@ -109,7 +109,9 @@ public class Product {
 	public Response getAllProducts(@Context HttpServletRequest request) {
 		try {
 			Collection<ProductTo> productTo = new ArrayList<ProductTo>();
-			productTo = ShoppingCartFactory.getProductDao().getAll();
+			int pageNumber=1;
+			int pageSize=10;
+			productTo = ShoppingCartFactory.getProductDao().getAll(pageNumber, pageSize);
 			return Response.status(201).entity(productTo).build();
 		} catch (Exception e) {
 			e.printStackTrace();
