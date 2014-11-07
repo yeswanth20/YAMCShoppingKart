@@ -24,6 +24,8 @@
       <mapping class="com.shopping.orm.CityOrm"/>
       <mapping class="com.shopping.orm.TransactionStatusOrm"/>
       <mapping class="com.shopping.orm.TransactionOrderOrm"/>
+      <mapping class="com.shopping.orm.ScreensUrlOrm"/>
+      
       <!-- <mapping class="com.shopping.orm.TransactionOrderAddressOrm"/>
       <mapping class="com.shopping.orm.TransactionOrderProductListOrm"/> -->
       

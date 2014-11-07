@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.Restrictions;
 
 import com.shopping.dao.ScreenUrlDao;
 import com.shopping.hibernate.HibernateUtil;
@@ -52,6 +53,9 @@ public class ScreenUrlDaoimpl implements ScreenUrlDao {
 			session.save(screensUrlOrm);
 			tx.commit();
 			//Get the Updated Object from the DB
+			screensUrlTo = null;
+			screensUrlTo = this.searchByid(screensUrlOrm.getId());
+
 		} catch (Exception e) {
 			tx.rollback();
 		} finally{
@@ -61,5 +65,29 @@ public class ScreenUrlDaoimpl implements ScreenUrlDao {
 		}
 		return screensUrlTo;
 	}
-	
+	public ScreensUrlTo searchByid(int id) {
+
+		Session session = null;
+		ScreensUrlTo screensUrlTo = null;
+		try {
+			//Get Session Factory
+			session = HibernateUtil.getSessionFactory().openSession();
+			
+			//Get the record based on ID From DB
+			ScreensUrlOrm screensUrlOrm=(ScreensUrlOrm) session.createCriteria(ScreensUrlOrm.class).add(Restrictions.eq("id", id)).uniqueResult();
+			
+			//Set the Data to the To Object
+			screensUrlTo=new ScreensUrlTo();
+			screensUrlTo.setId(screensUrlOrm.getId());
+			screensUrlTo.setScreenName(screensUrlOrm.getScreenName());
+			screensUrlTo.setScreenUrl(screensUrlOrm.getScreenUrl());
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		finally{
+			session.clear();
+			session.close();
+		}
+		return screensUrlTo;
+	}
 }

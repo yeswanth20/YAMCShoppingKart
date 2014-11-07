@@ -5,6 +5,7 @@ import com.shopping.dao.CategoriesDao;
 import com.shopping.dao.CityDao;
 import com.shopping.dao.DiscountTypeDao;
 import com.shopping.dao.ProductDao;
+import com.shopping.dao.ScreenUrlDao;
 import com.shopping.dao.TransactionOrderDao;
 import com.shopping.dao.TransactionStatusDao;
 import com.shopping.dao.UnitsDao;
@@ -15,6 +16,7 @@ import com.shopping.daoimpl.CategoriesDaoimpl;
 import com.shopping.daoimpl.CityDaoimpl;
 import com.shopping.daoimpl.DiscountTypeDaoimpl;
 import com.shopping.daoimpl.ProductDaoimpl;
+import com.shopping.daoimpl.ScreenUrlDaoimpl;
 import com.shopping.daoimpl.TransactionOrderDaoimpl;
 import com.shopping.daoimpl.TransactionStatusDaoimpl;
 import com.shopping.daoimpl.UnitDaoimpl;
@@ -33,6 +35,7 @@ public class ShoppingCartFactory {
 	public static CityDao cityDao;
 	public static TransactionStatusDao transactionStatusDao;
 	public static TransactionOrderDao transactionOrderDao;
+	public static ScreenUrlDao screenUrlDao;
 	static{
 		userDao = new UserDaoimpl();
 		brandDao = new BrandDaoimpl();
@@ -44,6 +47,7 @@ public class ShoppingCartFactory {
 		cityDao = new CityDaoimpl();
 		transactionStatusDao = new TransactionStatusDaoimpl();
 		transactionOrderDao = new TransactionOrderDaoimpl();
+		screenUrlDao = new ScreenUrlDaoimpl();
 	}
 
 	
@@ -128,6 +132,14 @@ public class ShoppingCartFactory {
 	public static void setTransactionStatusDao(
 			TransactionStatusDao transactionStatusDao) {
 		ShoppingCartFactory.transactionStatusDao = transactionStatusDao;
+	}
+
+	public static ScreenUrlDao getScreenUrlDao() {
+		return screenUrlDao;
+	}
+
+	public static void setScreenUrlDao(ScreenUrlDao screenUrlDao) {
+		ShoppingCartFactory.screenUrlDao = screenUrlDao;
 	}
 	
 	

@@ -49,8 +49,9 @@ BRAND
 				JSON DATA --> { "id":10}
 6. DELETE	--> http://localhost:8080/Shopping/rest/brandService/delete
 				JSON DATA --> { "id":10}				
+
 CATEGORY
-=======
+========
 1. GET		--> http://localhost:8080/Shopping/rest/categoryService/get
 2. INSERT	--> http://localhost:8080/Shopping/rest/categoryService/insert
 				JSON DATA --> {"categoryNameEng":"BRAND ENGLISH",
@@ -180,8 +181,7 @@ CITY
 				
 6. DELETE	--> http://localhost:8080/Shopping/rest/cityService/delete
 				JSON DATA --> { "id":10}		
-				
-				
+								
 TRANSACTION STATUS
 ==================
 1. GET		--> http://localhost:8080/Shopping/rest/transactionStatusService/get
@@ -198,7 +198,8 @@ TRANSACTION STATUS
 				
 6. DELETE	--> http://localhost:8080/Shopping/rest/transactionStatusService/delete
 				JSON DATA --> { "id":10}				
-				
+
+			
 // UNDER PROCESS				
 TRANSACTION ORDER
 ==================
@@ -214,5 +215,12 @@ TRANSACTION ORDER
 5. SEARCH	--> http://localhost:8080/Shopping/rest/transactionOrderService/search
 				JSON DATA --> { "id":10}
 				
-6. DELETE	--> http://localhost:8080/Shopping/rest/transactionOrderService/delete
-				JSON DATA --> { "id":10}				
+SCREEN URLS
+==================
+1. GET		--> http://localhost:8080/Shopping/rest/screenUrlService/get
+2. INSERT	--> http://localhost:8080/Shopping/rest/screenUrlService/insert
+				JSON DATA --> {"screenName": "screenName","screenUrl": "URLS"}
+				
+3. GETALL	--> http://localhost:8080/Shopping/rest/screenUrlService/getAll
+
+		
