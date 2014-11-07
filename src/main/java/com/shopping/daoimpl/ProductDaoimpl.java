@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
 
+import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.criterion.Restrictions;
@@ -136,7 +137,7 @@ public class ProductDaoimpl implements ProductDao{
 		return productTo;
 	}
 
-	public Collection<ProductTo> getAll() {
+	public Collection<ProductTo> getAll(int pageNumber,int pageSize) {
 		Session session = null;
 		ArrayList<ProductTo> lstProductTo = null;
 		try {
@@ -144,8 +145,10 @@ public class ProductDaoimpl implements ProductDao{
 			session = HibernateUtil.getSessionFactory().openSession();
 
 			//Get the record based on ID From DB
-			@SuppressWarnings("unchecked")
-			ArrayList<ProductOrm> lstProductOrm = (ArrayList<ProductOrm>) session.createCriteria(ProductOrm.class).list();
+			Criteria criteria =session.createCriteria(ProductOrm.class);
+			criteria.setFirstResult((pageNumber - 1) * pageSize);
+			criteria.setMaxResults(pageSize);
+			ArrayList<ProductOrm> lstProductOrm = (ArrayList<ProductOrm>)criteria.list();
 			ProductTo productTo = null;
 			lstProductTo = new ArrayList<ProductTo>();
 			for (ProductOrm productOrm : lstProductOrm) {
