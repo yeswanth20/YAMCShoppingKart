@@ -15,6 +15,7 @@ public class ProductTo {
 	private boolean isStockAvailable;
 	private int brand;
 	private String productAutoGenId;
+	private byte[] productImage;
 	
 //	private byte[] productImage;
 	
@@ -23,16 +24,9 @@ public class ProductTo {
 	//Common  Fields
 	private UserOrm createdBy;
 	private UserOrm modifiedBy;
-	private String statusMsg;
 	
 	
 	//	Getter & Setters
-	public String getStatusMsg() {
-		return statusMsg;
-	}
-	public void setStatusMsg(String statusMsg) {
-		this.statusMsg = statusMsg;
-	}
 	public int getId() {
 		return id;
 	}
@@ -76,13 +70,12 @@ public class ProductTo {
 	public void setStockAvailable(boolean isStockAvailable) {
 		this.isStockAvailable = isStockAvailable;
 	}
-//	public byte[] getProductImage() {
-//		return productImage;
-//	}
-//	public void setProductImage(byte[] productImage) {
-//		this.productImage = productImage;
-//	}
-
+	public byte[] getProductImage() {
+		return productImage;
+	}
+	public void setProductImage(byte[] productImage) {
+		this.productImage = productImage;
+	}
 	public UserOrm getCreatedBy() {
 		return createdBy;
 	}

@@ -12,6 +12,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -41,11 +42,10 @@ public class ProductOrm {
 	@ManyToOne
 	@JoinColumn(name="brand_id")
 	private BrandOrm brand;
-//	@Lob
-//	@Column(name = "product_img", columnDefinition = "bytea")
-//	@Lob
-//	@Column(name="product_img", nullable = false, columnDefinition="bytea")
-//	private byte[] productImage;
+	@Lob
+	@Column(columnDefinition="bytea")
+	private byte[] productImage;
+	
 	@OneToMany(fetch=FetchType.LAZY,mappedBy="product",cascade={CascadeType.ALL},targetEntity=ProductUnitDetailsOrm.class)
 //	@OneToMany(mappedBy = "product", cascade= CascadeType.ALL)
 	private Collection<ProductUnitDetailsOrm> productUnitDetails = new ArrayList<ProductUnitDetailsOrm>();
@@ -108,12 +108,12 @@ public class ProductOrm {
 	public void setStockAvailable(boolean isStockAvailable) {
 		this.isStockAvailable = isStockAvailable;
 	}
-//	public byte[] getProductImage() {
-//		return productImage;
-//	}
-//	public void setProductImage(byte[] productImage) {
-//		this.productImage = productImage;
-//	}
+	public byte[] getProductImage() {
+		return productImage;
+	}
+	public void setProductImage(byte[] productImage) {
+		this.productImage = productImage;
+	}
 	public BrandOrm getBrand() {
 		return brand;
 	}

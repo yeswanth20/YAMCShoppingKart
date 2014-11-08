@@ -25,9 +25,9 @@ public class UnitDaoimpl implements UnitsDao{
 			//Set the ORM
 			UnitsOrm unitsOrm = new UnitsOrm();
 			unitsOrm.setUnitName(unitsTo.getUnitName());
-			unitsOrm.setCreatedBy(new UserDaoimpl().getUserById(unitsTo.getCreatedBy()));
+			unitsOrm.setCreatedBy(new UserDaoimpl().getUserById(userId));
 			unitsOrm.setCreatedDate(new Date());
-			unitsOrm.setModifiedBy(new UserDaoimpl().getUserById(unitsTo.getModifiedBy()));
+			unitsOrm.setModifiedBy(new UserDaoimpl().getUserById(userId));
 			unitsOrm.setModifiedDate(new Date());
 			//Begin transaction & save the object
 			tx = session.beginTransaction();
@@ -44,7 +44,6 @@ public class UnitDaoimpl implements UnitsDao{
 			session.close();
 			tx =null;
 		}
-		System.out.println(unitsTo.getId());
 		return unitsTo;
 	}
 
@@ -60,7 +59,7 @@ public class UnitDaoimpl implements UnitsDao{
 			//Update the ORM
 			UnitsOrm unitsOrm = (UnitsOrm)session.load(UnitsOrm.class, new Integer(id));
 			unitsOrm.setUnitName(unitsTo.getUnitName());
-			unitsOrm.setModifiedBy(new UserDaoimpl().getUserById(unitsTo.getModifiedBy()));
+			unitsOrm.setModifiedBy(new UserDaoimpl().getUserById(userId));
 			unitsOrm.setModifiedDate(new Date());
 			
 			//Commit the Transaction

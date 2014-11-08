@@ -1,5 +1,6 @@
 package com.shopping.orm;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
@@ -21,32 +22,36 @@ import javax.persistence.TemporalType;
 
 @Entity
 @Table(name = "Transaction_Order")
-public class TransactionOrderOrm {
+public class TransactionOrderOrm implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 2885102041112910386L;
 	@Id @GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "id")
 	private int id;
 	@Column(name = "Txn_order_id")
 	private String txnOrderID;
-	@ManyToOne
-	@JoinColumn(name = "transaction_status")
-	private TransactionStatusOrm transactionStatus;
-	@Column(name = "total_price")
-	private double totalPrice;
-	@ManyToOne
-	@JoinColumn(name = "discount_type")
-	private DiscountTypeOrm discountType;
-	@Column(name = "discount_value")
-	private double discountValue;
-	@Column(name = "price_after_discount")
-	private double priceAfterDiscount;
-	@Column(name = "product_count")
+//	@ManyToOne
+//	@JoinColumn(name = "transaction_status")
+//	private TransactionStatusOrm transactionStatus;
+//	@Column(name = "total_price")
+//	private double totalPrice;
+//	@ManyToOne
+//	@JoinColumn(name = "discount_type")
+//	private DiscountTypeOrm discountType;
+//	@Column(name = "discount_value")
+//	private double discountValue;
+//	@Column(name = "price_after_discount")
+//	private double priceAfterDiscount;
+//	@Column(name = "product_count")
 	
-	@OneToOne(fetch=FetchType.LAZY,mappedBy="transactionOrder",cascade={CascadeType.ALL},targetEntity=TransactionOrderAddressOrm.class)
-	private Collection<TransactionOrderAddressOrm> address = new ArrayList<TransactionOrderAddressOrm>();
-	
-	@OneToMany(fetch=FetchType.LAZY,mappedBy="transactionOrder",cascade={CascadeType.ALL},targetEntity=TransactionOrderProductListOrm.class)
-	private Collection<TransactionOrderProductListOrm> productList = new ArrayList<TransactionOrderProductListOrm>();
+//	@OneToOne//(fetch=FetchType.LAZY, cascade={CascadeType.ALL},targetEntity=TransactionOrderAddressOrm.class)
+//	private TransactionOrderAddressOrm address = new TransactionOrderAddressOrm();
+//	
+//	@OneToMany(fetch=FetchType.LAZY,mappedBy="transactionOrder",cascade={CascadeType.ALL},targetEntity=TransactionOrderProductListOrm.class)
+//	private Collection<TransactionOrderProductListOrm> productList = new ArrayList<TransactionOrderProductListOrm>();
 
 	//Common  Fields
 	@ManyToOne
@@ -77,72 +82,6 @@ public class TransactionOrderOrm {
 	public void setTxnOrderID(String txnOrderID) {
 		this.txnOrderID = txnOrderID;
 	}
-	public TransactionStatusOrm getTransactionStatus() {
-		return transactionStatus;
-	}
-	public void setTransactionStatus(TransactionStatusOrm transactionStatus) {
-		this.transactionStatus = transactionStatus;
-	}
-	public double getTotalPrice() {
-		return totalPrice;
-	}
-	public void setTotalPrice(double totalPrice) {
-		this.totalPrice = totalPrice;
-	}
-	public DiscountTypeOrm getDiscountType() {
-		return discountType;
-	}
-	public void setDiscountType(DiscountTypeOrm discountType) {
-		this.discountType = discountType;
-	}
-	public double getDiscountValue() {
-		return discountValue;
-	}
-	public void setDiscountValue(double discountValue) {
-		this.discountValue = discountValue;
-	}
-	public double getPriceAfterDiscount() {
-		return priceAfterDiscount;
-	}
-	public void setPriceAfterDiscount(double priceAfterDiscount) {
-		this.priceAfterDiscount = priceAfterDiscount;
-	}
-	public Collection<TransactionOrderAddressOrm> getAddress() {
-		return address;
-	}
-	public void setAddress(Collection<TransactionOrderAddressOrm> address) {
-		this.address = address;
-	}
-	public Collection<TransactionOrderProductListOrm> getProductList() {
-		return productList;
-	}
-	public void setProductList(
-			Collection<TransactionOrderProductListOrm> productList) {
-		this.productList = productList;
-	}
-	public UserOrm getCreatedBy() {
-		return createdBy;
-	}
-	public void setCreatedBy(UserOrm createdBy) {
-		this.createdBy = createdBy;
-	}
-	public Date getCreatedDate() {
-		return createdDate;
-	}
-	public void setCreatedDate(Date createdDate) {
-		this.createdDate = createdDate;
-	}
-	public UserOrm getModifiedBy() {
-		return modifiedBy;
-	}
-	public void setModifiedBy(UserOrm modifiedBy) {
-		this.modifiedBy = modifiedBy;
-	}
-	public Date getModifiedDate() {
-		return modifiedDate;
-	}
-	public void setModifiedDate(Date modifiedDate) {
-		this.modifiedDate = modifiedDate;
-	}
+	
 
 }

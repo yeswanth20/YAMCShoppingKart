@@ -16,19 +16,16 @@ import javax.ws.rs.core.Response;
 import com.shopping.daofactory.ShoppingCartFactory;
 import com.shopping.to.UnitsTo;
 
-
 @Path("/unitService")
 public class Units {
 	// GET TESTING
 	@GET
 	@Path("/get")
 	@Produces(MediaType.APPLICATION_JSON)
-	public UnitsTo getTrackInJSON() {
+	public UnitsTo getUnitJSON() {
 
 		UnitsTo unitTo = new UnitsTo();
 		unitTo.setUnitName("unitName");
-		unitTo.setCreatedBy(1);
-		unitTo.setModifiedBy(1);
 		return unitTo;
 	}
 
@@ -36,87 +33,104 @@ public class Units {
 	@POST
 	@Path("/post")
 	@Consumes(MediaType.APPLICATION_JSON)
-	public Response createTrackInJSON(UnitsTo unitTo) {
-		String result =  "Track saved : " + unitTo.getUnitName();
+	public Response createUnitJSON(UnitsTo unitTo) {
+		String result = "Unit Name Received : " + unitTo.getUnitName();
 		return Response.status(201).entity(result).build();
-		
+
 	}
-	
+
 	// UNIT INSERT
 	@POST
 	@Produces(MediaType.APPLICATION_JSON)
-    @Consumes(MediaType.APPLICATION_JSON)
-	@Path("/insert") 
-	public Response insertUnits(UnitsTo unitTo,@Context HttpServletRequest request){
-		try 
-		{
-			unitTo=ShoppingCartFactory.getUnitsDao().insert(unitTo,12);
-			return Response.status(201).entity(unitTo).build();	
-		}
-		catch (Exception e)
-		{
-		e.printStackTrace();
-		String error = "ConstraintViolationException";
-		return Response.status(403).entity(error).build();
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Path("/insert")
+	public Response insertUnits(UnitsTo unitTo,
+			@Context HttpServletRequest request) {
+		try {
+//			unitTo = ShoppingCartFactory.getUnitsDao().insert(
+//					unitTo,
+//					Integer.parseInt(request.getSession()
+//							.getAttribute("userId").toString()));
+			unitTo = ShoppingCartFactory.getUnitsDao().insert(
+					unitTo,1);
+			return Response.status(201).entity(unitTo).build();
+		} catch (Exception e) {
+			e.printStackTrace();
+			String error = "Failed to Insert";
+			return Response.status(403).entity(error).build();
 		}
 	}
-	
+
 	// UNIT UPDATE
 	@POST
 	@Produces(MediaType.APPLICATION_JSON)
-    @Consumes(MediaType.APPLICATION_JSON)
-	@Path("/update") 
-	public Response updateUnits(UnitsTo unitTo,@Context HttpServletRequest request){
-		try 
-		{
-			unitTo=ShoppingCartFactory.getUnitsDao().update(unitTo.getId(),unitTo,4);
-			return Response.status(201).entity(unitTo).build();	
-		}
-		catch (Exception e)
-		{
-		e.printStackTrace();
-		String error = "ConstraintViolationException";
-		return Response.status(403).entity(error).build();
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Path("/update")
+	public Response updateUnits(UnitsTo unitTo,
+			@Context HttpServletRequest request) {
+		try {
+//			unitTo = ShoppingCartFactory.getUnitsDao().update(unitTo.getId(),
+//					unitTo, Integer.parseInt(request.getSession()
+//							.getAttribute("userId").toString()));
+			unitTo = ShoppingCartFactory.getUnitsDao().update(unitTo.getId(),
+					unitTo, 1);
+			return Response.status(201).entity(unitTo).build();
+		} catch (Exception e) {
+			e.printStackTrace();
+			String error = "Faild to Update";
+			return Response.status(403).entity(error).build();
 		}
 	}
+
 	// UNITS GET ALL
 	@POST
 	@Produces(MediaType.APPLICATION_JSON)
-    @Consumes(MediaType.APPLICATION_JSON)
-	@Path("/getAll") 
-	public Response getAllUnits(@Context HttpServletRequest request){
-		try 
-		{
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Path("/getAll")
+	public Response getAllUnits(@Context HttpServletRequest request) {
+		try {
 			Collection<UnitsTo> unitTo = new ArrayList<UnitsTo>();
-			unitTo=ShoppingCartFactory.getUnitsDao().getAll();
-			return Response.status(201).entity(unitTo).build();	
-		}
-		catch (Exception e)
-		{
-		e.printStackTrace();
-		String error = "Unable to Find Reords";
-		return Response.status(403).entity(error).build();
+			unitTo = ShoppingCartFactory.getUnitsDao().getAll();
+			return Response.status(201).entity(unitTo).build();
+		} catch (Exception e) {
+			e.printStackTrace();
+			String error = "Unable to Find Records";
+			return Response.status(403).entity(error).build();
 		}
 	}
-	
+
 	// UNITS SEARCH BY ID
 	@POST
 	@Produces(MediaType.APPLICATION_JSON)
-    @Consumes(MediaType.APPLICATION_JSON)
-	@Path("/search") 
-	public Response searchUnits(UnitsTo unitTo,@Context HttpServletRequest request){
-		try 
-		{
-			unitTo=ShoppingCartFactory.getUnitsDao().searchById(unitTo.getId());
-			return Response.status(201).entity(unitTo).build();	
-		}
-		catch (Exception e)
-		{
-		e.printStackTrace();
-		String error = "Unable to Find Reord";
-		return Response.status(403).entity(error).build();
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Path("/search")
+	public Response searchUnits(UnitsTo unitTo,
+			@Context HttpServletRequest request) {
+		try {
+			unitTo = ShoppingCartFactory.getUnitsDao().searchById(
+					unitTo.getId());
+			return Response.status(201).entity(unitTo).build();
+		} catch (Exception e) {
+			e.printStackTrace();
+			String error = "Unable to Find Record";
+			return Response.status(403).entity(error).build();
 		}
 	}
-	
 
+	// UNITS DELETE
+	@POST
+	@Produces(MediaType.APPLICATION_JSON)
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Path("/delete")
+	public Response deleteUnits(UnitsTo unitTo,
+			@Context HttpServletRequest request) {
+		boolean status = false;
+		try {
+			status = ShoppingCartFactory.getUnitsDao().delete(unitTo.getId());
+			return Response.status(201).entity(status).build();
+		} catch (Exception e) {
+			e.printStackTrace();
+			return Response.status(403).entity(status).build();
+		}
+	}
 }

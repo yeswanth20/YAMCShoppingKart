@@ -15,7 +15,7 @@ import com.shopping.orm.WeightsOrm;
 import com.shopping.to.WeightsTo;
 
 public class WeightsDaoimpl implements WeightsDao{
-	public WeightsTo insert(WeightsTo weightsTo) {
+	public WeightsTo insert(WeightsTo weightsTo,int userId) {
 		Session session = null;
 		Transaction tx = null;
 		WeightsTo sendWeightsTo = null;
@@ -28,9 +28,9 @@ public class WeightsDaoimpl implements WeightsDao{
 			weightsOrm.setId(weightsTo.getId());
 			weightsOrm.setWeightName(weightsTo.getWeightName());
 			weightsOrm.setUnit(new UnitDaoimpl().getUnitById(weightsTo.getUnit()));
-			weightsOrm.setCreatedBy(new UserDaoimpl().getUserById(weightsTo.getCreatedBy()));
+			weightsOrm.setCreatedBy(new UserDaoimpl().getUserById(userId));
 			weightsOrm.setCreatedDate(new Date());
-			weightsOrm.setModifiedBy(new UserDaoimpl().getUserById(weightsTo.getModifiedBy()));
+			weightsOrm.setModifiedBy(new UserDaoimpl().getUserById(userId));
 			weightsOrm.setModifiedDate(new Date());
 			
 			
@@ -40,6 +40,7 @@ public class WeightsDaoimpl implements WeightsDao{
 			tx.commit();
 			//Get the Updated Object from the DB
 			weightsTo = this.searchById(weightsOrm.getId());
+			sendWeightsTo = weightsTo;
 			
 		} catch (Exception e) {
 			tx.rollback();
@@ -51,7 +52,7 @@ public class WeightsDaoimpl implements WeightsDao{
 		return sendWeightsTo;
 	}
 
-	public WeightsTo update(int id, WeightsTo weightsTo) {
+	public WeightsTo update(int id, WeightsTo weightsTo,int userId) {
 		Session session = null;
 		Transaction tx = null;
 		WeightsTo  sendWeightsTo= null;
@@ -65,7 +66,7 @@ public class WeightsDaoimpl implements WeightsDao{
 
 			weightsOrm.setWeightName(weightsTo.getWeightName());
 			weightsOrm.setUnit(new UnitDaoimpl().getUnitById(weightsTo.getUnit()));
-			weightsOrm.setModifiedBy(new UserDaoimpl().getUserById(weightsTo.getModifiedBy()));
+			weightsOrm.setModifiedBy(new UserDaoimpl().getUserById(userId));
 			weightsOrm.setModifiedDate(new Date());
 
 

@@ -7,11 +7,10 @@ public class Brands {
 	
 	public static void main(String[] args) {
 		BrandTo brandTo = new BrandTo();
-		brandTo.setBrandNameEng("brandNameEng");
+		brandTo.setBrandNameEng("BRAND 2");
 		BrandDaoimpl brandDaoimpl = new BrandDaoimpl();
-//		brandDaoimpl.insert(brandTo, 1);
+		brandDaoimpl.insert(brandTo,1);
 //		brandDaoimpl.getAll();
-		brandDaoimpl.delete(20);
 		
 	}
 

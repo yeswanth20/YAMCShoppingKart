@@ -15,7 +15,7 @@ import com.shopping.orm.DiscountTypeOrm;
 import com.shopping.to.DiscountTypeTo;
 
 public class DiscountTypeDaoimpl implements DiscountTypeDao{
-	public DiscountTypeTo insert(DiscountTypeTo discountTypeTo) {
+	public DiscountTypeTo insert(DiscountTypeTo discountTypeTo, int userId) {
 		Session session = null;
 		Transaction tx = null;
 		try {
@@ -23,9 +23,9 @@ public class DiscountTypeDaoimpl implements DiscountTypeDao{
 			DiscountTypeOrm discountTypeOrm = new DiscountTypeOrm();
 			
 			discountTypeOrm.setDiscountName(discountTypeTo.getDiscountName());
-			discountTypeOrm.setCreatedBy(new UserDaoimpl().getUserById(discountTypeTo.getCreatedBy()));
+			discountTypeOrm.setCreatedBy(new UserDaoimpl().getUserById(userId));
 			discountTypeOrm.setCreatedDate(new Date());
-			discountTypeOrm.setModifiedBy(new UserDaoimpl().getUserById(discountTypeTo.getModifiedBy()));
+			discountTypeOrm.setModifiedBy(new UserDaoimpl().getUserById(userId));
 			discountTypeOrm.setModifiedDate(new Date());
 
 			tx = session.beginTransaction();
@@ -44,7 +44,7 @@ public class DiscountTypeDaoimpl implements DiscountTypeDao{
 		return discountTypeTo;
 	}
 
-	public DiscountTypeTo update(int id, DiscountTypeTo discountTypeTo) {
+	public DiscountTypeTo update(int id, DiscountTypeTo discountTypeTo, int userId) {
 		Session session = null;
 		Transaction tx = null;
 		DiscountTypeTo  discountTypeTo2= null;
@@ -57,7 +57,7 @@ public class DiscountTypeDaoimpl implements DiscountTypeDao{
 			DiscountTypeOrm  discountTypeOrm = (DiscountTypeOrm)session.load(DiscountTypeOrm.class, new Integer(id));
 
 			discountTypeOrm.setDiscountName(discountTypeTo.getDiscountName());
-			discountTypeOrm.setModifiedBy(new UserDaoimpl().getUserById(discountTypeTo.getModifiedBy()));
+			discountTypeOrm.setModifiedBy(new UserDaoimpl().getUserById(userId));
 			discountTypeOrm.setModifiedDate(new Date());
 
 

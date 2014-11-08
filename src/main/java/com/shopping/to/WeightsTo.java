@@ -4,13 +4,9 @@ public class WeightsTo {
 	private int id;
 	private String weightName;
 	private int unit;
-
-	//Common  Fields
-	private int createdBy;
-	private int modifiedBy;
-	private String statusMsg;
 	
 	//	getter& Setters
+	
 	public int getId() {
 		return id;
 	}
@@ -28,23 +24,5 @@ public class WeightsTo {
 	}
 	public void setUnit(int unit) {
 		this.unit = unit;
-	}
-	public int getCreatedBy() {
-		return createdBy;
-	}
-	public void setCreatedBy(int createdBy) {
-		this.createdBy = createdBy;
-	}
-	public int getModifiedBy() {
-		return modifiedBy;
-	}
-	public void setModifiedBy(int modifiedBy) {
-		this.modifiedBy = modifiedBy;
-	}
-	public String getStatusMsg() {
-		return statusMsg;
-	}
-	public void setStatusMsg(String statusMsg) {
-		this.statusMsg = statusMsg;
 	}
 }

@@ -1,10 +1,13 @@
 package com.shopping.daoimpl;
 
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
 
+import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.criterion.Restrictions;
@@ -18,7 +21,7 @@ import com.shopping.to.ProductUnitDetailsTo;
 
 public class ProductDaoimpl implements ProductDao{
 
-	public ProductTo insert(ProductTo productTo) {
+	public ProductTo insert(ProductTo productTo, int userId) {
 		Session session = null;
 		Transaction tx = null;
 		try {
@@ -35,8 +38,7 @@ public class ProductDaoimpl implements ProductDao{
 			productOrm.setCreatedDate(new Date());
 			productOrm.setModifiedBy(productTo.getModifiedBy());
 			productOrm.setModifiedDate(new Date());
-			//		session.save(productOrm);
-			//		sproductOrm.setProductImage(productTo.getProductImage());
+			productOrm.setProductImage(productTo.getProductImage());
 			ProductUnitDetailsOrm productUnitDetailsOrm = null;
 			for (ProductUnitDetailsTo productUnitDetailsTo : productTo.getProductUnitDetails()) {
 				productUnitDetailsOrm = new ProductUnitDetailsOrm();
@@ -45,9 +47,9 @@ public class ProductDaoimpl implements ProductDao{
 				productUnitDetailsOrm.setDiscountType(new DiscountTypeDaoimpl().getDiscountTypeById(productUnitDetailsTo.getDiscountType()));
 				productUnitDetailsOrm.setDiscountValue(productUnitDetailsTo.getDiscountValue());
 				productUnitDetailsOrm.setPrice(productUnitDetailsTo.getPrice());
-				productUnitDetailsOrm.setCreatedBy(new UserDaoimpl().getUserById(productUnitDetailsTo.getCreatedBy()));
+				productUnitDetailsOrm.setCreatedBy(new UserDaoimpl().getUserById(userId));
 				productUnitDetailsOrm.setCreatedDate(new Date());
-				productUnitDetailsOrm.setModifiedBy(new UserDaoimpl().getUserById(productUnitDetailsTo.getModifiedBy()));
+				productUnitDetailsOrm.setModifiedBy(new UserDaoimpl().getUserById(userId));
 				productUnitDetailsOrm.setModifiedDate(new Date());
 				productUnitDetailsOrm.setProduct(productOrm);
 				productOrm.getProductUnitDetails().add(productUnitDetailsOrm);
@@ -73,7 +75,7 @@ public class ProductDaoimpl implements ProductDao{
 		return productTo;
 	}
 
-	public ProductTo update(int id, ProductTo productTo) {
+	public ProductTo update(int id, ProductTo productTo, int userId) {
 		Session session = null;
 		Transaction tx = null;
 		try {
@@ -82,7 +84,7 @@ public class ProductDaoimpl implements ProductDao{
 			tx = session.beginTransaction();
 
 			//Parent Data
-			ProductOrm productOrm = new ProductOrm();
+			ProductOrm productOrm =(ProductOrm)session.load(ProductOrm.class, new Integer(id));
 			productOrm.setProductNameEng(productTo.getProductNameEng());
 			productOrm.setProductNameHindi(productTo.getProductNameHindi());
 			productOrm.setProductNameTamil(productTo.getProductNameTamil());
@@ -103,9 +105,9 @@ public class ProductDaoimpl implements ProductDao{
 				productUnitDetailsOrm.setDiscountType(new DiscountTypeDaoimpl().getDiscountTypeById(productUnitDetailsTo.getDiscountType()));
 				productUnitDetailsOrm.setDiscountValue(productUnitDetailsTo.getDiscountValue());
 				productUnitDetailsOrm.setPrice(productUnitDetailsTo.getPrice());
-				productUnitDetailsOrm.setCreatedBy(new UserDaoimpl().getUserById(productUnitDetailsTo.getCreatedBy()));
+				productUnitDetailsOrm.setCreatedBy(new UserDaoimpl().getUserById(userId));
 				productUnitDetailsOrm.setCreatedDate(new Date());
-				productUnitDetailsOrm.setModifiedBy(new UserDaoimpl().getUserById(productUnitDetailsTo.getModifiedBy()));
+				productUnitDetailsOrm.setModifiedBy(new UserDaoimpl().getUserById(userId));
 				productUnitDetailsOrm.setModifiedDate(new Date());
 				productUnitDetailsOrm.setProduct(productOrm);
 				productOrm.getProductUnitDetails().add(productUnitDetailsOrm);
@@ -113,12 +115,14 @@ public class ProductDaoimpl implements ProductDao{
 
 			}
 			//
-
+			
+			System.out.println(productOrm);
 
 			tx.commit();
 			productTo = this.searchById(id);
 		}
 		catch(Exception e){
+			System.out.println("i am in catch");
 			e.printStackTrace();
 			tx.rollback();
 		}
@@ -133,7 +137,7 @@ public class ProductDaoimpl implements ProductDao{
 		return productTo;
 	}
 
-	public Collection<ProductTo> getAll() {
+	public Collection<ProductTo> getAll(int pageNumber,int pageSize) {
 		Session session = null;
 		ArrayList<ProductTo> lstProductTo = null;
 		try {
@@ -141,8 +145,10 @@ public class ProductDaoimpl implements ProductDao{
 			session = HibernateUtil.getSessionFactory().openSession();
 
 			//Get the record based on ID From DB
-			@SuppressWarnings("unchecked")
-			ArrayList<ProductOrm> lstProductOrm = (ArrayList<ProductOrm>) session.createCriteria(ProductOrm.class).list();
+			Criteria criteria =session.createCriteria(ProductOrm.class);
+			criteria.setFirstResult((pageNumber - 1) * pageSize);
+			criteria.setMaxResults(pageSize);
+			ArrayList<ProductOrm> lstProductOrm = (ArrayList<ProductOrm>)criteria.list();
 			ProductTo productTo = null;
 			lstProductTo = new ArrayList<ProductTo>();
 			for (ProductOrm productOrm : lstProductOrm) {

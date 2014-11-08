@@ -7,23 +7,10 @@ public class BrandTo {
 	private String brandNameHindi;
 	private String brandNameTamil;
 
-	private int createdBy;
-	private int modifiedBy;
-	private String statusMsg;
-
-
 	// Getters & Setters
 	
 	public int getId() {
 		return id;
-	}
-
-	public String getStatusMsg() {
-		return statusMsg;
-	}
-
-	public void setStatusMsg(String statusMsg) {
-		this.statusMsg = statusMsg;
 	}
 
 	public void setId(int id) {
@@ -61,21 +48,4 @@ public class BrandTo {
 	public void setBrandNameTamil(String brandNameTamil) {
 		this.brandNameTamil = brandNameTamil;
 	}
-
-	public int getCreatedBy() {
-		return createdBy;
-	}
-
-	public void setCreatedBy(int createdBy) {
-		this.createdBy = createdBy;
-	}
-
-	public int getModifiedBy() {
-		return modifiedBy;
-	}
-
-	public void setModifiedBy(int modifiedBy) {
-		this.modifiedBy = modifiedBy;
-	}
-
 }
