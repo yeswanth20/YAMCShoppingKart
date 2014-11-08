@@ -8,13 +8,16 @@ angular.module("shopApp").controller("brandsController",
 
 		$scope.resetBrandsFormData = function() {			
 			$scope.brandsFormData = {
-				"name" : "",
-				"id" : ""
+				"id" : "",
+				"brandNameEng" : "",
+				"brandNameHindi" : "",
+				"brandNameTel" : "",
+				"brandNameTamil" : "",
 			}
 		}
 		$scope.resetBrandsFormData();
 
-		$scope.initializeBrands = function() {			
+		$scope.initializeBrands = function() {
 			brandsService.getBrands().then(function(brandsResult) {
 				$scope.brandsList = brandsResult;
 			});
@@ -23,7 +26,7 @@ angular.module("shopApp").controller("brandsController",
 		$scope.initializeBrands();
 
 		$scope.createBrand = function() {
-			if($scope.brandsFormData.name.trim()=="") {
+			if($scope.brandsFormData.brandNameEng.trim()=="") {
 				alert("Please enter brand name");
 				return false;
 			}			
@@ -48,7 +51,7 @@ angular.module("shopApp").controller("brandsController",
 
 		$scope.updateBrand = function(id) {		
 
-			if($scope.brandsFormData.brandName.trim()=="") {
+			if($scope.brandsFormData.brandNameEng.trim()=="") {
 				alert("Please enter brand name");
 				return false;
 			}			

@@ -10,7 +10,7 @@ angular.module("shopApp").service("categoriesService",
 				deferred.resolve(categoriesServiceList);
 			}
 			else {
-				$http.post(serviceCallBaseUrl+"categoryService/getAll")
+				$http.get(serviceCallBaseUrl+"categoryService/getAll")
 				.success(function(data, status, headers, config) {				
 					categoriesServiceList = data;
 					deferred.resolve(data);

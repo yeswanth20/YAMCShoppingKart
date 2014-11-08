@@ -8,7 +8,8 @@ angular.module("shopApp").controller("categoriesController",
 
 		$scope.resetCategoryFormData = function(){			
 			$scope.categoryFormData = {
-				parentId : 0,
+				parentCategory : "",
+				rootCategory : "",
 				categoryNameEng : "",
 				categoryNameTel : "",
 				categoryNameHindi : "",
@@ -30,7 +31,7 @@ angular.module("shopApp").controller("categoriesController",
 				}
 
 				var rootCateogies  = _.where(categoriesList, function(rw){
-					return rw.id == rw.parentId;
+					return rw.id == rw.parentCategory;
 				});
 
 				for(var rootIndex in rootCateogies) {
@@ -45,10 +46,10 @@ angular.module("shopApp").controller("categoriesController",
 
 		$scope.initializeCategories();
 
-		$scope.buildRecursiveTree = function(parentId,categoriesList) {
+		$scope.buildRecursiveTree = function(parentCategory,categoriesList) {
 
 			var rootCateogies  = _.where(categoriesList, function(rw){
-				return rw.parentId == parentId && rw.id!=parentId;
+				return rw.parentCategory == parentCategory && rw.id!=parentCategory;
 			});
 
 			if(rootCateogies.length>0)
@@ -70,11 +71,12 @@ angular.module("shopApp").controller("categoriesController",
 		};
 
 		$scope.createCategory = function() {
-			if($scope.categoryFormData.id!=""){
+			if($scope.categoryFormData.id!="") {
 				if($scope.categoryFormData.categoryNameEng.trim()=="") {
 					alert("Please enter category name");
 					return false;
 				}
+				
 				categoriesService.createCategory($scope.categoryFormData).then(function(result){
 					alert("Category added successfully");
 					$scope.initializeCategories();
@@ -86,12 +88,23 @@ angular.module("shopApp").controller("categoriesController",
 
 		$scope.addSubCategory = function(id) {
 
+			$scope.resetCategoryFormData();
+
 			var tempCurrentCategory = _.where($scope.originalCategoriesList,function(rw){
 				return rw.id == id;
 			});
 
-			if(tempCurrentCategory.length>0)
-			$scope.currentCategoryName = tempCurrentCategory[0].categoryNameEng;
+			if(tempCurrentCategory.length>0) {
+				$scope.currentCategoryName = tempCurrentCategory[0].categoryNameEng;
+				$scope.categoryFormData.parentCategory = id;
+				
+				if(tempCurrentCategory[0].rootCategory != "")
+				{
+					$scope.categoryFormData.rootCategory = tempCurrentCategory[0].rootCategory;
+				} else {
+					$scope.categoryFormData.rootCategory = id;
+				}
+			}
 			else
 			$scope.currentCategoryName = false;
 

@@ -35,6 +35,7 @@ angular.module("shopApp").controller("unitsController",
 		}
 
 		$scope.editUnit = function(id) {
+			$scope.intalizeUnitsFormData();
 			var tempUnit = _.where($scope.unitsList,function(rw){
 				return rw.id == id;
 			});
@@ -60,7 +61,7 @@ angular.module("shopApp").controller("unitsController",
 		$scope.deleteUnit = function(id) {
 			if(confirm("Are you sure you want to delete unit?")) {
 				var tempRequest = {"id":id};
-				unitsService.deleteUnit(tempRequest).then(function(result){
+				unitsService.deleteUnits(tempRequest).then(function(result){
 					alert("Unit deleted successfully");
 				});
 			}

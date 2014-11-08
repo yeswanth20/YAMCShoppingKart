@@ -41,8 +41,9 @@
             <input class="form-control" ng-model="categoryFormData.categoryNameTamil" placeholder="Tamil name">
             <!-- <p class="help-block">Example block-level help text here.</p> -->
         </div>
-        <input type="hidden" ng-model="categoryFormData.parentId">
         <input type="hidden" ng-model="categoryFormData.id">
+        <input type="hidden" ng-model="categoryFormData.parentCategory">
+        <input type="hidden" ng-model="categoryFormData.rootCategory">
         <button type="button" class="btn btn-primary" ng-show="!categoryEditFlag" ng-click="createCategory()">Submit</button>
         <button type="submit" class="btn btn-primary" ng-show="categoryEditFlag" ng-click="updateCategory()">Update</button>
         <button type="reset" class="btn btn-default" ng-click="showCategoryFormFlag=flase">Reset</button>

@@ -1,0 +1,34 @@
+[
+	{
+		"id" : "1",
+		"brandNameEng" : "Lee",
+		"brandNameHindi" : "Lee",
+		"brandNameTel" : "Lee",
+		"brandNameTamil" : "Lee"
+	},{
+		"id" : "2",
+		"brandNameEng" : "Wrangler",
+		"brandNameHindi" : "Lee",
+		"brandNameTel" : "Lee",
+		"brandNameTamil" : "Lee"
+	},{
+		"id" : "3",
+		"brandNameEng" : "Denim",
+		"brandNameHindi" : "Lee",
+		"brandNameTel" : "Lee",
+		"brandNameTamil" : "Lee"
+	},{
+		"id" : "4",
+		"brandNameEng" : "Uturn",
+		"brandNameHindi" : "Lee",
+		"brandNameTel" : "Lee",
+		"brandNameTamil" : "Lee"
+	},{
+		"id" : "5",
+		"brandNameEng" : "Woodland",
+		"brandNameHindi" : "Lee",
+		"brandNameTel" : "Lee",
+		"brandNameTamil" : "Lee"
+	}
+	
+]
