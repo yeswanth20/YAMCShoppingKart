@@ -52,6 +52,7 @@ angular.module("shopApp",
         }).state('discounts', {
             url: '/discounts',
             templateUrl: themeBasePath+'/discounts.html',
+            controller : "discountsController",
             data:{
                 action : "discounts",
             }

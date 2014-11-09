@@ -40,7 +40,7 @@
         <div class="form-group">
             <div class="col-md-12">
               <select class="form-control" ng-model="productFormData.brand" >
-                <option ng-repeat="brand in brandsList" value="{{brand.id}}">{{brand.brandName}}</option>
+                <option ng-repeat="brand in brandsList" value="{{brand.id}}">{{brand.brandNameEng}}</option>
               </select>
               <!-- <select class="form-control">
                 <option>Abc</option>
@@ -94,10 +94,8 @@
               </select>
             </td>
             <td>
-              <select class="form-control">
-                <option>Discount</option>
-                <option>Abc</option>
-                <option>Abc</option>
+              <select class="form-control" ng-model="productFormData.discount">
+                <option ng-repeat="discount in discountsList" value="discount.id">{{discount.discountName}}</option>
               </select>
             </td>
             <td>

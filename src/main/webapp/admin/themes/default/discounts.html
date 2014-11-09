@@ -1,1 +1,40 @@
-Discounts...
+<h3>Discounts</h3>	    
+<div class="row">
+	<div class="col-md-12">
+		<button class="btn btn-primary" ng-click="discountsFormShowFlag=true">Add Discount</button>
+		<form role="form"  ng-show="discountsFormShowFlag">
+	        <h4> Add a Discount</h4>
+	        <div class="form-group">	            
+	            <input class="form-control" placeholder="English name" ng-model="discountsFormData.discountName">
+	        </div>
+	        <button type="button" class="btn btn-primary" ng-show="!discountsFormEditFlag" ng-click="createDiscount()">Submit</button>
+	        <button type="button" class="btn btn-primary" ng-show="discountsFormEditFlag" ng-click="updateDiscount()">Update</button>
+        	<button type="reset" class="btn btn-default">Reset</button>
+	    </form>
+	</div>
+
+	<div class="col-md-12 categoriesTreeDiv" >
+	    <div class="table-responsive">
+	        <table class="table table-bordered table-hover">
+	            <thead>
+	                <tr>
+	                    <th class="col-md-1">S.No</th>
+	                    <th>Discount Name</th>
+	                    <th class="col-md-2">Actions</th>	                    
+	                </tr>
+	            </thead>
+	            <tbody>
+	            	<tr ng-repeat="discount in discountsList">
+	            		<td>{{$index+1}}</td>
+	            		<td ng-bind="discount.discountName"></td>
+	            		<td>
+    						<a class="btn btn-primary btn-xs" ng-click="editDiscount(discount.id)"><span class="fa fa-edit"></span></a>
+	            			<a class="btn btn-danger btn-xs" ng-click="deleteDiscount(discount.id)"><span class="fa fa-minus"></span></a>
+    					</td>			
+	            	</tr>
+	            </tbody>
+	        </table>
+	    </div>
+	</div>
+
+</div>

@@ -1,6 +1,6 @@
 angular.module("shopApp").controller("productsController",
-	["$scope","categoriesService","unitsService","weightsService","brandsService",
-	function($scope,categoriesService,unitsService,weightsService,brandsService){
+	["$scope","categoriesService","unitsService","weightsService","brandsService","discountsService",
+	function($scope,categoriesService,unitsService,weightsService,brandsService,discountsService){
 
 		$scope.productFormData = {
 			"units" : [],
@@ -17,7 +17,7 @@ angular.module("shopApp").controller("productsController",
 				}
 
 				var rootCateogies  = _.where(categoriesList, function(rw){
-					return rw.id == rw.parentId;
+					return rw.id == rw.parentCategory;
 				});
 
 				for(var rootIndex in rootCateogies) {
@@ -32,10 +32,10 @@ angular.module("shopApp").controller("productsController",
 
 		$scope.initializeCategories();
 
-		$scope.buildRecursiveTree = function(parentId,categoriesList) {
+		$scope.buildRecursiveTree = function(parentCategory,categoriesList) {
 
 			var rootCateogies  = _.where(categoriesList, function(rw){
-				return rw.parentId == parentId && rw.id!=parentId;
+				return rw.parentCategory == parentCategory && rw.id!=parentCategory;
 			});
 
 			if(rootCateogies.length>0)
@@ -66,6 +66,10 @@ angular.module("shopApp").controller("productsController",
 
 		brandsService.getBrands().then(function(result){
 			$scope.brandsList = result;
+		});
+
+		discountsService.getDiscounts().then(function(result){
+			$scope.discountsList = result;
 		});
 		
 		$scope.unitsRows = [];

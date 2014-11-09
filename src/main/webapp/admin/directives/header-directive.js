@@ -22,11 +22,11 @@ angular.module('shopApp').directive('header',
 	        			"name" : "Weights",
 	        			"sref" : "weights"
 	        		},5 : {
-	        			"name" : "Products",
-	        			"sref" : "products"
-	        		},6 : {
 	        			"name" : "Discounts",
 	        			"sref" : "discounts"
+	        		},6 : {
+	        			"name" : "Products",
+	        			"sref" : "products"
 	        		}
 	        	};
 

@@ -1,0 +1,21 @@
+[
+	{
+		"id" : "1",		
+		"discountName" : "Festive"
+	},{
+		"id" : "2",		
+		"discountName" : "Festive1"
+	},{
+		"id" : "3",		
+		"discountName" : "Festive2"
+	},{
+		"id" : "4",		
+		"discountName" : "Festive3"
+	},{
+		"id" : "5",		
+		"discountName" : "Festive4"
+	},{
+		"id" : "6",		
+		"discountName" : "Festive5"
+	}
+]
