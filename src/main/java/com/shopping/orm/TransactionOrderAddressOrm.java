@@ -10,7 +10,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -50,12 +49,7 @@ public class TransactionOrderAddressOrm implements Serializable{
 	private long landlineNumber;
 	@Column(name = "email_id")
 	private String emailID;
-	
 
-	
-	@OneToOne
-	@JoinColumn(name="transaction_order_id",nullable=false)
-	private TransactionOrderOrm transactionOrder;
 	//Common  Fields
 	@ManyToOne
 	@JoinColumn(name="created_by")
@@ -136,12 +130,6 @@ public class TransactionOrderAddressOrm implements Serializable{
 	}
 	public void setEmailID(String emailID) {
 		this.emailID = emailID;
-	}
-	public TransactionOrderOrm getTransactionOrder() {
-		return transactionOrder;
-	}
-	public void setTransactionOrder(TransactionOrderOrm transactionOrder) {
-		this.transactionOrder = transactionOrder;
 	}
 	public UserOrm getCreatedBy() {
 		return createdBy;

@@ -11,7 +11,9 @@ import com.shopping.dao.TransactionOrderDao;
 import com.shopping.hibernate.HibernateUtil;
 import com.shopping.orm.TransactionOrderAddressOrm;
 import com.shopping.orm.TransactionOrderOrm;
+import com.shopping.orm.TransactionOrderProductListOrm;
 import com.shopping.to.TransactionOrderAddressTo;
+import com.shopping.to.TransactionOrderProductListTo;
 import com.shopping.to.TransactionOrderTo;
 
 public class TransactionOrderDaoimpl implements TransactionOrderDao{
@@ -37,7 +39,7 @@ public class TransactionOrderDaoimpl implements TransactionOrderDao{
 			transactionOrderOrm.setModifiedBy(new UserDaoimpl().getUserById(userId));
 			transactionOrderOrm.setModifiedDate(new Date());
 			//Adding Address
-*/			/*TransactionOrderAddressTo txnAddressTo = transactionOrderTo.getAddress();
+*/			TransactionOrderAddressTo txnAddressTo = transactionOrderTo.getAddress();
 			TransactionOrderAddressOrm txnOrderAddressOrm = new TransactionOrderAddressOrm();
 			txnOrderAddressOrm.setName(txnAddressTo.getName());
 			txnOrderAddressOrm.setHouseNumber(txnAddressTo.getHouseNumber());
@@ -49,11 +51,17 @@ public class TransactionOrderDaoimpl implements TransactionOrderDao{
 			txnOrderAddressOrm.setMobileNumber(txnAddressTo.getMobileNumber());
 			txnOrderAddressOrm.setLandlineNumber(txnAddressTo.getLandlineNumber());
 			txnOrderAddressOrm.setEmailID(txnAddressTo.getEmailID());
-//			txnOrderAddressOrm.setTransactionOrder(this.getTransactionOrderById(txnAddressTo.getTransactionOrder()));
-			*/
+			transactionOrderOrm.setAddress(txnOrderAddressOrm);
+			
+			TransactionOrderProductListOrm productListOrm = null;
+			for (TransactionOrderProductListTo productListTo : transactionOrderTo.getProductList()){
+				productListOrm = new TransactionOrderProductListOrm();
+//				productListOrm.setUnit(unit);
+			}
+				
 			//Begin transaction & save the object
 			tx = session.beginTransaction();
-			session.save(transactionOrderOrm);
+			session.persist(transactionOrderOrm);
 			tx.commit();
 			//Get the Updated Object from the DB
 //			transactionOrderTo = null;

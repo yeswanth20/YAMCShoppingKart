@@ -14,7 +14,6 @@ public class TransactionOrderAddressTo{
 	private long mobileNumber;
 	private long landlineNumber;
 	private String emailID;
-	private int transactionOrder;
 	//Common  Fields
 	private int createdBy;
 	private int modifiedBy;
@@ -83,12 +82,6 @@ public class TransactionOrderAddressTo{
 	}
 	public void setEmailID(String emailID) {
 		this.emailID = emailID;
-	}
-	public int getTransactionOrder() {
-		return transactionOrder;
-	}
-	public void setTransactionOrder(int transactionOrder) {
-		this.transactionOrder = transactionOrder;
 	}
 	public int getCreatedBy() {
 		return createdBy;

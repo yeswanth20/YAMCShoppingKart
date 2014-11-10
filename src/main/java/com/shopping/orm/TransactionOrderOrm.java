@@ -47,25 +47,14 @@ public class TransactionOrderOrm implements Serializable{
 //	private double priceAfterDiscount;
 //	@Column(name = "product_count")
 	
-//	@OneToOne//(fetch=FetchType.LAZY, cascade={CascadeType.ALL},targetEntity=TransactionOrderAddressOrm.class)
-//	private TransactionOrderAddressOrm address = new TransactionOrderAddressOrm();
-//	
-//	@OneToMany(fetch=FetchType.LAZY,mappedBy="transactionOrder",cascade={CascadeType.ALL},targetEntity=TransactionOrderProductListOrm.class)
-//	private Collection<TransactionOrderProductListOrm> productList = new ArrayList<TransactionOrderProductListOrm>();
+	@OneToOne(fetch=FetchType.LAZY, cascade={CascadeType.ALL},targetEntity=TransactionOrderAddressOrm.class)
+	@JoinColumn(name="transaction_order_id",nullable=false)
+	private TransactionOrderAddressOrm address = new TransactionOrderAddressOrm();
+	
+	@OneToMany(fetch=FetchType.LAZY,mappedBy="transactionOrder",cascade={CascadeType.ALL},targetEntity=TransactionOrderProductListOrm.class)
+	private Collection<TransactionOrderProductListOrm> productList = new ArrayList<TransactionOrderProductListOrm>();
 
-	//Common  Fields
-	@ManyToOne
-	@JoinColumn(name="created_by")
-	private UserOrm createdBy;
-	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name = "created_date")
-	private Date createdDate;
-	@ManyToOne
-	@JoinColumn(name="modified_by")
-	private UserOrm modifiedBy;
-	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name = "modified_date")
-	private Date modifiedDate;	
+	
 	
 	//	getter& Setters
 	public int getId() {
@@ -83,5 +72,47 @@ public class TransactionOrderOrm implements Serializable{
 		this.txnOrderID = txnOrderID;
 	}
 	
-
+	public TransactionOrderAddressOrm getAddress() {
+		return address;
+	}
+	public void setAddress(TransactionOrderAddressOrm address) {
+		this.address = address;
+	}
+	public UserOrm getCreatedBy() {
+		return createdBy;
+	}
+	public void setCreatedBy(UserOrm createdBy) {
+		this.createdBy = createdBy;
+	}
+	public Date getCreatedDate() {
+		return createdDate;
+	}
+	public void setCreatedDate(Date createdDate) {
+		this.createdDate = createdDate;
+	}
+	public UserOrm getModifiedBy() {
+		return modifiedBy;
+	}
+	public void setModifiedBy(UserOrm modifiedBy) {
+		this.modifiedBy = modifiedBy;
+	}
+	public Date getModifiedDate() {
+		return modifiedDate;
+	}
+	public void setModifiedDate(Date modifiedDate) {
+		this.modifiedDate = modifiedDate;
+	}
+	//Common  Fields
+	@ManyToOne
+	@JoinColumn(name="created_by")
+	private UserOrm createdBy;
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name = "created_date")
+	private Date createdDate;
+	@ManyToOne
+	@JoinColumn(name="modified_by")
+	private UserOrm modifiedBy;
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name = "modified_date")
+	private Date modifiedDate;	
 }
