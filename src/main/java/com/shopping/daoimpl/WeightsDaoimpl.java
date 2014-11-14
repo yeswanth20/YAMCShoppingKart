@@ -110,18 +110,29 @@ public class WeightsDaoimpl implements WeightsDao{
 	}
 
 	
-	public WeightsTo searchByUnit(int unitId) {
+	public Collection<WeightsTo> searchByUnitId(int unitId) {
+		System.out.println("I am in searchByUnitId"); 
 		Session session = null;
 		WeightsTo weightsTo = null;
+		ArrayList<WeightsTo> lstWeightsTo = new ArrayList<WeightsTo>();
 		try {
 			//Get Session Factory
 			session = HibernateUtil.getSessionFactory().openSession();
 
 			//Get the record based on ID From DB
-			WeightsOrm weightsOrm = (WeightsOrm) session.createCriteria(WeightsOrm.class).add(Restrictions.eq("unit", unitId)).uniqueResult();
-			System.out.println("weightsOrm"+weightsOrm.getWeightName());
+			
+			@SuppressWarnings("unchecked")
+			ArrayList<WeightsOrm> lstWeightsOrm = (ArrayList<WeightsOrm>) session.createCriteria(WeightsOrm.class).add(Restrictions.eq("unit.id", unitId)).list();
+			System.out.println("lst size"+lstWeightsOrm.size());
+			
+
 			//Set the Data to the To Object
-			weightsTo = setWeightOrm2To(weightsOrm);
+			for(WeightsOrm weightsOrm: lstWeightsOrm){
+				weightsTo = this.setWeightOrm2To(weightsOrm);
+				lstWeightsTo.add(weightsTo);
+				
+			}
+			
 
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -130,7 +141,7 @@ public class WeightsDaoimpl implements WeightsDao{
 			session.clear();
 			session.close();
 		}
-		return weightsTo;
+		return lstWeightsTo;
 	}
 	
 	
@@ -162,11 +173,7 @@ public class WeightsDaoimpl implements WeightsDao{
 			lstWeightsTo = new ArrayList<WeightsTo>();
 			for (WeightsOrm weightsOrm : lstWeightsOrm) {
 				//Set the Data to the To Object
-
-				weightsTo=new WeightsTo();
-				weightsTo.setId(weightsOrm.getId());
-				weightsTo.setWeightName(weightsOrm.getWeightName());
-				weightsTo.setUnit(weightsOrm.getUnit().getId());
+				weightsTo = this.setWeightOrm2To(weightsOrm);
 
 				//Add the Object to the Array List
 				lstWeightsTo.add(weightsTo);

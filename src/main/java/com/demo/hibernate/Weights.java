@@ -1,28 +1,28 @@
 package com.demo.hibernate;
 
-import org.hibernate.Session;
-import org.hibernate.Transaction;
+import java.util.ArrayList;
 
-import com.shopping.hibernate.HibernateUtil;
-import com.shopping.orm.UnitsOrm;
-import com.shopping.orm.WeightsOrm;
+import com.shopping.daofactory.ShoppingCartFactory;
+import com.shopping.to.WeightsTo;
 
 public class Weights {
 	
 	public static void main(String[] args) {
-		Session session = HibernateUtil.getSessionFactory().openSession();
-		System.out.println("hiiiiiiiiiiiii");
-		WeightsOrm e = new WeightsOrm();
-		e.setWeightName("Aliiiiiiiiii");
-		UnitsOrm u = (UnitsOrm)session.get(UnitsOrm.class, 1);
-		e.setUnit(u);
-		Transaction tx = session.beginTransaction();
-		session.save(e);
-		tx.commit();
-		session.clear();
-		session.close();
-	}
 
+		WeightsTo weightsTo = new WeightsTo();
+		weightsTo.setWeightName("Aliiiiiiiiii");
+	
+//		UnitsOrm u = (UnitsOrm)session.get(UnitsOrm.class, 1);
+//		weightsTo.setUnit(u);
+//		UnitsTo to = ShoppingCartFactory.getUnitsDao().searchById(1);
+		weightsTo.setUnit(10);
+//		ShoppingCartFactory.getWeightsDao().insert(weightsTo, 1);
+		ArrayList<WeightsTo> lstTo1 = (ArrayList<WeightsTo>) ShoppingCartFactory.getWeightsDao().searchByUnitId(10);
+		for (WeightsTo weightsTo2 : lstTo1) {
+			System.out.println("unit"+weightsTo2.getUnit());
+			System.out.println("weight"+weightsTo2.getWeightName());
+		}
+	}
 }
 
 
