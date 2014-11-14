@@ -9,6 +9,7 @@ public interface TransactionOrderDao {
 	public TransactionOrderTo insert(TransactionOrderTo transactionOrderTo, int userId);
 	public TransactionOrderTo update(int id, TransactionOrderTo transactionOrderTo, int userId);
 	public TransactionOrderTo searchById(int id);
+	public TransactionOrderTo searchByTxnOrderId(String txnOrderID);
 	public Collection<TransactionOrderTo> getAll();
 	public TransactionOrderOrm getTransactionOrderById(int id);
 	

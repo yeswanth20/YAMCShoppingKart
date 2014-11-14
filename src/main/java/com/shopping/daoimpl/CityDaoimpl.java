@@ -126,9 +126,6 @@ public class CityDaoimpl implements CityDao{
 				//Add the Object to the Array List
 				lstcityTo.add(cityTo);
 			}
-			
-			System.out.println("lstcityTo:: "+lstcityTo);
-			
 		} catch (Exception e) {
 			// TODO: handle exception
 		}

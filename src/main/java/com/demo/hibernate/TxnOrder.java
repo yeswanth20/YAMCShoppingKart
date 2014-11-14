@@ -1,7 +1,6 @@
 package com.demo.hibernate;
 
 import com.shopping.daoimpl.TransactionOrderDaoimpl;
-import com.shopping.orm.TransactionOrderProductListOrm;
 import com.shopping.to.TransactionOrderAddressTo;
 import com.shopping.to.TransactionOrderProductListTo;
 import com.shopping.to.TransactionOrderTo;

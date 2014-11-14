@@ -43,11 +43,11 @@ public class TransactionOrderProductListOrm implements Serializable{
 	private WeightsOrm weight;
 	
 	@ManyToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name="product_id",nullable=false)
+	@JoinColumn(name="product_id")
 	private ProductOrm product;
 	
 	@ManyToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name="transaction_order_id",nullable=false)
+	@JoinColumn(name="transaction_order_id", nullable=false)
 	private TransactionOrderOrm transactionOrder;
 	//Common  Fields
 	@ManyToOne

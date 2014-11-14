@@ -33,19 +33,19 @@ public class TransactionOrderOrm implements Serializable{
 	private int id;
 	@Column(name = "Txn_order_id")
 	private String txnOrderID;
-//	@ManyToOne
-//	@JoinColumn(name = "transaction_status")
-//	private TransactionStatusOrm transactionStatus;
-//	@Column(name = "total_price")
-//	private double totalPrice;
-//	@ManyToOne
-//	@JoinColumn(name = "discount_type")
-//	private DiscountTypeOrm discountType;
-//	@Column(name = "discount_value")
-//	private double discountValue;
-//	@Column(name = "price_after_discount")
-//	private double priceAfterDiscount;
-//	@Column(name = "product_count")
+	@ManyToOne
+	@JoinColumn(name = "transaction_status")
+	private TransactionStatusOrm transactionStatus;
+	@Column(name = "total_price")
+	private double totalPrice;
+	@ManyToOne
+	@JoinColumn(name = "discount_type")
+	private DiscountTypeOrm discountType;
+	@Column(name = "discount_value")
+	private double discountValue;
+	@Column(name = "price_after_discount")
+	private double priceAfterDiscount;
+	@Column(name = "product_count")
 	
 	@OneToOne(fetch=FetchType.LAZY, cascade={CascadeType.ALL},targetEntity=TransactionOrderAddressOrm.class)
 	@JoinColumn(name="transaction_order_id",nullable=false)
@@ -102,6 +102,46 @@ public class TransactionOrderOrm implements Serializable{
 	public void setModifiedDate(Date modifiedDate) {
 		this.modifiedDate = modifiedDate;
 	}
+	
+	public Collection<TransactionOrderProductListOrm> getProductList() {
+		return productList;
+	}
+	public void setProductList(
+			Collection<TransactionOrderProductListOrm> productList) {
+		this.productList = productList;
+	}
+
+	public TransactionStatusOrm getTransactionStatus() {
+		return transactionStatus;
+	}
+	public void setTransactionStatus(TransactionStatusOrm transactionStatus) {
+		this.transactionStatus = transactionStatus;
+	}
+	public double getTotalPrice() {
+		return totalPrice;
+	}
+	public void setTotalPrice(double totalPrice) {
+		this.totalPrice = totalPrice;
+	}
+	public DiscountTypeOrm getDiscountType() {
+		return discountType;
+	}
+	public void setDiscountType(DiscountTypeOrm discountType) {
+		this.discountType = discountType;
+	}
+	public double getDiscountValue() {
+		return discountValue;
+	}
+	public void setDiscountValue(double discountValue) {
+		this.discountValue = discountValue;
+	}
+	public double getPriceAfterDiscount() {
+		return priceAfterDiscount;
+	}
+	public void setPriceAfterDiscount(double priceAfterDiscount) {
+		this.priceAfterDiscount = priceAfterDiscount;
+	}
+
 	//Common  Fields
 	@ManyToOne
 	@JoinColumn(name="created_by")
