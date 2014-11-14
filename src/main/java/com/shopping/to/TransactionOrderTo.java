@@ -11,10 +11,9 @@ public class TransactionOrderTo {
 	private int discountType;
 	private double discountValue;
 	private double priceAfterDiscount;
+	private int productCount;
 	private TransactionOrderAddressTo address;
-//	
 	private Collection<TransactionOrderProductListTo> productList = new ArrayList<TransactionOrderProductListTo>();
-//
 //	//Common  Fields
 	private int createdBy;
 	private int modifiedBy;
@@ -92,6 +91,12 @@ public class TransactionOrderTo {
 	}
 	public void setPriceAfterDiscount(double priceAfterDiscount) {
 		this.priceAfterDiscount = priceAfterDiscount;
+	}
+	public int getProductCount() {
+		return productCount;
+	}
+	public void setProductCount(int productCount) {
+		this.productCount = productCount;
 	}
 	
 }

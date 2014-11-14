@@ -97,12 +97,7 @@ public class WeightsDaoimpl implements WeightsDao{
 			WeightsOrm weightsOrm = (WeightsOrm) session.createCriteria(WeightsOrm.class).add(Restrictions.eq("id", id)).uniqueResult();
 
 			//Set the Data to the To Object
-			weightsTo=new WeightsTo();
-			weightsTo.setId(weightsOrm.getId());
-			weightsTo.setWeightName(weightsOrm.getWeightName());
-			weightsTo.setUnit(weightsOrm.getUnit().getId());
-			
-			//		discountTypeTo.setStatusMsg(discountTypeOrm.gets);
+			weightsTo = setWeightOrm2To(weightsOrm);
 
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -114,6 +109,40 @@ public class WeightsDaoimpl implements WeightsDao{
 		return weightsTo;
 	}
 
+	
+	public WeightsTo searchByUnit(int unitId) {
+		Session session = null;
+		WeightsTo weightsTo = null;
+		try {
+			//Get Session Factory
+			session = HibernateUtil.getSessionFactory().openSession();
+
+			//Get the record based on ID From DB
+			WeightsOrm weightsOrm = (WeightsOrm) session.createCriteria(WeightsOrm.class).add(Restrictions.eq("unit", unitId)).uniqueResult();
+			System.out.println("weightsOrm"+weightsOrm.getWeightName());
+			//Set the Data to the To Object
+			weightsTo = setWeightOrm2To(weightsOrm);
+
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		finally{
+			session.clear();
+			session.close();
+		}
+		return weightsTo;
+	}
+	
+	
+	public WeightsTo setWeightOrm2To(WeightsOrm weightsOrm){
+		
+		WeightsTo weightsTo = new WeightsTo();
+		weightsTo.setId(weightsOrm.getId());
+		weightsTo.setWeightName(weightsOrm.getWeightName());
+		weightsTo.setUnit(weightsOrm.getUnit().getId());
+		return weightsTo;
+	}
+	
 	public boolean delete(int id) {
 		// TODO Auto-generated method stub
 		return false;

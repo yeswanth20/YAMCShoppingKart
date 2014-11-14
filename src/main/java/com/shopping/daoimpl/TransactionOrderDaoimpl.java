@@ -35,7 +35,7 @@ public class TransactionOrderDaoimpl implements TransactionOrderDao{
 			transactionOrderOrm.setDiscountType(ShoppingCartFactory.getDiscountTypeDao().getDiscountTypeById(transactionOrderTo.getDiscountType()));
 			transactionOrderOrm.setDiscountValue(transactionOrderTo.getDiscountValue());
 			transactionOrderOrm.setPriceAfterDiscount(transactionOrderTo.getPriceAfterDiscount());
-			
+			transactionOrderOrm.setProductCount(transactionOrderTo.getProductCount());
 			transactionOrderOrm.setCreatedBy(ShoppingCartFactory.getUserDao().getUserById(userId));
 			transactionOrderOrm.setCreatedDate(new Date());
 			transactionOrderOrm.setModifiedBy(ShoppingCartFactory.getUserDao().getUserById(userId));
@@ -113,7 +113,7 @@ public class TransactionOrderDaoimpl implements TransactionOrderDao{
 			transactionOrderOrm.setDiscountType(ShoppingCartFactory.getDiscountTypeDao().getDiscountTypeById(transactionOrderTo.getDiscountType()));
 			transactionOrderOrm.setDiscountValue(transactionOrderTo.getDiscountValue());
 			transactionOrderOrm.setPriceAfterDiscount(transactionOrderTo.getPriceAfterDiscount());
-			
+			transactionOrderOrm.setProductCount(transactionOrderTo.getProductCount());
 			transactionOrderOrm.setModifiedBy(ShoppingCartFactory.getUserDao().getUserById(userId));
 			transactionOrderOrm.setModifiedDate(new Date());
 			//Adding Address
@@ -174,44 +174,9 @@ public class TransactionOrderDaoimpl implements TransactionOrderDao{
 			
 			//Get the record based on ID From DB
 			TransactionOrderOrm txnOrderOrm = (TransactionOrderOrm) session.createCriteria(TransactionOrderOrm.class).add(Restrictions.eq("id", id)).uniqueResult();
-			
+			txnOrderTo = this.setTransactionOrderOrm2To(txnOrderOrm);
 			//Set the Data to the To Object
-			txnOrderTo = new TransactionOrderTo();
-			txnOrderTo.setTxnOrderID(txnOrderOrm.getTxnOrderID());
-			txnOrderTo.setTransactionStatus(txnOrderOrm.getTransactionStatus().getId());
-			txnOrderTo.setTotalPrice(txnOrderOrm.getTotalPrice());
-			txnOrderTo.setDiscountType(txnOrderOrm.getDiscountType().getId());
-			txnOrderTo.setDiscountValue(txnOrderOrm.getDiscountValue());
-			txnOrderTo.setPriceAfterDiscount(txnOrderOrm.getPriceAfterDiscount());
 			
-			//Adding Address
-			TransactionOrderAddressTo txnAddressTo = new TransactionOrderAddressTo();
-			TransactionOrderAddressOrm txnOrderAddressOrm = txnOrderOrm.getAddress();
-			txnAddressTo.setName(txnOrderAddressOrm.getName());
-			txnAddressTo.setHouseNumber(txnOrderAddressOrm.getHouseNumber());
-			txnAddressTo.setStreet(txnOrderAddressOrm.getStreet());
-			txnAddressTo.setArea(txnOrderAddressOrm.getArea());
-			txnAddressTo.setLandmark(txnOrderAddressOrm.getLandmark());
-			txnAddressTo.setCity(txnOrderAddressOrm.getCity().getId());
-			txnAddressTo.setPincode(txnAddressTo.getPincode());
-			txnAddressTo.setMobileNumber(txnAddressTo.getMobileNumber());
-			txnAddressTo.setLandlineNumber(txnAddressTo.getLandlineNumber());
-			txnAddressTo.setEmailID(txnAddressTo.getEmailID());
-			txnOrderTo.setAddress(txnAddressTo);
-			
-			TransactionOrderProductListTo productListTo = null;
-			for (TransactionOrderProductListOrm productListOrm : txnOrderOrm.getProductList()){
-				productListTo = new TransactionOrderProductListTo();
-				productListTo.setUnit(productListOrm.getUnit().getId());
-				productListTo.setDiscountType(productListOrm.getDiscountType().getId());
-				productListTo.setDiscountValue(productListOrm.getDiscountValue());
-				productListTo.setPrice(productListOrm.getPrice());
-				productListTo.setQuantity(productListOrm.getQuantity());
-				productListTo.setWeight(productListOrm.getWeight().getId());
-				productListTo.setProduct(productListOrm.getProduct().getId());
-				productListTo.setTransactionOrder(txnOrderTo.getId());
-				txnOrderTo.getProductList().add(productListTo);
-			}
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
@@ -232,7 +197,7 @@ public class TransactionOrderDaoimpl implements TransactionOrderDao{
 			
 			//Get the record based on ID From DB
 			TransactionOrderOrm txnOrderOrm = (TransactionOrderOrm) session.createCriteria(TransactionOrderOrm.class).add(Restrictions.eq("txnOrderID", txnOrderID)).uniqueResult();
-			txnOrderTo = this.searchById(txnOrderOrm.getId());
+			txnOrderTo = this.setTransactionOrderOrm2To(txnOrderOrm);
 			
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -244,7 +209,46 @@ public class TransactionOrderDaoimpl implements TransactionOrderDao{
 		return txnOrderTo;
 	}
 
-	
+	public TransactionOrderTo setTransactionOrderOrm2To(TransactionOrderOrm txnOrderOrm){
+		TransactionOrderTo txnOrderTo = new TransactionOrderTo();
+		txnOrderTo.setTxnOrderID(txnOrderOrm.getTxnOrderID());
+		txnOrderTo.setTransactionStatus(txnOrderOrm.getTransactionStatus().getId());
+		txnOrderTo.setTotalPrice(txnOrderOrm.getTotalPrice());
+		txnOrderTo.setDiscountType(txnOrderOrm.getDiscountType().getId());
+		txnOrderTo.setDiscountValue(txnOrderOrm.getDiscountValue());
+		txnOrderTo.setPriceAfterDiscount(txnOrderOrm.getPriceAfterDiscount());
+		txnOrderTo.setProductCount(txnOrderOrm.getProductCount());
+		//Adding Address
+		TransactionOrderAddressTo txnAddressTo = new TransactionOrderAddressTo();
+		TransactionOrderAddressOrm txnOrderAddressOrm = txnOrderOrm.getAddress();
+		txnAddressTo.setName(txnOrderAddressOrm.getName());
+		txnAddressTo.setHouseNumber(txnOrderAddressOrm.getHouseNumber());
+		txnAddressTo.setStreet(txnOrderAddressOrm.getStreet());
+		txnAddressTo.setArea(txnOrderAddressOrm.getArea());
+		txnAddressTo.setLandmark(txnOrderAddressOrm.getLandmark());
+		txnAddressTo.setCity(txnOrderAddressOrm.getCity().getId());
+		txnAddressTo.setPincode(txnAddressTo.getPincode());
+		txnAddressTo.setMobileNumber(txnAddressTo.getMobileNumber());
+		txnAddressTo.setLandlineNumber(txnAddressTo.getLandlineNumber());
+		txnAddressTo.setEmailID(txnAddressTo.getEmailID());
+		txnOrderTo.setAddress(txnAddressTo);
+		
+		TransactionOrderProductListTo productListTo = null;
+		for (TransactionOrderProductListOrm productListOrm : txnOrderOrm.getProductList()){
+			productListTo = new TransactionOrderProductListTo();
+			productListTo.setUnit(productListOrm.getUnit().getId());
+			productListTo.setDiscountType(productListOrm.getDiscountType().getId());
+			productListTo.setDiscountValue(productListOrm.getDiscountValue());
+			productListTo.setPrice(productListOrm.getPrice());
+			productListTo.setQuantity(productListOrm.getQuantity());
+			productListTo.setWeight(productListOrm.getWeight().getId());
+			productListTo.setProduct(productListOrm.getProduct().getId());
+			productListTo.setTransactionOrder(txnOrderTo.getId());
+			txnOrderTo.getProductList().add(productListTo);
+		}
+		return txnOrderTo;
+		
+	}
 	public Collection<TransactionOrderTo> getAll() {
 		Session session = null;
 		ArrayList<TransactionOrderTo> lstTxnOrderTo = null;
@@ -259,43 +263,7 @@ public class TransactionOrderDaoimpl implements TransactionOrderDao{
 			lstTxnOrderTo = new ArrayList<TransactionOrderTo>();
 			for (TransactionOrderOrm txnOrderOrm : lstTxnOrderOrm) {
 				//Set the Data to the To Object
-				txnOrderTo = new TransactionOrderTo();
-				txnOrderTo.setTxnOrderID(txnOrderOrm.getTxnOrderID());
-				txnOrderTo.setTransactionStatus(txnOrderOrm.getTransactionStatus().getId());
-				txnOrderTo.setTotalPrice(txnOrderOrm.getTotalPrice());
-				txnOrderTo.setDiscountType(txnOrderOrm.getDiscountType().getId());
-				txnOrderTo.setDiscountValue(txnOrderOrm.getDiscountValue());
-				txnOrderTo.setPriceAfterDiscount(txnOrderOrm.getPriceAfterDiscount());
-				
-				//Adding Address
-				TransactionOrderAddressTo txnAddressTo = new TransactionOrderAddressTo();
-				TransactionOrderAddressOrm txnOrderAddressOrm = txnOrderOrm.getAddress();
-				txnAddressTo.setName(txnOrderAddressOrm.getName());
-				txnAddressTo.setHouseNumber(txnOrderAddressOrm.getHouseNumber());
-				txnAddressTo.setStreet(txnOrderAddressOrm.getStreet());
-				txnAddressTo.setArea(txnOrderAddressOrm.getArea());
-				txnAddressTo.setLandmark(txnOrderAddressOrm.getLandmark());
-				txnAddressTo.setCity(txnOrderAddressOrm.getCity().getId());
-				txnAddressTo.setPincode(txnAddressTo.getPincode());
-				txnAddressTo.setMobileNumber(txnAddressTo.getMobileNumber());
-				txnAddressTo.setLandlineNumber(txnAddressTo.getLandlineNumber());
-				txnAddressTo.setEmailID(txnAddressTo.getEmailID());
-				txnOrderTo.setAddress(txnAddressTo);
-				
-				TransactionOrderProductListTo productListTo = null;
-				for (TransactionOrderProductListOrm productListOrm : txnOrderOrm.getProductList()){
-					productListTo = new TransactionOrderProductListTo();
-					productListTo.setUnit(productListOrm.getUnit().getId());
-					productListTo.setDiscountType(productListOrm.getDiscountType().getId());
-					productListTo.setDiscountValue(productListOrm.getDiscountValue());
-					productListTo.setPrice(productListOrm.getPrice());
-					productListTo.setQuantity(productListOrm.getQuantity());
-					productListTo.setWeight(productListOrm.getWeight().getId());
-					productListTo.setProduct(productListOrm.getProduct().getId());
-					productListTo.setTransactionOrder(txnOrderTo.getId());
-					txnOrderTo.getProductList().add(productListTo);
-				}
-
+				txnOrderTo = this.setTransactionOrderOrm2To(txnOrderOrm);
 				//Add the Object to the Array List
 				lstTxnOrderTo.add(txnOrderTo);
 			}

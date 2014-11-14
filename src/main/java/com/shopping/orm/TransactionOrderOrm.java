@@ -46,6 +46,7 @@ public class TransactionOrderOrm implements Serializable{
 	@Column(name = "price_after_discount")
 	private double priceAfterDiscount;
 	@Column(name = "product_count")
+	private int productCount;
 	
 	@OneToOne(fetch=FetchType.LAZY, cascade={CascadeType.ALL},targetEntity=TransactionOrderAddressOrm.class)
 	@JoinColumn(name="transaction_order_id",nullable=false)
@@ -53,7 +54,19 @@ public class TransactionOrderOrm implements Serializable{
 	
 	@OneToMany(fetch=FetchType.LAZY,mappedBy="transactionOrder",cascade={CascadeType.ALL},targetEntity=TransactionOrderProductListOrm.class)
 	private Collection<TransactionOrderProductListOrm> productList = new ArrayList<TransactionOrderProductListOrm>();
-
+	//Common  Fields
+	@ManyToOne
+	@JoinColumn(name="created_by")
+	private UserOrm createdBy;
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name = "created_date")
+	private Date createdDate;
+	@ManyToOne
+	@JoinColumn(name="modified_by")
+	private UserOrm modifiedBy;
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name = "modified_date")
+	private Date modifiedDate;	
 	
 	
 	//	getter& Setters
@@ -141,18 +154,12 @@ public class TransactionOrderOrm implements Serializable{
 	public void setPriceAfterDiscount(double priceAfterDiscount) {
 		this.priceAfterDiscount = priceAfterDiscount;
 	}
+	public int getProductCount() {
+		return productCount;
+	}
+	public void setProductCount(int productCount) {
+		this.productCount = productCount;
+	}
 
-	//Common  Fields
-	@ManyToOne
-	@JoinColumn(name="created_by")
-	private UserOrm createdBy;
-	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name = "created_date")
-	private Date createdDate;
-	@ManyToOne
-	@JoinColumn(name="modified_by")
-	private UserOrm modifiedBy;
-	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name = "modified_date")
-	private Date modifiedDate;	
+
 }
