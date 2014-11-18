@@ -42,31 +42,26 @@
               <select class="form-control" ng-model="productFormData.brand" >
                 <option ng-repeat="brand in brandsList" value="{{brand.id}}">{{brand.brandNameEng}}</option>
               </select>
-              <!-- <select class="form-control">
-                <option>Abc</option>
-                <option>Abc</option>
-                <option>Abc</option>
-              </select> -->
             </div>
         </div>
         <div class="form-group">          
           <div class="col-sm-12">
-            <input type="text" class="form-control" placeholder="English name" ng-model="productFormData.englishName">
+            <input type="text" class="form-control" placeholder="English name" ng-model="productFormData.productNameEng">
           </div>
         </div>
         <div class="form-group">          
           <div class="col-sm-12">
-            <input type="text" class="form-control" placeholder="Telugu name" ng-model="productFormData.teluguName">
+            <input type="text" class="form-control" placeholder="Telugu name" ng-model="productFormData.productNameTel">
           </div>
         </div>
         <div class="form-group">          
           <div class="col-sm-12">
-            <input type="text" class="form-control" placeholder="Hindi name" ng-model="productFormData.hindiName">
+            <input type="text" class="form-control" placeholder="Hindi name" ng-model="productFormData.productNameHindi">
           </div>
         </div>
         <div class="form-group">          
           <div class="col-sm-12">
-            <input type="text" class="form-control" placeholder="Tamil name" ng-model="productFormData.tamilName">
+            <input type="text" class="form-control" placeholder="Tamil name" ng-model="productFormData.productNameTamil">
           </div>
         </div>        
         <div class="form-group">          
@@ -78,31 +73,31 @@
       </form>
     </div>
     <div class="col-md-12">
-      <div class="table-responsive">
+      <div class="table-responsive">{{}}
         <table class="table table-bordered table-hover">
-          <tr ng-repeat="row in unitsRows" id="unitRow{{row}}">
+          <tr ng-repeat="row in productFormData.productUnitDetails" id="unitRow{{row}}">
             <td>
-              <select class="form-control" ng-model="productFormData.unit" >
+              <select class="form-control" ng-model="productFormData.productUnitDetails[$index].unit" ng-change="unitChanged($index)" >
                 <option ng-repeat="unit in unitsList" value="{{unit.id}}">{{unit.unitName}}</option>
               </select>
             </td>
-            <td>
-              <select class="form-control" ng-model="productFormData.weight" >
-                <option ng-repeat="weight in weightsList" ng-show="weight.unit==productFormData.unit" value="{{weight.id}}">
+            <td>              
+              <select class="form-control" ng-model="productFormData.productUnitDetails[$index].weight" >
+                <option ng-repeat="weight in weightsList" ng-show="weight.unit==productFormData.productUnitDetails[$parent.$index].unit" value="{{weight.id}}">
                   {{weight.weightName}}
                 </option>
               </select>
             </td>
             <td>
-              <select class="form-control" ng-model="productFormData.discount">
+              <select class="form-control" ng-model="productFormData.productUnitDetails[$index].discountType">
                 <option ng-repeat="discount in discountsList" value="discount.id">{{discount.discountName}}</option>
               </select>
             </td>
             <td>
-              <input class="form-control">
+              <input class="form-control" ng-model="productFormData.productUnitDetails[$index].discountValue">
             </td>
             <td>
-              <input class="form-control">
+              <input class="form-control" ng-model="productFormData.productUnitDetails[$index].price">
             </td>
             <td class="text-center">  
               <a class="btn btn-danger btn-xs" data-nodrag ng-click="removeUnitRow($index)"><span class="fa fa-minus"></span></a>
@@ -115,7 +110,7 @@
       <button ng-click="addUnitsRows()">Add</button>
     </div>
     <div class="col-md-12 text-center">
-      <button type="submit" class="btn btn-primary">Submit</button>
+      <button type="submit" class="btn btn-primary" ng-click="createProduct()">Submit</button>
       <button type="reset" class="btn btn-default">Reset</button>
     </div>
 </div>

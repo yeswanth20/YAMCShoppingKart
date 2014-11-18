@@ -3,16 +3,21 @@
 		"id" : "1",
 		"weightName" : "Kgs",
 		"value" : "2",
-		"unit" : "10"
+		"unit" : 20
 	},{
 		"id" : "2",
 		"weightName" : "ltr",
 		"value" : "2",
-		"unit" : "20"
+		"unit" : 10
 	},{
 		"id" : "3",
 		"weightName" : "dsjkl",
 		"value" : "2",
-		"unit" : "21"
+		"unit" : 21
+	},{
+		"id" : "3",
+		"weightName" : "dsfdsf",
+		"value" : "2",
+		"unit" : 22
 	}
 ]

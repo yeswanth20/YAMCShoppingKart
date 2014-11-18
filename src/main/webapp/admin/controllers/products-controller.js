@@ -1,10 +1,35 @@
 angular.module("shopApp").controller("productsController",
-	["$scope","categoriesService","unitsService","weightsService","brandsService","discountsService",
-	function($scope,categoriesService,unitsService,weightsService,brandsService,discountsService){
+	["$scope","categoriesService","unitsService","weightsService","brandsService","discountsService","productsService",
+	function($scope,categoriesService,unitsService,weightsService,brandsService,discountsService,productsService){
+
+		/*
+		{ "productNameHindi": "Product HINDI",
+							    "productNameTel": "Product TELUGU",
+							    "productNameTamil": "Product TAMIL",
+							    "brand": 151,
+							    "productNameEng": "Product ENGLISH",
+							    "productUnitDetails": [{
+							                            "unit" : 90,
+							                            "weight": 10,
+							                            "discountType":180,
+							                            "discountValue": 123,
+							                            "price":122
+														},
+														{
+														second child details if present
+														}
+							                          ],
+							    "stockAvailable": true
+							}
+		*/
 
 		$scope.productFormData = {
-			"units" : [],
-			"units" : [],
+			"productNameHindi" : "",
+			"productNameTel" : "",
+			"productNameTamil" : "",
+			"productNameEng" : "",
+			"brand" : "",
+			"productUnitDetails" : []
 		};	
 
 		$scope.initializeCategories = function() {
@@ -72,25 +97,30 @@ angular.module("shopApp").controller("productsController",
 			$scope.discountsList = result;
 		});
 		
-		$scope.unitsRows = [];
-
-		$scope.unitsRows[$scope.unitsRows.length] = {
-			"name" : "Abc"
-		};
-
-		$scope.addUnitsRows = function(){			
-			$scope.unitsRows[$scope.unitsRows.length] = {
-				"name" : "Xyz"
+		$scope.addUnitsRows = function(){
+			$scope.productFormData.productUnitDetails[$scope.productFormData.productUnitDetails.length] = {
+				"unit" : "",
+				"weight" : "",
+				"discountType" : "",
+				"discountValue" : "",
+				"price" : ""
 			};
 		};
+		$scope.addUnitsRows();
 
 		$scope.removeUnitRow = function(id) {
-			$scope.unitsRows.splice(id,1);		
+			$scope.productFormData.productUnitDetails.splice(id,1);		
 		}
 
 		$scope.createProduct = function() {
+			productsService.createProduct($scope.productFormData).then(function(result){
 
+			});
+		};
 
+		$scope.unitChanged = function(unitIndex) {
+
+			$scope.productFormData.productUnitDetails[unitIndex].weight = "";
 
 		};
 
