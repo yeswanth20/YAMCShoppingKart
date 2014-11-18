@@ -1,25 +1,22 @@
 package com.demo.hibernate;
 
-import org.hibernate.Session;
-import org.hibernate.Transaction;
+import java.util.ArrayList;
 
-import com.shopping.hibernate.HibernateUtil;
-import com.shopping.orm.CategoriesOrm;
+import com.shopping.daofactory.ShoppingCartFactory;
+import com.shopping.to.CategoriesTo;
 
 public class categories {
 	
 	public static void main(String[] args) {
-		Session session = HibernateUtil.getSessionFactory().openSession();
 		System.out.println("hiiiiiiiiiiiii");
-		CategoriesOrm e = new CategoriesOrm();
-		e.setCategoryNameEng("Aliiiiiiiiii");
-		CategoriesOrm p = (CategoriesOrm)session.get(CategoriesOrm.class, 14);
-		e.setParentCategory(p);
-		Transaction tx = session.beginTransaction();
-		session.save(e);
-		tx.commit();
-		session.clear();
-		session.close();
+		CategoriesTo categoriesTo = new CategoriesTo();
+		categoriesTo.setCategoryNameEng("Aliiiiiiiiii");
+		
+		ShoppingCartFactory.getCategoriesDao().insert(categoriesTo, 1);
+//		ArrayList<CategoriesTo> lstTos = (ArrayList<CategoriesTo>) ShoppingCartFactory.getCategoriesDao().getAll();
+//		for (CategoriesTo to :lstTos){
+//			System.out.println("-----eng:"+to.getCategoryNameEng());
+//		}
 	}
 
 }
