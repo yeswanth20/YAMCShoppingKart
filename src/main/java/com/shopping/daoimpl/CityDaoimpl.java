@@ -10,6 +10,7 @@ import org.hibernate.Transaction;
 import org.hibernate.criterion.Restrictions;
 
 import com.shopping.dao.CityDao;
+import com.shopping.daofactory.ShoppingCartFactory;
 import com.shopping.hibernate.HibernateUtil;
 import com.shopping.orm.CityOrm;
 import com.shopping.to.CityTo;
@@ -25,9 +26,9 @@ public class CityDaoimpl implements CityDao{
 			//Set the ORM
 			CityOrm cityOrm = new CityOrm();
 			cityOrm.setCityName(cityTo.getCityName());
-			cityOrm.setCreatedBy(new UserDaoimpl().getUserById(userId));
+			cityOrm.setCreatedBy(ShoppingCartFactory.getUserDao().getUserById(userId));
 			cityOrm.setCreatedDate(new Date());
-			cityOrm.setModifiedBy(new UserDaoimpl().getUserById(userId));
+			cityOrm.setModifiedBy(ShoppingCartFactory.getUserDao().getUserById(userId));
 			cityOrm.setModifiedDate(new Date());
 			//Begin transaction & save the object
 			tx = session.beginTransaction();
@@ -59,7 +60,7 @@ public class CityDaoimpl implements CityDao{
 			//Update the ORM
 			CityOrm cityOrm = (CityOrm)session.load(CityOrm.class, new Integer(id));
 			cityOrm.setCityName(cityTo.getCityName());
-			cityOrm.setModifiedBy(new UserDaoimpl().getUserById(userId));
+			cityOrm.setModifiedBy(ShoppingCartFactory.getUserDao().getUserById(userId));
 			cityOrm.setModifiedDate(new Date());
 			
 			//Commit the Transaction
@@ -78,32 +79,32 @@ public class CityDaoimpl implements CityDao{
 		return sendCityTo;
 	}
 
-	public CityTo searchById(int id) {
+	public boolean delete(int id) {
+		boolean result = true;
+		//Get Object
+		CityOrm cityOrm = this.getCityById(id);
 		Session session = null;
-		CityTo cityTo = null;
+		Transaction tx = null;
 		try {
 			//Get Session Factory
 			session = HibernateUtil.getSessionFactory().openSession();
+			//Begin transaction & save the object
+			tx = session.beginTransaction();
+			//Delete the Object
+			session.delete(cityOrm);
+			tx.commit();
 			
-			//Get the record based on ID From DB
-			CityOrm cityOrm=(CityOrm) session.createCriteria(CityOrm.class).add(Restrictions.eq("id", id)).uniqueResult();
-			
-			//Set the Data to the To Object
-			cityTo=new CityTo();
-			cityTo.setId(cityOrm.getId());
-			cityTo.setCityName(cityOrm.getCityName());
 		} catch (Exception e) {
-			// TODO: handle exception
-		}
-		finally{
+			result = false;
+			tx.rollback();
+		} finally{
 			session.clear();
 			session.close();
+			tx = null;
+			cityOrm = null;
 		}
-		return cityTo;
-	}
-
-	public boolean delete(int id) {
-		return false;
+		
+		return result;
 	}
 
 	public Collection<CityTo> getAll() {
@@ -135,6 +136,30 @@ public class CityDaoimpl implements CityDao{
 		}
 		return lstcityTo;
 	}
+
+	public CityTo searchById(int id) {
+		Session session = null;
+		CityTo cityTo = null;
+		try {
+			//Get Session Factory
+			session = HibernateUtil.getSessionFactory().openSession();
+			
+			//Get the record based on ID From DB
+			CityOrm cityOrm = (CityOrm) session.createCriteria(CityOrm.class).add(Restrictions.eq("id", id)).uniqueResult();
+			
+			//Set the Data to the To Object
+			cityTo = new CityTo();
+			cityTo.setId(cityOrm.getId());
+			cityTo.setCityName(cityOrm.getCityName());
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		finally{
+			session.clear();
+			session.close();
+		}
+		return cityTo;
+	}
 	
 	public CityOrm getCityById(int id) {
 		Session session = null;
@@ -144,7 +169,7 @@ public class CityDaoimpl implements CityDao{
 			session = HibernateUtil.getSessionFactory().openSession();
 			
 			//Get the record based on ID From DB
-			cityOrm=(CityOrm) session.createCriteria(CityOrm.class).add(Restrictions.eq("id", id)).uniqueResult();
+			cityOrm = (CityOrm) session.createCriteria(CityOrm.class).add(Restrictions.eq("id", id)).uniqueResult();
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
@@ -154,7 +179,5 @@ public class CityDaoimpl implements CityDao{
 		}
 		return cityOrm;
 	}
-
-
 	
 }
