@@ -80,8 +80,31 @@ public class DiscountTypeDaoimpl implements DiscountTypeDao{
 
 
 	public boolean delete(int id) {
-		// TODO Auto-generated method stub
-		return false;
+		boolean result = true;
+		//Get Object
+		DiscountTypeOrm  discountTypeOrm = this.getDiscountTypeById(id);
+		Session session = null;
+		Transaction tx = null;
+		try {
+			//Get Session Factory
+			session = HibernateUtil.getSessionFactory().openSession();
+			//Begin transaction & save the object
+			tx = session.beginTransaction();
+			//Delete the Object
+			session.delete(discountTypeOrm);
+			tx.commit();
+			
+		} catch (Exception e) {
+			result = false;
+			tx.rollback();
+		} finally{
+			session.clear();
+			session.close();
+			tx = null;
+			discountTypeOrm = null;
+		}
+		
+		return result;
 	}
 
 	public DiscountTypeTo searchById(int id) {

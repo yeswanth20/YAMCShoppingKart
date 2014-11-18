@@ -86,10 +86,10 @@ public class TransactionStatusDaoimpl implements TransactionStatusDao{
 			session = HibernateUtil.getSessionFactory().openSession();
 			
 			//Get the record based on ID From DB
-			TransactionStatusOrm transactionStatusOrm=(TransactionStatusOrm) session.createCriteria(TransactionStatusOrm.class).add(Restrictions.eq("id", id)).uniqueResult();
+			TransactionStatusOrm transactionStatusOrm = (TransactionStatusOrm) session.createCriteria(TransactionStatusOrm.class).add(Restrictions.eq("id", id)).uniqueResult();
 			
 			//Set the Data to the To Object
-			transactionStatusTo=new TransactionStatusTo();
+			transactionStatusTo = new TransactionStatusTo();
 			transactionStatusTo.setId(transactionStatusOrm.getId());
 			transactionStatusTo.setStatusName(transactionStatusOrm.getStatusName());
 		} catch (Exception e) {
@@ -103,7 +103,31 @@ public class TransactionStatusDaoimpl implements TransactionStatusDao{
 	}
 
 	public boolean delete(int id) {
-		return false;
+		boolean result = true;
+		//Get Object
+		TransactionStatusOrm transactionStatusOrm = this.getTransactionStatusById(id);
+		Session session = null;
+		Transaction tx = null;
+		try {
+			//Get Session Factory
+			session = HibernateUtil.getSessionFactory().openSession();
+			//Begin transaction & save the object
+			tx = session.beginTransaction();
+			//Delete the Object
+			session.delete(transactionStatusOrm);
+			tx.commit();
+			
+		} catch (Exception e) {
+			result = false;
+			tx.rollback();
+		} finally{
+			session.clear();
+			session.close();
+			tx = null;
+			transactionStatusOrm = null;
+		}
+		
+		return result;
 	}
 
 	public Collection<TransactionStatusTo> getAll() {

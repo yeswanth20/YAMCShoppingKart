@@ -86,7 +86,7 @@ public class UnitDaoimpl implements UnitsDao{
 			session = HibernateUtil.getSessionFactory().openSession();
 			
 			//Get the record based on ID From DB
-			UnitsOrm unitsOrm=(UnitsOrm) session.createCriteria(UnitsOrm.class).add(Restrictions.eq("id", id)).uniqueResult();
+			UnitsOrm unitsOrm = (UnitsOrm) session.createCriteria(UnitsOrm.class).add(Restrictions.eq("id", id)).uniqueResult();
 			
 			//Set the Data to the To Object
 			unitsTo=new UnitsTo();
@@ -103,7 +103,31 @@ public class UnitDaoimpl implements UnitsDao{
 	}
 
 	public boolean delete(int id) {
-		return false;
+		boolean result = true;
+		//Get Object
+		UnitsOrm unitsOrm = this.getUnitById(id);
+		Session session = null;
+		Transaction tx = null;
+		try {
+			//Get Session Factory
+			session = HibernateUtil.getSessionFactory().openSession();
+			//Begin transaction & save the object
+			tx = session.beginTransaction();
+			//Delete the Object
+			session.delete(unitsOrm);
+			tx.commit();
+			
+		} catch (Exception e) {
+			result = false;
+			tx.rollback();
+		} finally{
+			session.clear();
+			session.close();
+			tx = null;
+			unitsOrm = null;
+		}
+		
+		return result;
 	}
 
 	public Collection<UnitsTo> getAll() {

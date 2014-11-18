@@ -165,8 +165,31 @@ public class UserDaoimpl implements UserDao{
 	}
 
 	public boolean delete(int id) {
-		// TODO Auto-generated method stub
-		return false;
+		boolean result = true;
+		//Get Object
+		UserOrm usersOrm = this.getUserById(id);
+		Session session = null;
+		Transaction tx = null;
+		try {
+			//Get Session Factory
+			session = HibernateUtil.getSessionFactory().openSession();
+			//Begin transaction & save the object
+			tx = session.beginTransaction();
+			//Delete the Object
+			session.delete(usersOrm);
+			tx.commit();
+			
+		} catch (Exception e) {
+			result = false;
+			tx.rollback();
+		} finally{
+			session.clear();
+			session.close();
+			tx = null;
+			usersOrm = null;
+		}
+		
+		return result;
 	}
 
 

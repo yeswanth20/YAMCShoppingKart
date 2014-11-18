@@ -110,22 +110,31 @@ public class BrandDaoimpl implements BrandDao{
 	}
 
 	public boolean delete(int id) {
+		boolean result = true;
+		//Get Object
+		BrandOrm brandOrm = this.getBrandById(id);
 		Session session = null;
-		BrandOrm brandOrm =null;
+		Transaction tx = null;
 		try {
 			//Get Session Factory
 			session = HibernateUtil.getSessionFactory().openSession();
-			brandOrm = (BrandOrm ) session.createCriteria(BrandOrm.class).add(Restrictions.eq("id", id)).uniqueResult();
+			//Begin transaction & save the object
+			tx = session.beginTransaction();
+			//Delete the Object
 			session.delete(brandOrm);
+			tx.commit();
 			
 		} catch (Exception e) {
-			// TODO: handle exception
-		}
-		finally{
+			result = false;
+			tx.rollback();
+		} finally{
 			session.clear();
 			session.close();
+			tx = null;
+			brandOrm = null;
 		}
-		return true;
+		
+		return result;
 	}
 
 	public Collection<BrandTo> getAll() {

@@ -29,7 +29,7 @@ public class TransactionOrderDaoimpl implements TransactionOrderDao{
 			session = HibernateUtil.getSessionFactory().openSession();
 			//Set the ORM
 			TransactionOrderOrm transactionOrderOrm = new TransactionOrderOrm();
-			transactionOrderOrm.setTxnOrderID(transactionOrderTo.getTxnOrderID());
+//			transactionOrderOrm.setTxnOrderID();
 			transactionOrderOrm.setTransactionStatus(ShoppingCartFactory.getTransactionStatusDao().getTransactionStatusById(transactionOrderTo.getTransactionStatus()));
 			transactionOrderOrm.setTotalPrice(transactionOrderTo.getTotalPrice());
 			transactionOrderOrm.setDiscountType(ShoppingCartFactory.getDiscountTypeDao().getDiscountTypeById(transactionOrderTo.getDiscountType()));
@@ -107,7 +107,6 @@ public class TransactionOrderDaoimpl implements TransactionOrderDao{
 			
 			//Update the ORM
 			TransactionOrderOrm transactionOrderOrm = (TransactionOrderOrm)session.load(TransactionOrderOrm.class, new Integer(id));;
-			transactionOrderOrm.setTxnOrderID(transactionOrderTo.getTxnOrderID());
 			transactionOrderOrm.setTransactionStatus(ShoppingCartFactory.getTransactionStatusDao().getTransactionStatusById(transactionOrderTo.getTransactionStatus()));
 			transactionOrderOrm.setTotalPrice(transactionOrderTo.getTotalPrice());
 			transactionOrderOrm.setDiscountType(ShoppingCartFactory.getDiscountTypeDao().getDiscountTypeById(transactionOrderTo.getDiscountType()));
@@ -297,8 +296,31 @@ public class TransactionOrderDaoimpl implements TransactionOrderDao{
 	}
 
 	public boolean delete(int id) {
-		// TODO Auto-generated method stub
-		return false;
+		boolean result = true;
+		//Get Object
+		TransactionOrderOrm transactionOrderOrm = this.getTransactionOrderById(id);
+		Session session = null;
+		Transaction tx = null;
+		try {
+			//Get Session Factory
+			session = HibernateUtil.getSessionFactory().openSession();
+			//Begin transaction & save the object
+			tx = session.beginTransaction();
+			//Delete the Object
+			session.delete(transactionOrderOrm);
+			tx.commit();
+			
+		} catch (Exception e) {
+			result = false;
+			tx.rollback();
+		} finally{
+			session.clear();
+			session.close();
+			tx = null;
+			transactionOrderOrm = null;
+		}
+		
+		return result;
 	}
 
 }
