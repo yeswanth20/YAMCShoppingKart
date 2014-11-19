@@ -1,8 +1,6 @@
 package com.shopping.daoimpl;
 
 
-import java.io.File;
-import java.io.FileInputStream;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
