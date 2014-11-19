@@ -149,6 +149,22 @@ public class ShoppingCartFactory {
 	public static void setScreenUrlDao(ScreenUrlDao screenUrlDao) {
 		ShoppingCartFactory.screenUrlDao = screenUrlDao;
 	}
+
+	public static RoleDao getRoleDao() {
+		return roleDao;
+	}
+
+	public static void setRoleDao(RoleDao roleDao) {
+		ShoppingCartFactory.roleDao = roleDao;
+	}
+
+	public static LanguageDao getLanguageDao() {
+		return languageDao;
+	}
+
+	public static void setLanguageDao(LanguageDao languageDao) {
+		ShoppingCartFactory.languageDao = languageDao;
+	}
 	
 	
 }

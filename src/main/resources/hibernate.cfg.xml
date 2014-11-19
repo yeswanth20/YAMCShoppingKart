@@ -14,6 +14,8 @@
    <!-- <property name ="hibernate.query.factory_class">org.hibernate.hql.classic.ClassicQueryTranslatorFactory</property> -->
       <!-- ORM   -->
       <mapping class="com.shopping.orm.UserOrm"/>
+      <mapping class="com.shopping.orm.RoleOrm"/>
+      <mapping class="com.shopping.orm.LanguageOrm"/>
       <mapping class="com.shopping.orm.UnitsOrm"/>
       <mapping class="com.shopping.orm.WeightsOrm"/>
       <mapping class="com.shopping.orm.CategoriesOrm"/>
