@@ -4,7 +4,9 @@ import com.shopping.dao.BrandDao;
 import com.shopping.dao.CategoriesDao;
 import com.shopping.dao.CityDao;
 import com.shopping.dao.DiscountTypeDao;
+import com.shopping.dao.LanguageDao;
 import com.shopping.dao.ProductDao;
+import com.shopping.dao.RoleDao;
 import com.shopping.dao.ScreenUrlDao;
 import com.shopping.dao.TransactionOrderDao;
 import com.shopping.dao.TransactionStatusDao;
@@ -15,7 +17,9 @@ import com.shopping.daoimpl.BrandDaoimpl;
 import com.shopping.daoimpl.CategoriesDaoimpl;
 import com.shopping.daoimpl.CityDaoimpl;
 import com.shopping.daoimpl.DiscountTypeDaoimpl;
+import com.shopping.daoimpl.LanguageDaoimpl;
 import com.shopping.daoimpl.ProductDaoimpl;
+import com.shopping.daoimpl.RoleDaoimpl;
 import com.shopping.daoimpl.ScreenUrlDaoimpl;
 import com.shopping.daoimpl.TransactionOrderDaoimpl;
 import com.shopping.daoimpl.TransactionStatusDaoimpl;
@@ -36,6 +40,8 @@ public class ShoppingCartFactory {
 	public static TransactionStatusDao transactionStatusDao;
 	public static TransactionOrderDao transactionOrderDao;
 	public static ScreenUrlDao screenUrlDao;
+	public static RoleDao roleDao;
+	public static LanguageDao languageDao;
 	static{
 		userDao = new UserDaoimpl();
 		brandDao = new BrandDaoimpl();
@@ -48,6 +54,8 @@ public class ShoppingCartFactory {
 		transactionStatusDao = new TransactionStatusDaoimpl();
 		transactionOrderDao = new TransactionOrderDaoimpl();
 		screenUrlDao = new ScreenUrlDaoimpl();
+		roleDao = new RoleDaoimpl();
+		languageDao = new LanguageDaoimpl();
 	}
 
 	
