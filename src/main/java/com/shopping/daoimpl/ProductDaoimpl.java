@@ -32,9 +32,9 @@ public class ProductDaoimpl implements ProductDao{
 			productOrm.setProductNameTel(productTo.getProductNameTel());
 			productOrm.setStockAvailable(productTo.isStockAvailable());
 			productOrm.setBrand(new BrandDaoimpl().getBrandById(productTo.getBrand()));
-			productOrm.setCreatedBy(productTo.getCreatedBy());
+			productOrm.setCreatedBy(new UserDaoimpl().getUserById(userId));
 			productOrm.setCreatedDate(new Date());
-			productOrm.setModifiedBy(productTo.getModifiedBy());
+			productOrm.setModifiedBy(new UserDaoimpl().getUserById(userId));
 			productOrm.setModifiedDate(new Date());
 			productOrm.setProductImage(productTo.getProductImage());
 			ProductUnitDetailsOrm productUnitDetailsOrm = null;
@@ -89,9 +89,9 @@ public class ProductDaoimpl implements ProductDao{
 			productOrm.setProductNameTel(productTo.getProductNameTel());
 			productOrm.setStockAvailable(productTo.isStockAvailable());
 			productOrm.setBrand(new BrandDaoimpl().getBrandById(productTo.getBrand()));
-			productOrm.setCreatedBy(productTo.getCreatedBy());
+			productOrm.setCreatedBy(new UserDaoimpl().getUserById(userId));
 			productOrm.setCreatedDate(new Date());
-			productOrm.setModifiedBy(productTo.getModifiedBy());
+			productOrm.setModifiedBy(new UserDaoimpl().getUserById(userId));
 			productOrm.setModifiedDate(new Date());
 			//		session.save(productOrm);
 			//		sproductOrm.setProductImage(productTo.getProductImage());

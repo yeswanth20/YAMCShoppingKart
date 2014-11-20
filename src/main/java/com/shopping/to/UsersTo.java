@@ -1,15 +1,10 @@
 package com.shopping.to;
 
-import com.shopping.orm.UserOrm;
 
 public class UsersTo {
 	private int id;
 	private String userName;
 	private String password;
-
-	//Common  Fields
-	private UserOrm createdBy;
-	private UserOrm modifiedBy;
 	
 //	Getters & Setters
 	
@@ -30,17 +25,5 @@ public class UsersTo {
 	}
 	public void setUserName(String userName) {
 		this.userName = userName;
-	}
-	public UserOrm getCreatedBy() {
-		return createdBy;
-	}
-	public void setCreatedBy(UserOrm createdBy) {
-		this.createdBy = createdBy;
-	}
-	public UserOrm getModifiedBy() {
-		return modifiedBy;
-	}
-	public void setModifiedBy(UserOrm modifiedBy) {
-		this.modifiedBy = modifiedBy;
 	}
 }

@@ -1,7 +1,5 @@
 package com.shopping.action;
 
-import java.io.File;
-import java.io.FileInputStream;
 import java.util.ArrayList;
 import java.util.Collection;
 
@@ -31,8 +29,6 @@ public class Product {
 		ProductTo productTo = new ProductTo();
 
 		productTo.setProductNameEng("productNameEng");
-		productTo.setCreatedBy(new UserOrm().getCreatedBy());
-		productTo.setModifiedBy(new UserOrm().getModifiedBy());
 		productTo.setStockAvailable(true);
 		return productTo;
 	}

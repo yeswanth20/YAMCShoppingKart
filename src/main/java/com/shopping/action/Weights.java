@@ -114,6 +114,24 @@ public class Weights {
 			return Response.status(403).entity(error).build();
 		}
 	}
+
+	// WEIGHT SEARCH BY UNIT ID
+	@POST
+	@Produces(MediaType.APPLICATION_JSON)
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Path("/searchByUnitId")
+	public Response searchWeightByUnit(WeightsTo weightsTo,
+			@Context HttpServletRequest request) {
+		try {
+			weightsTo = ShoppingCartFactory.getWeightsDao().searchById(
+					weightsTo.getUnit());
+			return Response.status(201).entity(weightsTo).build();
+		} catch (Exception e) {
+			e.printStackTrace();
+			String error = "Unable to Find Record";
+			return Response.status(403).entity(error).build();
+		}
+	}
 	
 	// WEIGHT DELETE
 	@POST

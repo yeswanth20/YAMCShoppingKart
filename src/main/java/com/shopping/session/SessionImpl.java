@@ -9,7 +9,6 @@ public class SessionImpl implements ServletContextListener,
 		HttpSessionListener, ServletRequestListener {
 	Map<String, String> sessionDeatilsMap = new HashMap<String, String>();
 	ServletContext objServletContext;
-	ServletRequestEvent sre;
 	ServletRequest requestParam;
 
 	public SessionImpl() {
@@ -26,8 +25,7 @@ public class SessionImpl implements ServletContextListener,
 
 	public void sessionCreated(HttpSessionEvent hse) {
 		HttpSession session = hse.getSession();
-		sessionDeatilsMap.put(session.getId(),
-				requestParam.getAttribute("userId").toString());
+		sessionDeatilsMap.put(session.getId(),requestParam.getAttribute("userId").toString());
 	}
 
 	public void sessionDestroyed(HttpSessionEvent hse) {

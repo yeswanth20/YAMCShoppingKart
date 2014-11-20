@@ -3,8 +3,6 @@ package com.shopping.to;
 import java.util.ArrayList;
 import java.util.Collection;
 
-import com.shopping.orm.UserOrm;
-
 
 public class ProductTo {
 	private int id;
@@ -18,13 +16,7 @@ public class ProductTo {
 	private byte[] productImage;
 	
 //	private byte[] productImage;
-	
 	private Collection<ProductUnitDetailsTo> productUnitDetails = new ArrayList<ProductUnitDetailsTo>();
-
-	//Common  Fields
-	private UserOrm createdBy;
-	private UserOrm modifiedBy;
-	
 	
 	//	Getter & Setters
 	public int getId() {
@@ -76,23 +68,11 @@ public class ProductTo {
 	public void setProductImage(byte[] productImage) {
 		this.productImage = productImage;
 	}
-	public UserOrm getCreatedBy() {
-		return createdBy;
-	}
 	public int getBrand() {
 		return brand;
 	}
 	public void setBrand(int brand) {
 		this.brand = brand;
-	}
-	public void setCreatedBy(UserOrm createdBy) {
-		this.createdBy = createdBy;
-	}
-	public UserOrm getModifiedBy() {
-		return modifiedBy;
-	}
-	public void setModifiedBy(UserOrm modifiedBy) {
-		this.modifiedBy = modifiedBy;
 	}
 	public String getProductAutoGenId() {
 		return productAutoGenId;
