@@ -113,9 +113,16 @@ angular.module("shopApp").controller("productsController",
 		}
 
 		$scope.createProduct = function() {
-			productsService.createProduct($scope.productFormData).then(function(result){
+			var fileObj = new FileReader();
+            fileObj.onload = function()
+            {
+                //xhr.send("file1=" + fileObj.result); //Send to server
+                $scope.productFormData.productImage = fileObj.result;
+				productsService.createProduct($scope.productFormData).then(function(result){
 
-			});
+				});
+            }
+            fileObj.readAsDataURL(document.getElementById("productImageUpload").files[0]);
 		};
 
 		$scope.unitChanged = function(unitIndex) {
