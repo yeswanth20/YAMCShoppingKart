@@ -14,16 +14,21 @@ angular.module("shopApp").service("productsService",
 			}).success(function(response){
 			    deferred.resolve(response);
 			}).error(function(error){
-			    deferred.reject(response);
+			    deferred.reject(error);
 			});
+			
+  			return deferred.promise;
+		};
 
-			/*$http.post(,request)
-			.success(function(data,status,headers,config) {
+		this.getProducts = function(){
+			var deferred = $q.defer();
+			$http.post(serviceCallBaseUrl+"productService/getAll")
+			.success(function(data, status, headers, config) {				
 				deferred.resolve(data);
 			}).
   			error(function(data, status, headers, config) {
 				deferred.reject(data);
-  			});*/
+  			});
   			return deferred.promise;
 		};
 

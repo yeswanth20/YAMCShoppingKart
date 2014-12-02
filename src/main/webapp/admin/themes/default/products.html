@@ -3,7 +3,7 @@
 <!-- Nested node template -->
 <script type="text/ng-template" id="nodes_renderer.html">
   <div ui-tree-handle class="tree-node tree-node-content">    
-    <input type="radio" name="productCategory" ng-model="productFormData.productCategory">
+    <input type="radio" name="productCategory" ng-model="productFormData.productCategory" value="{{node.id}}">
     {{node.name}}    
   </div>
   <ol ui-tree-nodes="" ng-model="node.nodes" ng-class="{hidden: collapsed}">
@@ -11,106 +11,130 @@
     </li>
   </ol>
 </script>
-<div class="row">
-  <!-- <div class="col-md-6">
-    <div ui-tree>
-      <ol ui-tree-nodes="" ng-model="data" id="tree-root">
-        <li ng-repeat="node in data" ui-tree-node ng-include="'nodes_renderer.html'"></li>
-      </ol>
-    </div>
-  </div>   -->
-  <!-- <form role="form"> -->
-    <div class="col-md-6">
-      <form class="form-horizontal" role="form">
-        <div class="form-group">
-            <div class="col-md-12 categoriesProductsWrapper">
-              <div class="categoriesFormDiv">
-                <div ui-tree data-drag-enabled=false>
-                  <ol ui-tree-nodes="" ng-model="categoriesList" id="tree-root">
-                    <li ng-repeat="node in categoriesList" ui-tree-node ng-include="'nodes_renderer.html'"></li>
-                  </ol>
+<div class="col-md-12">
+  <button class="btn btn-primary" ng-click="productsFormShowFlag=true" ng-show="!productsFormShowFlag">Add product</button>
+  <div class="row" ng-show="productsFormShowFlag">
+    <!-- <form role="form"> -->
+      <div class="col-md-6">
+        <form class="form-horizontal" role="form">
+          <div class="form-group">
+              <div class="col-md-12 categoriesProductsWrapper">
+                <div class="categoriesFormDiv">
+                  <div ui-tree data-drag-enabled=false>
+                    <ol ui-tree-nodes="" ng-model="categoriesList" id="tree-root">
+                      <li ng-repeat="node in categoriesList" ui-tree-node ng-include="'nodes_renderer.html'"></li>
+                    </ol>
+                  </div>
                 </div>
               </div>
-            </div>
-        </div>
-      </form>
-    </div>
-    <div class="col-md-6">
-      <form class="form-horizontal" role="form">
-        <div class="form-group">
-            <div class="col-md-12">
-              <select class="form-control" ng-model="productFormData.brand" >
-                <option ng-repeat="brand in brandsList" value="{{brand.id}}">{{brand.brandNameEng}}</option>
-              </select>
-            </div>
-        </div>
-        <div class="form-group">          
-          <div class="col-sm-12">
-            <input type="text" class="form-control" placeholder="English name" ng-model="productFormData.productNameEng">
           </div>
-        </div>
-        <div class="form-group">          
-          <div class="col-sm-12">
-            <input type="text" class="form-control" placeholder="Telugu name" ng-model="productFormData.productNameTel">
-          </div>
-        </div>
-        <div class="form-group">          
-          <div class="col-sm-12">
-            <input type="text" class="form-control" placeholder="Hindi name" ng-model="productFormData.productNameHindi">
-          </div>
-        </div>
-        <div class="form-group">          
-          <div class="col-sm-12">
-            <input type="text" class="form-control" placeholder="Tamil name" ng-model="productFormData.productNameTamil">
-          </div>
-        </div>        
-        <div class="form-group">          
-          <div class="col-md-12">
-            <input type="file" class="form-control" id="productImageUpload" placeholder="Image" ng-model="productFormData.image">
-          </div>
-            <!-- <p class="help-block">Example block-level help text here.</p> -->
-        </div>
-      </form>
-    </div>
-    <div class="col-md-12">
-      <div class="table-responsive">{{}}
-        <table class="table table-bordered table-hover">
-          <tr ng-repeat="row in productFormData.productUnitDetails" id="unitRow{{row}}">
-            <td>
-              <select class="form-control" ng-model="productFormData.productUnitDetails[$index].unit" ng-change="unitChanged($index)" >
-                <option ng-repeat="unit in unitsList" value="{{unit.id}}">{{unit.unitName}}</option>
-              </select>
-            </td>
-            <td>              
-              <select class="form-control" ng-model="productFormData.productUnitDetails[$index].weight" >
-                <option ng-repeat="weight in weightsList" ng-show="weight.unit==productFormData.productUnitDetails[$parent.$index].unit" value="{{weight.id}}">
-                  {{weight.weightName}}
-                </option>
-              </select>
-            </td>
-            <td>
-              <select class="form-control" ng-model="productFormData.productUnitDetails[$index].discountType">
-                <option ng-repeat="discount in discountsList" value="discount.id">{{discount.discountName}}</option>
-              </select>
-            </td>
-            <td>
-              <input class="form-control" ng-model="productFormData.productUnitDetails[$index].discountValue">
-            </td>
-            <td>
-              <input class="form-control" ng-model="productFormData.productUnitDetails[$index].price">
-            </td>
-            <td class="text-center">  
-              <a class="btn btn-danger btn-xs" data-nodrag ng-click="removeUnitRow($index)"><span class="fa fa-minus"></span></a>
-            </td>
-          </tr>
-        </table>
+        </form>
       </div>
-    </div>
-    <div class="col-md-12 text-right">
-      <button ng-click="addUnitsRows()">Add</button>
-    </div>
-    <div class="col-md-12 text-center">
-      <button type="submit" class="btn btn-primary" ng-click="createProduct()">Submit</button>
-      <button type="reset" class="btn btn-default">Reset</button>
-    </div>
+      <div class="col-md-6">
+        <form class="form-horizontal" role="form">
+          <div class="form-group">
+              <div class="col-md-12">
+                <select class="form-control" ng-model="productFormData.brand" >
+                  <option ng-repeat="brand in brandsList" value="{{brand.id}}">{{brand.brandNameEng}}</option>
+                </select>
+              </div>
+          </div>
+          <div class="form-group">          
+            <div class="col-sm-12">
+              <input type="text" class="form-control" placeholder="English name" ng-model="productFormData.productNameEng">
+            </div>
+          </div>
+          <div class="form-group">          
+            <div class="col-sm-12">
+              <input type="text" class="form-control" placeholder="Telugu name" ng-model="productFormData.productNameTel">
+            </div>
+          </div>
+          <div class="form-group">          
+            <div class="col-sm-12">
+              <input type="text" class="form-control" placeholder="Hindi name" ng-model="productFormData.productNameHindi">
+            </div>
+          </div>
+          <div class="form-group">          
+            <div class="col-sm-12">
+              <input type="text" class="form-control" placeholder="Tamil name" ng-model="productFormData.productNameTamil">
+            </div>
+          </div>        
+          <div class="form-group">          
+            <div class="col-md-12">
+              <input type="file" class="form-control" id="productImageUpload" placeholder="Image" ng-model="productFormData.image">
+            </div>
+              <!-- <p class="help-block">Example block-level help text here.</p> -->
+          </div>
+        </form>
+      </div>
+      <div class="col-md-12">
+        <div class="table-responsive">
+          <table class="table table-bordered table-hover">
+            <tr ng-repeat="row in productFormData.productUnitDetails" id="unitRow{{row}}">
+              <td>
+                <select class="form-control" ng-model="productFormData.productUnitDetails[$index].unit" ng-change="unitChanged($index)" >
+                  <option ng-repeat="unit in unitsList" value="{{unit.id}}">{{unit.unitName}}</option>
+                </select>
+              </td>
+              <td>              
+                <select class="form-control" ng-model="productFormData.productUnitDetails[$index].weight" >
+                  <option ng-repeat="weight in weightsList" ng-show="weight.unit==productFormData.productUnitDetails[$parent.$index].unit" value="{{weight.id}}">
+                    {{weight.weightName}}
+                  </option>
+                </select>
+              </td>
+              <td>
+                <select class="form-control" ng-model="productFormData.productUnitDetails[$index].discountType">
+                  <option ng-repeat="discount in discountsList" value="{{discount.id}}">{{discount.discountName}}</option>
+                </select>
+              </td>
+              <td>
+                <input class="form-control" ng-model="productFormData.productUnitDetails[$index].discountValue">
+              </td>
+              <td>
+                <input class="form-control" ng-model="productFormData.productUnitDetails[$index].price">
+              </td>
+              <td class="text-center">  
+                <a class="btn btn-danger btn-xs" data-nodrag ng-click="removeUnitRow($index)"><span class="fa fa-minus"></span></a>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <div class="col-md-12 text-right">
+        <button ng-click="addUnitsRows()">Add</button>
+      </div>
+      <div class="col-md-12 text-center">
+        <button type="submit" class="btn btn-primary" ng-click="createProduct()">Submit</button>
+        <button type="reset" class="btn btn-default">Reset</button>
+      </div>
+  </div>
+</div>
+<div class="col-md-12 categoriesTreeDiv" ng-show="!productsFormShowFlag">
+  <table  class="table table-bordered table-hover">
+    <thead>
+      <tr>
+          <th class="col-md-1">S.No</th>
+          <th>English Name</th>                     
+          <th>Hindi Name</th>                     
+          <th>Telugu Name</th>                      
+          <th>Tamil Name</th>                     
+          <th class="col-md-2">Actions</th>                     
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="product in productsList">
+        <td ng-bind="$index+1">        
+        </td>
+        <td ng-bind="product.productNameEng"></td>
+        <td ng-bind="product.productNameTel"></td>
+        <td ng-bind="product.productNameHindi"></td>
+        <td ng-bind="product.productNameTamil"></td>
+        <td>
+          <a class="btn btn-primary btn-xs" ng-click="editProduct(product.id)"><span class="fa fa-edit"></span></a>
+          <a class="btn btn-danger btn-xs" ng-click="deleteProduct(product.id)"><span class="fa fa-minus"></span></a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
 </div>

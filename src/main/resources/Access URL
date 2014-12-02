@@ -130,7 +130,7 @@ PRODUCT
 														second child details if present
 														}
 							                          ],
-							    "stockAvailable": true
+							    "stockAvailable": treu
 							}
 4. GETALL	--> http://localhost:8080/Shopping/rest/productService/getAll
 
