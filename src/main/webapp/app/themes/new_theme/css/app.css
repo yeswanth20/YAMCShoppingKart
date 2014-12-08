@@ -1,0 +1,12 @@
+.Menu_list{
+	width:200px;
+	position: absolute;
+	left: 5px;
+	z-index: 1;
+}
+.Container_area{
+	padding-left: 210px;
+}
+.add_tocart_button{
+	margin-top: 10px;
+}
