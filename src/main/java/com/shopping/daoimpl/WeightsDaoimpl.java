@@ -27,6 +27,7 @@ public class WeightsDaoimpl implements WeightsDao{
 			WeightsOrm weightsOrm = new WeightsOrm();
 			weightsOrm.setId(weightsTo.getId());
 			weightsOrm.setWeightName(weightsTo.getWeightName());
+			weightsOrm.setWeightValue(weightsTo.getWeightValue());
 			weightsOrm.setUnit(new UnitDaoimpl().getUnitById(weightsTo.getUnit()));
 			weightsOrm.setCreatedBy(new UserDaoimpl().getUserById(userId));
 			weightsOrm.setCreatedDate(new Date());
@@ -65,6 +66,7 @@ public class WeightsDaoimpl implements WeightsDao{
 			WeightsOrm  weightsOrm = (WeightsOrm)session.load(WeightsOrm.class, new Integer(id));
 
 			weightsOrm.setWeightName(weightsTo.getWeightName());
+			weightsOrm.setWeightValue(weightsTo.getWeightValue());
 			weightsOrm.setUnit(new UnitDaoimpl().getUnitById(weightsTo.getUnit()));
 			weightsOrm.setModifiedBy(new UserDaoimpl().getUserById(userId));
 			weightsOrm.setModifiedDate(new Date());
@@ -150,6 +152,7 @@ public class WeightsDaoimpl implements WeightsDao{
 		WeightsTo weightsTo = new WeightsTo();
 		weightsTo.setId(weightsOrm.getId());
 		weightsTo.setWeightName(weightsOrm.getWeightName());
+		weightsTo.setWeightValue(weightsOrm.getWeightValue());
 		weightsTo.setUnit(weightsOrm.getUnit().getId());
 		return weightsTo;
 	}

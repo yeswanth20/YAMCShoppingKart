@@ -11,6 +11,7 @@ public class Weights {
 
 		WeightsTo weightsTo = new WeightsTo();
 		weightsTo.setWeightName("Aliiiiiiiiii");
+		weightsTo.setWeightValue(10.5);
 	
 //		UnitsOrm u = (UnitsOrm)session.get(UnitsOrm.class, 1);
 //		weightsTo.setUnit(u);

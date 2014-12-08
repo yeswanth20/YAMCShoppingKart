@@ -24,6 +24,8 @@ public class WeightsOrm implements Serializable{
 	private int id;
 	@Column(name = "weight_name")
 	private String weightName;
+	@Column(name="weight_value")
+	private double weightValue;
 	@ManyToOne
 	@JoinColumn(name="unit_id")
 	private UnitsOrm unit;
@@ -54,6 +56,12 @@ public class WeightsOrm implements Serializable{
 	}
 	public void setWeightName(String weightName) {
 		this.weightName = weightName;
+	}
+	public double getWeightValue() {
+		return weightValue;
+	}
+	public void setWeightValue(double weightValue) {
+		this.weightValue = weightValue;
 	}
 	public UnitsOrm getUnit() {
 		return unit;

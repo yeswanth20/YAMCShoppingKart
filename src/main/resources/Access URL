@@ -18,9 +18,9 @@ WEIGHTS
 =======
 1. GET		--> http://localhost:8080/Shopping/rest/weightService/get
 2. INSERT	--> http://localhost:8080/Shopping/rest/weightService/insert
-				JSON DATA --> {"weightName":"WEIGHT","unit":10}
+				JSON DATA --> {"weightName":"WEIGHT","unit":10,"weightValue":10.5}
 3. UPDATE 	--> http://localhost:8080/Shopping/rest/weightService/update
-				JSON DATA --> {"weightName":"WEIGHT","unit":10,"id":1}
+				JSON DATA --> {"weightName":"WEIGHT","unit":10,"weightValue":10.5,"id":1}
 4. GETALL	--> http://localhost:8080/Shopping/rest/weightService/getAll
 
 5. SEARCH	--> http://localhost:8080/Shopping/rest/weightService/search

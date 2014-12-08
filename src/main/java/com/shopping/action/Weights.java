@@ -27,6 +27,7 @@ public class Weights {
 
 		WeightsTo weightsTo = new WeightsTo();
 		weightsTo.setWeightName("weightName");
+		weightsTo.setWeightValue(10.5f);
 		weightsTo.setUnit(12);
 		return weightsTo;
 	}

@@ -3,6 +3,7 @@ package com.shopping.to;
 public class WeightsTo {
 	private int id;
 	private String weightName;
+	private double weightValue;
 	private int unit;
 	
 	//	getter& Setters
@@ -12,6 +13,12 @@ public class WeightsTo {
 	}
 	public void setId(int id) {
 		this.id = id;
+	}
+	public double getWeightValue() {
+		return weightValue;
+	}
+	public void setWeightValue(double weightValue) {
+		this.weightValue = weightValue;
 	}
 	public String getWeightName() {
 		return weightName;
