@@ -23,6 +23,8 @@ angular.module("shopApp").controller("productsController",
 							}
 		*/
 
+		$scope.productsFormShowFlag = false;
+
 		$scope.productFormData = {
 			"productNameHindi" : "",
 			"productNameTel" : "",
@@ -30,7 +32,9 @@ angular.module("shopApp").controller("productsController",
 			"productNameEng" : "",
 			"brand" : "",
 			"productUnitDetails" : []
-		};	
+		};
+
+		$scope.productsList = [];
 
 		$scope.initializeCategories = function() {
 			var finalCategoriesList = [];
@@ -96,6 +100,10 @@ angular.module("shopApp").controller("productsController",
 		discountsService.getDiscounts().then(function(result){
 			$scope.discountsList = result;
 		});
+
+		productsService.getProducts().then(function(result){
+			$scope.productsList = result;
+		});
 		
 		$scope.addUnitsRows = function(){
 			$scope.productFormData.productUnitDetails[$scope.productFormData.productUnitDetails.length] = {
@@ -113,16 +121,47 @@ angular.module("shopApp").controller("productsController",
 		}
 
 		$scope.createProduct = function() {
+			if(document.getElementById("productImageUpload").files.length!=0)
+			{
+				var fileObj = new FileReader();
+	            fileObj.onload = function()
+	            {
+	                //xhr.send("file1=" + fileObj.result); //Send to server
+	                $scope.productFormData.productImage = fileObj.result;
+					$scope.submitProduct();
+	            }
+	            fileObj.readAsDataURL(document.getElementById("productImageUpload").files[0]);
+	        }
+	        else {
+	        	$scope.submitProduct();
+	        }
+		};
+
+		$scope.submitProduct = function() {
 			productsService.createProduct($scope.productFormData).then(function(result){
 
 			});
-		};
+		}
 
 		$scope.unitChanged = function(unitIndex) {
 
 			$scope.productFormData.productUnitDetails[unitIndex].weight = "";
 
 		};
+
+		$scope.editProduct = function(productId) {
+			var tempProduct = _.where($scope.productsList,function(rw){
+				return rw.id == productId;
+			});
+			console.log(tempProduct);
+			if(tempProduct.length>0) {
+				console.log(tempProduct[0]);
+				$scope.productFormData = tempProduct[0];
+				console.log($scope.productFormData);
+				$scope.productsFormShowFlag = true;
+				$scope.productsFormEditFlag = true;
+			}		
+		}
 
 	}
 ]);

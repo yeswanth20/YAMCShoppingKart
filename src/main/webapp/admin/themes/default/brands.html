@@ -3,7 +3,7 @@
 
 
 	<div class="col-md-12">
-		<button class="btn btn-primary" ng-click="brandsFormShowFlag=true">Add brand</button>
+		<button class="btn btn-primary" ng-click="brandsFormShowFlag=true" ng-show="!brandsFormShowFlag">Add brand</button>
 		<form role="form"  ng-show="brandsFormShowFlag">
 	        <h4> Add a brand</h4>
 	        <div class="form-group">	            

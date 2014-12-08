@@ -1,4 +1,4 @@
-var themeBasePath = 'themes/default';
+var themeBasePath = 'themes/centered';
 
 angular.module("shopApp",
     ['ui.router','ui.tree']).

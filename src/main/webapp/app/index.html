@@ -4,12 +4,11 @@
 		<title>Shop</title>	
 		<meta charset="UTF-8">
 		<link rel="stylesheet" type="text/css" href="../assets/public/css/bootstrap.css">
-		<link rel="stylesheet" type="text/css" href="../assets/public/css/sb-admin.css">
 	    <link rel="stylesheet" type="text/css" href="../assets/public/css/font-awesome.css" rel="stylesheet" type="text/css">
 		<link rel="stylesheet" type="text/css" href="../assets/public/css/ng-tags-input.css">
 		<link rel="stylesheet" type="text/css" href="../assets/public/css/angular-ui-tree.min.css">
 		
-		<link rel="stylesheet" type="text/css" href="themes/default/app.css">
+		<link rel="stylesheet" type="text/css" href="themes/centered/app.css">
 	</head>
 	<body>
 		<div class="container-fluid spinner_block" ng-class="{true: 'spinerActive', false: 'spinerInactive'}[spinerisActive]">
@@ -36,12 +35,8 @@
 		</div>
 
 		<div id="wrapper">
-			<div header></div>
-			<div id="page-wrapper">
-            	<div class="container-fluid workarea">
-					<div ui-view></div>
-				</div>
-			</div>
+			<div header></div>			
+			<div ui-view></div>
 		</div>		
 
 		<!--vendor files -->

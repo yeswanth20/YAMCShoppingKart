@@ -3,8 +3,27 @@ angular.module("shopApp").service("productsService",
 
 		this.createProduct = function(request){
 			var deferred = $q.defer();
-			$http.post(serviceCallBaseUrl+"productService/insert",request)
-			.success(function(data,status,headers,config) {
+
+			$http({
+			    url: serviceCallBaseUrl+"productService/insert",			    
+			    method: "POST",
+			    data: request,
+			    headers: {
+			        "Content-Type": "application/x-www-form-urlencoded"
+			    }
+			}).success(function(response){
+			    deferred.resolve(response);
+			}).error(function(error){
+			    deferred.reject(error);
+			});
+			
+  			return deferred.promise;
+		};
+
+		this.getProducts = function(){
+			var deferred = $q.defer();
+			$http.post(serviceCallBaseUrl+"productService/getAll")
+			.success(function(data, status, headers, config) {				
 				deferred.resolve(data);
 			}).
   			error(function(data, status, headers, config) {
