@@ -19,6 +19,9 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.hibernate.annotations.Type;
+
+
 @Entity
 @Table(name = "Product")
 public class ProductOrm {
@@ -43,6 +46,7 @@ public class ProductOrm {
 	@JoinColumn(name="brand_id")
 	private BrandOrm brand;
 	@Lob
+	@Type(type="org.hibernate.type.BinaryType")
 	@Column(columnDefinition="bytea")
 	private byte[] productImage;
 	
