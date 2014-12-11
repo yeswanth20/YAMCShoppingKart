@@ -1,5 +1,8 @@
 package com.shopping.action;
 
+import java.util.ArrayList;
+import java.util.Collection;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.ws.rs.Consumes;
@@ -11,6 +14,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import com.shopping.daofactory.ShoppingCartFactory;
+import com.shopping.to.ProductTo;
 import com.shopping.to.UsersTo;
 
 @Path("/accessService")
@@ -29,9 +33,19 @@ public class AuthService {
 				request.setAttribute("userId", userId);
 				HttpSession httpsession = request.getSession();
 				httpsession.setAttribute("ipaddress", request.getRemoteHost());
-				return Response.status(201).entity("sucess"+userId).build();
+				
+				Collection<ProductTo> productTo = new ArrayList<ProductTo>();
+				int pageNumber=1;
+				int pageSize=10;
+				productTo = ShoppingCartFactory.getProductDao().getAll(pageNumber, pageSize);
+				return Response.status(201).entity(productTo).build();
 			}
-			else{
+//				return Response.status(201).entity("sucess"+userId).build();
+//				servletResponse.sendRedirect("http://localhost:8080/MySite/pages/Create_Profile.html");			}
+				
+//				URI uri = uriInfo.getBaseUriBuilder().path("../user.html").build();
+//				return Response.seeOther(uri).build();
+				else{
 				return Response.status(201).entity("Invalid Login").build();
 			}
 		} catch (Exception e) {
