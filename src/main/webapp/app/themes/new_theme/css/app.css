@@ -24,3 +24,6 @@ body{
 .Search_box{
 	margin-top: 8px;
 }
+.navbar-static-top-brand{
+	margin-bottom: 0px;
+}
