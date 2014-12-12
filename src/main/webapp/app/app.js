@@ -1,59 +1,34 @@
-var themeBasePath = 'themes/centered';
+var themeBasePath = 'themes/new_theme';
 
 angular.module("shopApp",
     ['ui.router','ui.tree']).
     config(["$stateProvider","$urlRouterProvider",
         function($stateProvider,$urlRouterProvider){    
 
-        $stateProvider.state('dashboard', {
-            url: "/dashboard",
+        /*
+            homepage
+            cart page
+            login page
+            myaccounts
+            product view
+            order confirmation            
+        */
+
+        $stateProvider.state('home', {
+            url: "/home",
             templateUrl: themeBasePath+'/home.html',
             data : {
-                action : "dashboard",
+                action : "home",
             }
-        })
-        .state('categories', {
-            url: '/categories',
-            templateUrl: themeBasePath+'/categories.html',
-            controller : "categoriesController",
-            data:{
-                action : "categories",
+        }).state('cart', {
+            url: "/cart",
+            templateUrl: themeBasePath+'/cart.html',
+            data : {
+                action : "cart",
             }
-        })
-        .state('brands', {
-            url: '/brands',
-            templateUrl: themeBasePath+'/brands.html',
-            data:{
-                action : "brands",
-            }
-        }).state('units', {
-            url: '/units',
-            templateUrl: themeBasePath+'/units.html',
-            data:{
-                action : "units",
-            }
-        }).state('weights', {
-            url: '/weights',
-            templateUrl: themeBasePath+'/weights.html',
-            data:{
-                action : "weights",
-            }
-        }).state('products', {
-            url: '/products',
-            templateUrl: themeBasePath+'/products.html',
-            controller : "productsController",
-            data:{
-                action : "products",
-            }
-        }).state('discounts', {
-            url: '/discounts',
-            templateUrl: themeBasePath+'/discounts.html',
-            data:{
-                action : "discounts",
-            }
-        })
+        })        
 
-        $urlRouterProvider.otherwise("dashboard");
+        $urlRouterProvider.otherwise("home");
 
     }
 ]);
