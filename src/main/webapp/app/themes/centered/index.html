@@ -102,14 +102,14 @@
 					    </a>
 					    {{node.name}}{{node.id}}
 					  </div>
-					  <ol ui-tree-nodes="" ng-model="node.nodes" ng-class="{hidden: collapsed}">
-					    <li ng-repeat="node in node.nodes" ui-tree-node ng-include="'nodes_renderer.html'">
+					  <ol ui-tree-nodes="" ng-model="node.nodes" ng-class="{hidden: collapsed}" class="list-group">
+					    <li ng-repeat="node in node.nodes" ui-tree-node ng-include="'nodes_renderer.html'" class="list-group-item">
 					    </li>
 					  </ol>
 					</script>
 					<div ui-tree data-drag-enabled=false>
-				      <ol ui-tree-nodes="" ng-model="categoriesList" id="tree-root">
-				        <li ng-repeat="node in categoriesList" ui-tree-node ng-include="'nodes_renderer.html'"></li>       
+				      <ol ui-tree-nodes="" ng-model="categoriesList" id="tree-root" class="list-group">
+				        <li ng-repeat="node in categoriesList" ui-tree-node ng-include="'nodes_renderer.html'" class="list-group-item"></li>       
 				      </ol>
 				    </div>
 					<!-- <ul class="nav navbar-nav side-nav leftBarMenu">

@@ -2,6 +2,7 @@ var themeBasePath = 'themes/new_theme';
 
 angular.module("shopApp",
     ['ui.router','ui.tree']).
+    value("serviceCallBaseUrl","../admin/data/json/").
     config(["$stateProvider","$urlRouterProvider",
         function($stateProvider,$urlRouterProvider){    
 
@@ -16,7 +17,7 @@ angular.module("shopApp",
 
         $stateProvider.state('home', {
             url: "/home",
-            templateUrl: themeBasePath+'/home.html',
+            templateUrl: themeBasePath+'/home.html',            
             data : {
                 action : "home",
             }

@@ -27,7 +27,7 @@
 
 </head>
 
-<body>
+<body ng-controller="homeController">
 
     <!-- Navigation -->
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -85,12 +85,26 @@
             <div class="Menu_list">
                 <p class="lead text-center">Shopping Cart</p>
                 <p class="text-center"><span class="glyphicon-class glyphicon glyphicon-shopping-cart"></span>2 Item/Rs 200</p>
-                <ul class="list-group">
+				<script type="text/ng-template" id="nodes_renderer.html">
+				  <div ui-tree-handle class="tree-node tree-node-content">
+				    <a data-nodrag ng-click="toggle(this)">
+				    	<span class="glyphicon" ng-class="{'glyphicon-chevron-up': collapsed, 'glyphicon-chevron-down': !collapsed}"></span>
+				    </a>
+				    {{node.name}}{{node.id}}
+				  </div>
+				  <ol ui-tree-nodes="" ng-model="node.nodes" ng-class="{hidden: collapsed}" class="list-group">
+				    <li ng-repeat="node in node.nodes" ui-tree-node ng-include="'nodes_renderer.html'" class="list-group-item">
+				    </li>
+				  </ol>
+				</script>
+				<div ui-tree data-drag-enabled=false>
+			      <ol ui-tree-nodes="" ng-model="categoriesList" id="tree-root" class="list-group">
+			        <li ng-repeat="node in categoriesList" ui-tree-node ng-include="'nodes_renderer.html'" class="list-group-item"></li>       
+			      </ol>
+			    </div>
+                <!-- <ul class="list-group">
                     <li><a href="#" class="list-group-item">Category 1</a></li>
-                    <a href="#" class="list-group-item">Category 2</a>
-                    <a href="#" class="list-group-item">Category 3</a>
-                
-                <li class="list-group-item">
+                    <li class="list-group-item">
                         <a href="javascript:;" data-toggle="collapse" data-target="#demo" class="collapsed" aria-expanded="false"><i class="fa fa-fw fa-arrows-v"></i> Dropdown <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul  id="demo" class="collapse list-group" aria-expanded="false" style="height: 0px;">
                             <li >
@@ -101,7 +115,7 @@
                             </li>
                         </ul>
                     </li>
-                </ul>
+                </ul> -->
             </div>
 
             <div class="col-md-12 Container_area">
@@ -148,6 +162,8 @@
 
     <!-- app scripts -->
     <script src="app.js"></script>
+    <script src="controllers/home-controller.js"></script>
+    <script src="services/home-service.js"></script>
 
 </body>
 
