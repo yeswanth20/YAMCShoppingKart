@@ -29,8 +29,15 @@ angular.module("shopApp").controller("brandsController",
 			if($scope.brandsFormData.brandNameEng.trim()=="") {
 				alert("Please enter brand name");
 				return false;
-			}			
-			brandsService.createBrand($scope.brandsFormData).then(function(result){
+			}
+			var brandsFormData ={
+					"brandNameEng" : $scope.brandsFormData.brandNameEng,
+					"brandNameHindi" : $scope.brandsFormData.brandNameHindi,
+					"brandNameTel" : $scope.brandsFormData.brandNameTel,
+					"brandNameTamil" : $scope.brandsFormData.brandNameTamil,
+				};
+			
+			brandsService.createBrand(brandsFormData).then(function(result){
 				alert("Brand created successfully");
 				$scope.resetBrandsFormData();
 				$scope.initializeBrands();

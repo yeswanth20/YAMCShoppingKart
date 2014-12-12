@@ -8,9 +8,6 @@ angular.module("shopApp").service("productsService",
 			    url: serviceCallBaseUrl+"productService/insert",			    
 			    method: "POST",
 			    data: request,
-			    headers: {
-			        "Content-Type": "application/x-www-form-urlencoded"
-			    }
 			}).success(function(response){
 			    deferred.resolve(response);
 			}).error(function(error){

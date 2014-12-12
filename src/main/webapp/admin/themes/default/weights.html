@@ -12,7 +12,7 @@
 	        </div>
 	        <div class="form-group">
 	            <label>Value</label>
-	            <input class="form-control" ng-model="weightsFormData.value">
+	            <input class="form-control" ng-model="weightsFormData.weightValue">
 	            <!-- <p class="help-block">Example block-level help text here.</p> -->
 	        </div>
 	        <div class="form-group">
@@ -45,7 +45,7 @@
 	            	<tr ng-repeat="weight in weightsList">
 	            		<td ng-bind="$index+1"></td>
 	            		<td ng-bind="weight.weightName"></td>
-	            		<td ng-bind="weight.value"></td>
+	            		<td ng-bind="weight.weightValue"></td>
 	            		<td ng-bind="unitsList[weight.unit].unitName"></td>
 	            		<td>
     						<a class="btn btn-primary btn-xs" ng-click="editWeight(weight.id)"><span class="fa fa-edit"></span></a>

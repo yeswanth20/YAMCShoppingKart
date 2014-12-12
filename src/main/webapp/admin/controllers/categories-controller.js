@@ -8,8 +8,8 @@ angular.module("shopApp").controller("categoriesController",
 
 		$scope.resetCategoryFormData = function(){			
 			$scope.categoryFormData = {
-				parentCategory : "",
-				rootCategory : "",
+				parentCategory : 0,
+				rootCategory : 0,
 				categoryNameEng : "",
 				categoryNameTel : "",
 				categoryNameHindi : "",
@@ -31,7 +31,7 @@ angular.module("shopApp").controller("categoriesController",
 				}
 
 				var rootCateogies  = _.where(categoriesList, function(rw){
-					return rw.id == rw.parentCategory;
+					return rw.parentCategory == 0;
 				});
 
 				for(var rootIndex in rootCateogies) {
@@ -124,6 +124,9 @@ angular.module("shopApp").controller("categoriesController",
 		$scope.updateCategory = function() {
 			categoriesService.updateCategory($scope.categoryFormData).then(function(result){
 				alert("Category updated successfully");
+				$scope.initializeCategories();
+				$scope.showCategoryFormFlag = false;
+				$scope.resetCategoryFormData();
 			});
 		}
 

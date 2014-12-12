@@ -24,10 +24,14 @@ angular.module("shopApp").controller("discountsController",
 
 		$scope.createDiscount = function() {
 			if($scope.discountsFormData.discountName.trim()=="") {
+				
 				alert("Please enter disount name");
 				return false;
-			}			
-			discountsService.createDiscount($scope.discountsFormData).then(function(result){
+			}	
+			var discountsFormData = {
+					"discountName" : $scope.discountsFormData.discountName,
+			}
+			discountsService.createDiscount(discountsFormData).then(function(result){
 				alert("Discount created successfully");
 				$scope.resetDiscountsFormData();
 				$scope.initializeDiscounts();

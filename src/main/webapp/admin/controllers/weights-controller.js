@@ -10,7 +10,7 @@ angular.module("shopApp").controller("weightsController",
 		$scope.resetWeightsFormData = function() {			
 			$scope.weightsFormData = {
 				"weightName" : "",
-				"value" : "",
+				"weightValue" : "",
 				"unit" : "",
 				"id" : ""
 			}
@@ -36,7 +36,7 @@ angular.module("shopApp").controller("weightsController",
 				alert("Please enter weight name");
 				return false;
 			}
-			if($scope.weightsFormData.value.trim()=="") {
+			if($scope.weightsFormData.weightValue.trim()=="") {
 				alert("Please enter a value");
 				return false;
 			}
@@ -49,7 +49,12 @@ angular.module("shopApp").controller("weightsController",
 
 		$scope.createWeight = function() {
 			if($scope.validateWeight()) {
-				weightsService.createWeight($scope.weightsFormData).then(function(result){
+				var weightsFormData = {
+						"weightName" : $scope.weightsFormData.weightName,
+						"weightValue" : $scope.weightsFormData.weightValue,
+						"unit" : $scope.weightsFormData.unit					
+					};
+				weightsService.createWeight(weightsFormData).then(function(result){
 					alert("Weight created successfully");
 					$scope.resetWeightsFormData();
 					$scope.initializeWeights();
