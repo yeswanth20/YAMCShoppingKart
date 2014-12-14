@@ -53,5 +53,19 @@ angular.module("shopApp").controller("homeController",
 
 		$scope.initializeCategories();		
 
+		homeService.getUnits().then(function(result){
+			$scope.unitsList = result;
+			homeService.getWeights().then(function(weights){
+				$scope.weightsList = weights;
+				homeService.getProducts().then(function(products){
+					$scope.productsList = products;
+				});
+			});
+		});
+
+		$scope.addToCart = function(id) {
+			
+		};
+
 	}
 ]);
