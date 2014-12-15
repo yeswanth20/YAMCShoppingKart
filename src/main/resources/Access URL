@@ -226,4 +226,12 @@ SCREEN URLS
 				
 3. GETALL	--> http://localhost:8080/Shopping/rest/screenUrlService/getAll
 
-		
+List of URLS to store
+=====================
+/Shopping/rest/accessService/login
+/Shopping/rest/accessService/logout
+/Shopping/rest/unitService/insert
+/Shopping/rest/unitService/update
+/Shopping/rest/unitService/getAll
+/Shopping/rest/unitService/search
+/Shopping/rest/unitService/delete		
