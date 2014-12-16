@@ -3,12 +3,15 @@ package com.shopping.orm;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -25,6 +28,30 @@ public class UserOrm implements Serializable{
 	private String userName;
 	@Column(name="password")
 	private String password;
+	
+	@Column(name="mobile")
+	private String mobile;
+	@Column(name="email_id")
+	private String emailId;
+	@Column(name="is_active")
+	private boolean isActive;
+	@Column(name="ordered_count")
+	private String orderedCount;
+	@Column(name="total_txn_amt")
+	private String totalTxnAmt;
+	@Column(name="role_id")
+	private RoleOrm role;
+	@Column(name="lang_id")
+	private LanguageOrm langId;
+	@Column(name="last_login_date")
+	private Date lastLoginDate;
+	@Column(name="last_login_ip")
+	private String lastLoginIp;
+	
+	@OneToOne(fetch=FetchType.LAZY, cascade={CascadeType.ALL},targetEntity=UserAddressOrm.class)
+	@JoinColumn(name="user_id",nullable=false)
+	private UserAddressOrm address = new UserAddressOrm();
+	
 
 	//Common  Fields
 	@ManyToOne
@@ -57,6 +84,62 @@ public class UserOrm implements Serializable{
 	}
 	public void setUserName(String userName) {
 		this.userName = userName;
+	}
+	
+	
+	public String getMobile() {
+		return mobile;
+	}
+	public void setMobile(String mobile) {
+		this.mobile = mobile;
+	}
+	public String getEmailId() {
+		return emailId;
+	}
+	public void setEmailId(String emailId) {
+		this.emailId = emailId;
+	}
+	public boolean isActive() {
+		return isActive;
+	}
+	public void setActive(boolean isActive) {
+		this.isActive = isActive;
+	}
+	public String getOrderedCount() {
+		return orderedCount;
+	}
+	public void setOrderedCount(String orderedCount) {
+		this.orderedCount = orderedCount;
+	}
+	public String getTotalTxnAmt() {
+		return totalTxnAmt;
+	}
+	public void setTotalTxnAmt(String totalTxnAmt) {
+		this.totalTxnAmt = totalTxnAmt;
+	}
+	public RoleOrm getRole() {
+		return role;
+	}
+	public void setRole(RoleOrm role) {
+		this.role = role;
+	}
+	public LanguageOrm getLangId() {
+		return langId;
+	}
+	public void setLangId(LanguageOrm langId) {
+		this.langId = langId;
+	}
+	public Date getLastLoginDate() {
+		return lastLoginDate;
+	}
+	public void setLastLoginDate(Date lastLoginDate) {
+		this.lastLoginDate = lastLoginDate;
+	}
+	public String getLastLoginIp() {
+		return lastLoginIp;
+	}
+	public void setLastLoginIp(String lastLoginIp) {
+		this.lastLoginIp = lastLoginIp;
 	}
 	public UserOrm getCreatedBy() {
 		return createdBy;
