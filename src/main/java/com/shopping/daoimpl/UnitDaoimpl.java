@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
 
+import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.criterion.Restrictions;
@@ -180,6 +181,36 @@ public class UnitDaoimpl implements UnitsDao{
 			session.close();
 		}
 		return unitsOrm;
+	}
+
+	public ArrayList<UnitsTo> searchByUnitName(String unitName, int pageNumber, int pageSize) {
+		Session session = null;
+		ArrayList<UnitsOrm> unitsOrm =null;
+		ArrayList<UnitsTo> unitsTos=new ArrayList<UnitsTo>();
+		try {
+			//Get Session Factory
+			session = HibernateUtil.getSessionFactory().openSession();
+
+			//Get the record based on ID From DB
+			Criteria criteria=session.createCriteria(UnitsOrm.class);
+			criteria.setFirstResult((pageNumber-1)*pageSize);
+			criteria.setMaxResults(pageSize);
+			unitsOrm= (ArrayList<UnitsOrm>) criteria.add(Restrictions.like("unitName", unitName)).list();
+			for(UnitsOrm objUnitOrm:unitsOrm){
+				UnitsTo unitsTo=new UnitsTo();
+				unitsTo.setConversionValue(objUnitOrm.getConversionValue());
+				unitsTo.setUnitName(objUnitOrm.getUnitName());
+				unitsTos.add(unitsTo);
+				unitsTo=null;
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		finally{
+			session.clear();
+			session.close();
+		}
+		return unitsTos;
 	}
 
 }

@@ -1,5 +1,6 @@
 package com.shopping.dao;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 import com.shopping.orm.UnitsOrm;
@@ -11,5 +12,6 @@ public interface UnitsDao {
 	public UnitsTo searchById(int id);
 	public Collection<UnitsTo> getAll();
 	public UnitsOrm getUnitById(int id);
+	public ArrayList<UnitsTo> searchByUnitName(String unitName,int pageNumber,int pageSize);
 	public boolean delete(int id);
 }

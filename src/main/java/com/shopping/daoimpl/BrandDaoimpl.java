@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
 
+import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.criterion.Restrictions;
@@ -188,5 +189,38 @@ public class BrandDaoimpl implements BrandDao{
 			session.close();
 		}
 		return brandOrm;
+	}
+
+	public Collection<BrandTo> searchByName(String brnadName,int pageNumber,int pageSize) {
+		Session session = null;
+		ArrayList<BrandOrm> brandOrm =null;
+		Collection<BrandTo> brandOrmsto=new ArrayList<BrandTo>();
+		try {
+			//Get Session Factory
+			session = HibernateUtil.getSessionFactory().openSession();
+
+			//Get the record based on ID From DB
+			Criteria  criteria=session.createCriteria(BrandOrm.class);
+			criteria.setFirstResult((pageNumber - 1) * pageSize);
+			criteria.setMaxResults(pageSize);
+			brandOrm =  (ArrayList<BrandOrm>) criteria.add(Restrictions.like("brandNameEng", brnadName)).list();
+			for(BrandOrm brandormlist:brandOrm){
+				BrandTo brandTo=new BrandTo();
+				brandTo.setBrandNameEng(brandormlist.getBrandNameEng());
+				brandTo.setBrandNameHindi(brandormlist.getBrandNameHindi());
+				brandTo.setBrandNameTamil(brandormlist.getBrandNameTamil());
+				brandTo.setBrandNameTel(brandormlist.getBrandNameTel());
+				brandOrmsto.add(brandTo);
+				brandTo=null;
+			}
+
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		finally{
+			session.clear();
+			session.close();
+		}
+		return brandOrmsto;
 	}
 }

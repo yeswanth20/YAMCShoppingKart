@@ -11,6 +11,7 @@ public interface BrandDao {
 	public BrandTo searchById(int id);
 	public Collection<BrandTo> getAll();
 	public BrandOrm getBrandById(int id);
+	public Collection<BrandTo> searchByName(String brnadName,int pageNumber,int pageSize);
 	public boolean delete(int id);
 
 }
