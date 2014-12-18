@@ -48,9 +48,32 @@ public class UserOrm implements Serializable{
 	@Column(name="last_login_ip")
 	private String lastLoginIp;
 	
-	@OneToOne(fetch=FetchType.LAZY, cascade={CascadeType.ALL},targetEntity=UserAddressOrm.class)
-	@JoinColumn(name="user_id",nullable=false)
-	private UserAddressOrm address = new UserAddressOrm();
+	@Column(name = "house_number")
+	private String houseNumber;
+	
+	@Column(name = "street")
+	private String street;
+	
+	@Column(name = "area")
+	private String area;
+	
+	@Column(name = "landmark")
+	private String landmark;
+	
+	@ManyToOne
+	@JoinColumn(name="city")
+	private CityOrm city;
+	
+	@Column(name = "pincode")
+	private long pincode;
+	
+	
+	@Column(name = "landline_number")
+	private long landlineNumber;
+	
+//	@OneToOne(fetch=FetchType.LAZY, cascade={CascadeType.ALL},targetEntity=UserAddressOrm.class)
+//	@JoinColumn(name="user_id",nullable=false)
+//	private UserAddressOrm address = new UserAddressOrm();
 	
 
 	//Common  Fields
@@ -141,6 +164,57 @@ public class UserOrm implements Serializable{
 	public void setLastLoginIp(String lastLoginIp) {
 		this.lastLoginIp = lastLoginIp;
 	}
+	
+
+	public String getHouseNumber() {
+		return houseNumber;
+	}
+	public void setHouseNumber(String houseNumber) {
+		this.houseNumber = houseNumber;
+	}
+	public String getStreet() {
+		return street;
+	}
+	public void setStreet(String street) {
+		this.street = street;
+	}
+	public String getArea() {
+		return area;
+	}
+	public void setArea(String area) {
+		this.area = area;
+	}
+	public String getLandmark() {
+		return landmark;
+	}
+	public void setLandmark(String landmark) {
+		this.landmark = landmark;
+	}
+	public CityOrm getCity() {
+		return city;
+	}
+	public void setCity(CityOrm city) {
+		this.city = city;
+	}
+	public long getPincode() {
+		return pincode;
+	}
+	public void setPincode(long pincode) {
+		this.pincode = pincode;
+	}
+	public long getLandlineNumber() {
+		return landlineNumber;
+	}
+	public void setLandlineNumber(long landlineNumber) {
+		this.landlineNumber = landlineNumber;
+	}	
+	
+//	public UserAddressOrm getAddress() {
+//		return address;
+//	}
+//	public void setAddress(UserAddressOrm address) {
+//		this.address = address;
+//	}
 	public UserOrm getCreatedBy() {
 		return createdBy;
 	}
