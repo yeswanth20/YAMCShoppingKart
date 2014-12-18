@@ -4,14 +4,17 @@
 "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
 <session-factory>
-   <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
-   <property name="connection.url">jdbc:postgresql://localhost:5432/hibernatedb</property>
-   <property name="hibernate.connection.username">postgres</property>
-   <property name="hibernate.connection.password">postgres</property>
-   <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
+<!--    <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
+   <property name="connection.url">jdbc:postgresql://localhost:5432/hibernatedb</property> -->
+   <property name="hibernate.connection.username"></property>
+   <property name="hibernate.connection.password"></property>
+<!--    <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property> -->
+   <property name="dialect">com.shopping.hibernate.service.SQLiteDialect</property>
+   <property name="connection.driver_class">org.sqlite.JDBC</property>
+   <property name="connection.url">jdbc:sqlite:/home/pradeep/Desktop/shopping.db</property>
    <property name="hibernate.show_sql">true</property>
    <property name="hibernate.hbm2ddl.auto">update</property>
-   <!-- <property name ="hibernate.query.factory_class">org.hibernate.hql.classic.ClassicQueryTranslatorFactory</property> -->
+   <property name ="hibernate.query.factory_class">org.hibernate.hql.classic.ClassicQueryTranslatorFactory</property>
       <!-- ORM   -->
       <mapping class="com.shopping.orm.UserOrm"/>
       <mapping class="com.shopping.orm.RoleOrm"/>
@@ -28,9 +31,7 @@
       <mapping class="com.shopping.orm.ScreensUrlOrm"/>
       <mapping class="com.shopping.orm.TransactionOrderOrm"/>
       <mapping class="com.shopping.orm.TransactionOrderAddressOrm"/>
-      <mapping class="com.shopping.orm.TransactionOrderProductListOrm"/>
-      
-      
+      <mapping class="com.shopping.orm.TransactionOrderProductListOrm"/>   
       
 </session-factory>
 </hibernate-configuration>

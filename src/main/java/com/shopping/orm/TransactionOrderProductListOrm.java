@@ -19,7 +19,8 @@ import javax.persistence.TemporalType;
 @Table(name = "Transaction_Order_Product_List")
 public class TransactionOrderProductListOrm implements Serializable{
 	private static final long serialVersionUID = 6545382071005355023L;
-	@Id @GeneratedValue(strategy = GenerationType.AUTO)
+	@Id 
+//	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "id")
 	private int id;
 	@ManyToOne

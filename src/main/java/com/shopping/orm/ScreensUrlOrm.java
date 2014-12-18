@@ -10,7 +10,7 @@ import javax.persistence.Table;
 @Table(name="ScreensUrl")
 public class ScreensUrlOrm {
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+//	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int id;
 	private String screenName;
 	private String screenUrl;

@@ -19,7 +19,8 @@ import javax.persistence.TemporalType;
 public class ProductUnitDetailsOrm {
 
 //	private static final long serialVersionUID = -3337209157496770017L;
-	@Id @GeneratedValue(strategy = GenerationType.AUTO)
+	@Id 
+//	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "id")
 	private int id;
 	@ManyToOne

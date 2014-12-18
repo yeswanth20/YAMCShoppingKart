@@ -19,7 +19,8 @@ import javax.persistence.TemporalType;
 public class WeightsOrm implements Serializable{
 
 	private static final long serialVersionUID = -2311520133124657188L;
-	@Id @GeneratedValue(strategy = GenerationType.AUTO)
+	@Id 
+//	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "id")
 	private int id;
 	@Column(name = "weight_name")

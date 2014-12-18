@@ -28,7 +28,8 @@ public class TransactionOrderOrm implements Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = 2885102041112910386L;
-	@Id @GeneratedValue(strategy = GenerationType.AUTO)
+	@Id 
+//	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "id")
 	private int id;
 	@Column(name = "Txn_order_id")

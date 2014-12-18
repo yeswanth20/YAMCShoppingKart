@@ -19,7 +19,8 @@ import javax.persistence.TemporalType;
 public class UserAddressOrm implements Serializable{
 
 	private static final long serialVersionUID = 2309252268746118613L;
-	@Id @GeneratedValue(strategy = GenerationType.AUTO)
+	@Id 
+//	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "id")
 	private int id;
 	

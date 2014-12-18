@@ -18,7 +18,8 @@ import javax.persistence.TemporalType;
 public class CategoriesOrm implements Serializable{
 
 	private static final long serialVersionUID = -1932242021588311605L;
-	@Id @GeneratedValue
+	@Id 
+//	@GeneratedValue
 	private int id;
 	@Column(name = "category_name_eng")
 	private String categoryNameEng;

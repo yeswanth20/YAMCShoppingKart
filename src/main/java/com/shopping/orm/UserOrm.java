@@ -22,7 +22,7 @@ public class UserOrm implements Serializable{
 
 	private static final long serialVersionUID = -7523667360259054616L;
 	@Id
-	@GeneratedValue
+//	@GeneratedValue
 	private int id;
 	@Column(name = "user_name")
 	private String userName;

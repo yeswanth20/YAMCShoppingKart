@@ -19,7 +19,8 @@ import javax.persistence.TemporalType;
 public class BrandOrm implements Serializable{
 
 	private static final long serialVersionUID = 8413936688211630043L;
-	@Id @GeneratedValue(strategy = GenerationType.SEQUENCE)
+	@Id 
+//	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	@Column(name = "id")
 	private int id;
 	@Column(name = "brand_name_eng")

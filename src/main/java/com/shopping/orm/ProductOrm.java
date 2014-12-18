@@ -27,7 +27,8 @@ import org.hibernate.annotations.Type;
 public class ProductOrm {
 	
 //	private static final long serialVersionUID = -4696406355094112769L;
-	@Id @GeneratedValue(strategy = GenerationType.AUTO)
+	@Id 
+//	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "id")
 	private int id;
 	@Column(name = "product_auto_gen_id")

@@ -18,7 +18,8 @@ import javax.persistence.TemporalType;
 @Table(name = "Units")
 public class UnitsOrm implements Serializable{
 	private static final long serialVersionUID = 8631961939663219113L;
-	@Id @GeneratedValue(strategy = GenerationType.SEQUENCE)
+	@Id 
+//	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	@Column(name = "id")
 	private int id;
 	@Column(name = "unit_name", unique = true)
