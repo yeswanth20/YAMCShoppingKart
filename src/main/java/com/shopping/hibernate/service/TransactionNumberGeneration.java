@@ -2,6 +2,7 @@ package com.shopping.hibernate.service;
 
 import java.util.Calendar;
 
+import org.apache.commons.lang3.StringUtils;
 import org.hibernate.Session;
 import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.MatchMode;
@@ -22,14 +23,19 @@ public class TransactionNumberGeneration {
 		Integer hour=date.get(Calendar.HOUR);
 		Integer minute=date.get(Calendar.MINUTE);
 		Integer second=date.get(Calendar.SECOND);
+		if(userid.toString().length()!=4){
+			int repeatedNumberOfTimes=4-userid.toString().length();
+			String repeateCharacter="0";
+			return year.toString().substring(2,4)+CurrentDayOfYear.toString()+hour.toString()+minute.toString()+second.toString()+userid.toString()+StringUtils.repeat(repeateCharacter, repeatedNumberOfTimes);
+		}
 		return year.toString().substring(2,4)+CurrentDayOfYear.toString()+hour.toString()+minute.toString()+second.toString()+userid.toString();
 	}
 
 
 	public String getPerviousnumber(Integer userid){
 		DetachedCriteria maxidoftheinvoicenumber = DetachedCriteria.forClass(TransactionOrderOrm.class)
-				.setProjection( Property.forName("id").max() )
-				.add(Restrictions.like("txnOrderID", this.getCurrentYearDayTime(userid),MatchMode.START));
+				.setProjection( Property.forName("id").max());
+//				.add(Restrictions.like("txnOrderID", this.getCurrentYearDayTime(userid),MatchMode.START));
 
 		Session session =  HibernateUtil.getSessionFactory().openSession();
 
@@ -38,7 +44,7 @@ public class TransactionNumberGeneration {
 					.add( Property.forName("id").eq(maxidoftheinvoicenumber) )
 					.setProjection(Projections.property("txnOrderID"))
 					.uniqueResult().toString();
-			Integer generatedNumber=Integer.parseInt(previousInvoiceNumber.substring(4, previousInvoiceNumber.length()))+1;
+			Integer generatedNumber=Integer.parseInt(previousInvoiceNumber.substring(14, previousInvoiceNumber.length()))+1;
 			
 			return this.getCurrentYearDayTime(userid)+generatedNumber.toString();
 			

@@ -18,10 +18,13 @@ import com.shopping.to.BrandTo;
 public class BrandDaoimpl implements BrandDao{
 	
 	public BrandTo insert(BrandTo brandTo, int userId) {
+		System.out.println("========================================");
 		Session session = null;
 		Transaction tx = null;
 		try {
+			System.out.println("----------------------------");
 			session = HibernateUtil.getSessionFactory().openSession();
+			System.out.println("/////////////////////////////");
 			BrandOrm brandOrm = new BrandOrm();
 			brandOrm.setBrandNameEng(brandTo.getBrandNameEng());
 			brandOrm.setBrandNameHindi(brandTo.getBrandNameHindi());
