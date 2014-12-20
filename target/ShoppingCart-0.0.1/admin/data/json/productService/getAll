@@ -1,0 +1,21 @@
+[
+	{
+		"productNameHindi": "Product HINDI",
+	    "productNameTel": "Product TELUGU",
+	    "productNameTamil": "Product TAMIL",
+	    "brand": 1,
+	    "productCategory":2,
+	    "productNameEng": "Product ENGLISH",
+		"productUnitDetails":
+		[
+			{
+		        "unit" : 10,
+		        "weight": 2,
+		        "discountType":1,
+		        "discountValue": 123,
+		        "price":122
+			}
+		],
+		"stockAvailable": true
+	}
+]

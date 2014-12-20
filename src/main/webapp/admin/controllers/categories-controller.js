@@ -79,6 +79,7 @@ angular.module("shopApp").controller("categoriesController",
 				
 				categoriesService.createCategory($scope.categoryFormData).then(function(result){
 					alert("Category added successfully");
+					location.reload();
 					$scope.initializeCategories();
 					$scope.showCategoryFormFlag = false;
 					$scope.resetCategoryFormData();
@@ -124,6 +125,7 @@ angular.module("shopApp").controller("categoriesController",
 		$scope.updateCategory = function() {
 			categoriesService.updateCategory($scope.categoryFormData).then(function(result){
 				alert("Category updated successfully");
+				location.reload();
 				$scope.initializeCategories();
 				$scope.showCategoryFormFlag = false;
 				$scope.resetCategoryFormData();
@@ -135,6 +137,7 @@ angular.module("shopApp").controller("categoriesController",
 				var deleteRequest = {"id":id};
 				categoriesService.deleteCategory(deleteRequest).then(function(result){
 					alert("Category deleted successfully");
+					location.reload();
 					$scope.initializeCategories();
 				});
 			}

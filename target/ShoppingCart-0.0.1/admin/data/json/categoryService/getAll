@@ -1,0 +1,47 @@
+[
+	{
+		"id" : "1",
+		"parentCategory" : "1",
+		"rootCategory" : "1",
+		"categoryNameEng" : "Household",
+		"categoryNameTel" : "Sarukulu",	
+		"categoryNameHindi" : "Sarukulu",
+		"categoryNameTamil" : "Sarukulu"
+	},
+	{
+		"id" : "2",
+		"parentCategory" : "1",
+		"rootCategory" : "1",
+		"categoryNameEng" : "electricaldd",
+		"categoryNameTel" : "Sarukulu",
+		"categoryNameHindi" : "Sarukulu",
+		"categoryNameTamil" : "Sarukulu"
+	},
+	{
+		"id" : "3",
+		"parentCategory" : "2",
+		"rootCategory" : "1",
+		"categoryNameEng" : "safe",
+		"categoryNameTel" : "Sarukulu",
+		"categoryNameHindi" : "Sarukulu",
+		"categoryNameTamil" : "Sarukulu"
+	},
+	{
+		"id" : "4",
+		"parentCategory" : "4",
+		"rootCategory" : "2",
+		"categoryNameEng" : "electricaldd",
+		"categoryNameTel" : "Sarukulu",
+		"categoryNameHindi" : "Sarukulu",
+		"categoryNameTamil" : "Sarukulu"
+	},
+	{
+		"id" : "5",
+		"parentCategory" : "4",
+		"rootCategory" : "2",
+		"categoryNameEng" : "safe",
+		"categoryNameTel" : "Sarukulu",
+		"categoryNameHindi" : "Sarukulu",
+		"categoryNameTamil" : "Sarukulu"
+	}
+]

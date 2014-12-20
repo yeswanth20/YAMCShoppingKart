@@ -1,0 +1,61 @@
+<h3>Weights</h3>	    
+<div class="row">
+
+	<div class="col-md-12">
+		<button class="btn btn-primary" ng-show="!weightsFormShowFlag" ng-click="weightsFormShowFlag=true">Add Weight</button>
+		<form role="form" ng-show="weightsFormShowFlag">
+	        <h4> Add a Weight</h4>
+	        <div class="form-group">
+	            <label>Name</label>
+	            <input class="form-control" ng-model="weightsFormData.weightName">
+	            <!-- <p class="help-block">Example block-level help text here.</p> -->
+	        </div>
+	        <div class="form-group">
+	            <label>Value</label>
+	            <input class="form-control" ng-model="weightsFormData.weightValue">
+	            <!-- <p class="help-block">Example block-level help text here.</p> -->
+	        </div>
+	        <div class="form-group">
+	            <label>Unit</label>
+	            <select class="form-control" ng-model="weightsFormData.unit" >
+	            	<option ng-repeat="unit in unitsList" value="{{unit.id}}">{{unit.unitName}}</option>
+	            </select>
+	            <!-- <p class="help-block">Example block-level help text here.</p> -->
+	        </div>
+	        
+	        <button type="submit" class="btn btn-primary" ng-click="createWeight()" ng-show="!weightsFormEditFlag">Submit</button>
+	        <button type="submit" class="btn btn-primary" ng-click="updateWeight()" ng-show="weightsFormEditFlag">Update</button>
+        	<button type="reset" class="btn btn-default">Reset</button>
+	    </form>
+	</div>
+
+	<div class="col-md-12 categoriesTreeDiv">
+	    <div class="table-responsive">
+	        <table class="table table-bordered table-hover">
+	            <thead>
+	                <tr>
+	                    <th class="col-md-1">S.No</th>
+	                    <th>Name</th>	                    
+	                    <th class="col-md-1">Value</th>	                    
+	                    <th>Unit</th>	                    
+	                    <th class="col-md-2">Actions</th>	                    
+	                </tr>
+	            </thead>
+	            <tbody>
+	            	<tr ng-repeat="weight in weightsList">
+	            		<td ng-bind="$index+1"></td>
+	            		<td ng-bind="weight.weightName"></td>
+	            		<td ng-bind="weight.weightValue"></td>
+	            		<td ng-bind="unitsList[weight.unit].unitName"></td>
+	            		<td>
+    						<a class="btn btn-primary btn-xs" ng-click="editWeight(weight.id)"><span class="fa fa-edit"></span></a>
+	            			<a class="btn btn-danger btn-xs"><span class="fa fa-minus" ng-click="deleteWeight(weight.id)"></span></a>
+    					</td>			
+	            	</tr>
+	            </tbody>
+	        </table>
+	    </div>
+	</div>
+
+	
+</div>

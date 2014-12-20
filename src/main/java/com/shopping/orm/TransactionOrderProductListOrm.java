@@ -20,7 +20,7 @@ import javax.persistence.TemporalType;
 public class TransactionOrderProductListOrm implements Serializable{
 	private static final long serialVersionUID = 6545382071005355023L;
 	@Id 
-//	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "id")
 	private int id;
 	@ManyToOne

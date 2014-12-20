@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="shopApp">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Shop Homepage - Start Bootstrap Template</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="themes/new_theme/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="themes/new_theme/css/shop-homepage.css" rel="stylesheet">
+    <link href="themes/new_theme/css/app.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body ng-controller="homeController">
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <div class="col-lg-6 Search_box">
+                    <div class="input-group">
+                      <input type="text" class="form-control">
+                      <span class="input-group-btn">
+                        <button class="btn btn-primary" type="button">Search</button>
+                      </span>
+                    </div><!-- /input-group -->
+                </div>
+                <div>
+                <ul class="nav navbar-nav col-lg-6 pull-right">
+                    <li>
+                        <a href="#">About</a>
+                    </li>
+                    <li>
+                        <a href="#">Services</a>
+                    </li>
+                    <li>
+                        <a href="#">Contact</a>
+                    </li>
+                    <li class="pull-right">
+                        <a ui-sref=".login">Login</a>
+                    </li>
+                    <li class="pull-right">
+                        <a href="#"><span class="glyphicon glyphicon-earphone"></span> +9122254214</a>
+                    </li>
+                </ul>
+                </div>
+                
+            </div>
+
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+    <nav class="navbar navbar-default navbar-static-top navbar-static-top-brand" role="navigation">
+      <!-- We use the fluid option here to avoid overriding the fixed width of a normal container within the narrow content columns. -->
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-8">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Brand</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-8">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="#">Home</a></li>
+            <li><a href="#">Link</a></li>
+            <li><a href="#">Link</a></li>
+          </ul>
+        </div><!-- /.navbar-collapse -->
+      </div>
+    </nav>
+
+    <!-- Page Content -->
+    <div class="container-fluid">
+
+        <div class="row">
+
+            <div class="Menu_list">
+                <p class="lead text-center">Shopping Cart</p>
+                <p class="text-center"><span class="glyphicon-class glyphicon glyphicon-shopping-cart"></span>2 Item/Rs 200</p>
+				<script type="text/ng-template" id="nodes_renderer.html">
+				  <div ui-tree-handle class="tree-node tree-node-content">
+				    <a data-nodrag ng-click="toggle(this)">
+				    	<span class="glyphicon" ng-class="{'glyphicon-chevron-up': collapsed, 'glyphicon-chevron-down': !collapsed}"></span>
+				    </a>
+				    {{node.name}}{{node.id}}
+				  </div>
+				  <ol ui-tree-nodes="" ng-model="node.nodes" ng-class="{hidden: collapsed}" class="list-group">
+				    <li ng-repeat="node in node.nodes" ui-tree-node ng-include="'nodes_renderer.html'" class="list-group-item">
+				    </li>
+				  </ol>
+				</script>
+				<div ui-tree data-drag-enabled=false>
+			      <ol ui-tree-nodes="" ng-model="categoriesList" id="tree-root" class="list-group">
+			        <li ng-repeat="node in categoriesList" ui-tree-node ng-include="'nodes_renderer.html'" class="list-group-item"></li>       
+			      </ol>
+			    </div>
+
+                
+                <!--
+                <ul class="list-group">
+                    <li><a href="#" class="list-group-item">Category 1</a></li>
+                    <li class="list-group-item">
+                        <a href="javascript:;" data-toggle="collapse" data-target="#demo" class="collapsed" aria-expanded="false"><i class="fa fa-fw fa-arrows-v"></i> Dropdown <i class="fa fa-fw fa-caret-down"></i></a>
+                        <ul  id="demo" class="collapse list-group" aria-expanded="false" style="height: 0px;">
+                            <li >
+                                <a class="list-group-item" href="#">Dropdown Item</a>
+                            </li>
+                            <li >
+                                <a class="list-group-item" href="#">Dropdown Item</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul> -->
+            </div>
+
+            <div class="col-md-12 Container_area">
+
+            	<div ui-view></div>              
+                    <div class="container">
+
+                        <hr>
+
+                        <!-- Footer -->
+                        <footer>
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <p>Copyright &copy; Your Website 2014</p>
+                                </div>
+                            </div>
+                        </footer>
+
+                    </div>
+            </div>
+
+
+        </div>
+
+    </div>
+    <!-- /.container -->
+
+  
+    <!-- /.container -->
+
+    <!--vendor files -->
+	<script type="text/javascript" src="../assets/public/js/angular.js"></script>
+	<script type="text/javascript" src="../assets/public/js/angular-ui-router.js"></script>
+	<script type="text/javascript" src="../assets/public/js/restangular.js"></script>
+	<script type="text/javascript" src="../assets/public/js/lodash.compat.js"></script>
+	<script type="text/javascript" src="../assets/public/js/angular-sanitize.js"></script>
+	<script type="text/javascript" src="../assets/public/js/angular-animate.js"></script>
+	<script type="text/javascript" src="../assets/public/js/angular-ui-tree.js"></script>
+	<script type="text/javascript" src="../assets/public/js/ui-bootstrap-tpls-0.11.1.js"></script>
+	<script type="text/javascript" src="../assets/public/js/ng-tags-input.js"></script>
+	<script src="themes/new_theme/js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="themes/new_theme/js/bootstrap.min.js"></script>
+
+    <!-- app scripts -->
+    <script src="app.js"></script>
+    <script src="controllers/home-controller.js"></script>
+    <script src="services/home-service.js"></script>
+
+</body>
+
+</html>

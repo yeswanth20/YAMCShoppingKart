@@ -26,9 +26,9 @@ import org.hibernate.annotations.Type;
 @Table(name = "Product")
 public class ProductOrm {
 	
-//	private static final long serialVersionUID = -4696406355094112769L;
+	private static final long serialVersionUID = -4696406355094112769L;
 	@Id 
-//	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "id")
 	private int id;
 	@Column(name = "product_auto_gen_id")
@@ -48,7 +48,7 @@ public class ProductOrm {
 	private BrandOrm brand;
 	@Lob
 	@Type(type="org.hibernate.type.BinaryType")
-	@Column(columnDefinition="bytea")
+	@Column(columnDefinition="blob")
 	private byte[] productImage;
 	
 	@OneToMany(fetch=FetchType.LAZY,mappedBy="product",cascade={CascadeType.ALL},targetEntity=ProductUnitDetailsOrm.class)

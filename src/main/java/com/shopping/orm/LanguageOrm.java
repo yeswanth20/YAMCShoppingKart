@@ -19,7 +19,7 @@ import javax.persistence.TemporalType;
 public class LanguageOrm implements Serializable{
 	private static final long serialVersionUID = -5722797960288258960L;
 	@Id 
-//	@GeneratedValue(strategy = GenerationType.SEQUENCE)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "id")
 	private int id;
 	@Column(name = "language_name", unique = true)

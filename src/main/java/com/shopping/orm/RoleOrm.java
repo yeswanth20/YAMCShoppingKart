@@ -19,7 +19,7 @@ import javax.persistence.TemporalType;
 public class RoleOrm implements Serializable{
 	private static final long serialVersionUID = -7672768879828601827L;
 	@Id 
-//	@GeneratedValue(strategy = GenerationType.SEQUENCE)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "id")
 	private int id;
 	@Column(name = "role_name", unique = true)

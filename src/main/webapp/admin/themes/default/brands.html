@@ -10,10 +10,10 @@
 	            <input class="form-control" placeholder="English name" ng-model="brandsFormData.brandNameEng">
 	        </div>
 	        <div class="form-group">	            
-	            <input class="form-control" placeholder="Hindi name" ng-model="brandsFormData.brandNameHindi">
+	            <input class="form-control" placeholder="Telugu name" ng-model="brandsFormData.brandNameTel">
 	        </div>
 	        <div class="form-group">	            
-	            <input class="form-control" placeholder="Telugu name" ng-model="brandsFormData.brandNameTel">
+	            <input class="form-control" placeholder="Hindi name" ng-model="brandsFormData.brandNameHindi">
 	        </div>
 	        <div class="form-group">
 	            <input class="form-control" placeholder="Tamil name" ng-model="brandsFormData.brandNameTamil">
@@ -31,8 +31,8 @@
 	                <tr>
 	                    <th class="col-md-1">S.No</th>
 	                    <th>English Name</th>	                    
-	                    <th>Hindi Name</th>	                    
 	                    <th>Telugu Name</th>	                    
+	                    <th>Hindi Name</th>	                    
 	                    <th>Tamil Name</th>	                    
 	                    <th class="col-md-2">Actions</th>	                    
 	                </tr>
@@ -41,8 +41,8 @@
 	            	<tr ng-repeat="brand in brandsList">
 	            		<td>{{$index+1}}</td>
 	            		<td ng-bind="brand.brandNameEng"></td>
-	            		<td ng-bind="brand.brandNameHindi"></td>
 	            		<td ng-bind="brand.brandNameTel"></td>
+	            		<td ng-bind="brand.brandNameHindi"></td>
 	            		<td ng-bind="brand.brandNameTamil"></td>
 	            		<td>
     						<a class="btn btn-primary btn-xs" ng-click="editBrand(brand.id)"><span class="fa fa-edit"></span></a>

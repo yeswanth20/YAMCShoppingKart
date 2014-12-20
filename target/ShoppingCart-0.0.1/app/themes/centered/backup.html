@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Shop</title>	
+		<meta charset="UTF-8">
+		<link rel="stylesheet" type="text/css" href="../../../assets/public/css/bootstrap.css">
+	    <link rel="stylesheet" type="text/css" href="../../../assets/public/css/font-awesome.css" rel="stylesheet" type="text/css">
+		<link rel="stylesheet" type="text/css" href="../../../assets/public/css/ng-tags-input.css">
+		<link rel="stylesheet" type="text/css" href="../../../assets/public/css/angular-ui-tree.min.css">
+		
+		<link rel="stylesheet" type="text/css" href="app.css">
+	</head>
+	<body>
+		<div class="container-fluid spinner_block" ng-class="{true: 'spinerActive', false: 'spinerInactive'}[spinerisActive]">
+			<div class="spinner">
+				<div class="spinner-container container1">
+					<div class="circle1"></div>
+					<div class="circle2"></div>
+					<div class="circle3"></div>
+					<div class="circle4"></div>
+				</div>
+				<div class="spinner-container container2">
+					<div class="circle1"></div>
+					<div class="circle2"></div>
+					<div class="circle3"></div>
+					<div class="circle4"></div>
+				</div>
+				<div class="spinner-container container3">
+					<div class="circle1"></div>
+					<div class="circle2"></div>
+					<div class="circle3"></div>
+					<div class="circle4"></div>
+				</div>
+			</div>
+		</div>
+
+		<div id="wrapper">
+			<div>
+				<nav class="navbar navbar-default" role="navigation">
+				  	<div class="container-fluid">
+					    <!-- Brand and toggle get grouped for better mobile display -->
+					    <div class="navbar-header">
+					      	<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+						        <span class="sr-only">Toggle navigation</span>
+						        <span class="icon-bar"></span>
+						        <span class="icon-bar"></span>
+						        <span class="icon-bar"></span>
+					      	</button>
+					      	<a class="navbar-brand" href="#">Brand</a>
+					    </div>
+					    <!-- Collect the nav links, forms, and other content for toggling -->
+					    <div class="collapse navbar-collapse navbarSearchDiv">
+					    	<ul class="nav navbar-nav">
+					        	<li>
+					        		<a href="javascript:void(0)">
+					        			<i class="fa fa-phone"></i>9999999999
+					        		</a>
+					        	</li>				        
+					      	</ul>
+					      	<form class="navbar-left" role="search">
+					      		<div class="form-group input-group searchBarFormDiv">
+	                                <input type="text" class="form-control">
+	                                <span class="input-group-btn">
+	                                	<button class="btn btn-default" type="button">
+	                                		<i class="fa fa-search"></i>
+	                                	</button>
+	                                </span>
+                            	</div>				       
+				      		</form>
+				      		<ul class="nav navbar-nav navbar-right">
+				        		<li><a href="#">Link</a></li>
+				        		<li class="dropdown">
+				          			<a href="#" class="dropdown-toggle" data-toggle="dropdown">			Dropdown 
+				          				<span class="caret"></span>
+				          			</a>
+						        	<ul class="dropdown-menu" role="menu">
+							            <li><a href="#">Action</a></li>
+							            <li><a href="#">Another action</a></li>
+							            <li><a href="#">Something else here</a></li>
+							            <li class="divider"></li>
+							            <li><a href="#">Separated link</a></li>
+						          	</ul>
+				        		</li>
+				      		</ul>
+				    	</div><!-- /.navbar-collapse -->
+				  	</div><!-- /.container-fluid -->
+				</nav>
+			</div>
+			<div>
+				<div class="leftBar">
+					<ul class="nav navbar-nav side-nav leftBarMenu">
+						<li>
+							<a href="javascript:void(0);">Oneone</a>							
+							<i class="fa fa-sort-down"></i>
+						</li>
+						<li><a href="javascript:void(0);">Oneoneone</a></li>
+						<li><a href="javascript:void(0);">Oneoneone</a></li>
+						<li><a href="javascript:void(0);">Oneoneone</a></li>						
+					</ul>
+				</div>				
+			</div>
+			<div>
+				<div class="brandsMenuDiv">
+					Abc
+				</div>
+			</div>
+			<div>
+				<div class="workspace row">
+					<div class="productDisplayDiv">
+						<img src="lemon.jpg">
+						<div class="productTitleDisplay">
+							Product1
+						</div>
+						<div class="productWeightSelect">
+							<select>
+								<option>One</option>
+								<option>Two</option>
+								<option>Three</option>
+								<option>Four</option>
+							</select>
+						</div>
+						<div class="productPriceDiv">
+							<table>
+								<tr>
+									<td>Rs 330</td>
+									<td><input type="number" class="productPriceTextBox"></td>
+									<td><button><i class="fa fa-plus"></i></button></td>
+								</tr>
+							</table>
+						</div>
+					</div>
+					<div class="productDisplayDiv">
+						<img src="tomato.jpg">
+						<div class="productTitleDisplay">
+							Product1
+						</div>
+						<div class="productWeightSelect">
+							<select>
+								<option>One</option>
+								<option>Two</option>
+								<option>Three</option>
+								<option>Four</option>
+							</select>
+						</div>
+						<div class="productPriceDiv">
+							<table>
+								<tr>
+									<td>Rs 330</td>
+									<td><input type="number" class="productPriceTextBox"></td>
+									<td><button><i class="fa fa-plus"></i></button></td>
+								</tr>
+							</table>
+						</div>
+					</div>
+					<div class="productDisplayDiv">
+						<img src="lemon.jpg">
+						<div class="productTitleDisplay">
+							Product1
+						</div>
+						<div class="productWeightSelect">
+							<select>
+								<option>One</option>
+								<option>Two</option>
+								<option>Three</option>
+								<option>Four</option>
+							</select>
+						</div>
+						<div class="productPriceDiv">
+							<table>
+								<tr>
+									<td>Rs 330</td>
+									<td><input type="number" class="productPriceTextBox"></td>
+									<td><button><i class="fa fa-plus"></i></button></td>
+								</tr>
+							</table>
+						</div>
+					</div>
+					<div class="productDisplayDiv">
+						<img src="tomato.jpg">
+						<div class="productTitleDisplay">
+							Product1
+						</div>
+						<div class="productWeightSelect">
+							<select>
+								<option>One</option>
+								<option>Two</option>
+								<option>Three</option>
+								<option>Four</option>
+							</select>
+						</div>
+						<div class="productPriceDiv">
+							<table>
+								<tr>
+									<td>Rs 330</td>
+									<td><input type="number" class="productPriceTextBox"></td>
+									<td><button><i class="fa fa-plus"></i></button></td>
+								</tr>
+							</table>
+						</div>
+					</div>
+					<div class="productDisplayDiv">
+						<img src="lemon.jpg">
+						<div class="productTitleDisplay">
+							Product1
+						</div>
+						<div class="productWeightSelect">
+							<select>
+								<option>One</option>
+								<option>Two</option>
+								<option>Three</option>
+								<option>Four</option>
+							</select>
+						</div>
+						<div class="productPriceDiv">
+							<table>
+								<tr>
+									<td>Rs 330</td>
+									<td><input type="number" class="productPriceTextBox"></td>
+									<td><button><i class="fa fa-plus"></i></button></td>
+								</tr>
+							</table>
+						</div>
+					</div>
+					<div class="productDisplayDiv">
+						<img src="tomato.jpg">
+						<div class="productTitleDisplay">
+							Product1
+						</div>
+						<div class="productWeightSelect">
+							<select>
+								<option>One</option>
+								<option>Two</option>
+								<option>Three</option>
+								<option>Four</option>
+							</select>
+						</div>
+						<div class="productPriceDiv">
+							<table>
+								<tr>
+									<td>Rs 330</td>
+									<td><input type="number" class="productPriceTextBox"></td>
+									<td><button><i class="fa fa-plus"></i></button></td>
+								</tr>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!--vendor files -->
+		<script type="text/javascript" src="../../../assets/public/js/angular.js"></script>
+		<script type="text/javascript" src="../../../assets/public/js/angular-ui-router.js"></script>
+		<script type="text/javascript" src="../../../assets/public/js/restangular.js"></script>
+		<script type="text/javascript" src="../../../assets/public/js/lodash.compat.js"></script>
+		<script type="text/javascript" src="../../../assets/public/js/angular-sanitize.js"></script>
+		<script type="text/javascript" src="../../../assets/public/js/angular-animate.js"></script>
+		<script type="text/javascript" src="../../../assets/public/js/angular-ui-tree.js"></script>
+		<script type="text/javascript" src="../../../assets/public/js/ui-bootstrap-tpls-0.11.1.js"></script>
+		<script type="text/javascript" src="../../../assets/public/js/ng-tags-input.js"></script>
+
+		<!--vendor files end -->
+
+		<!-- controllers -->
+		
+		<!-- directives -->
+			
+
+	</body>
+</html>

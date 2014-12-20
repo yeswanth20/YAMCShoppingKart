@@ -20,7 +20,7 @@ public class TransactionStatusOrm implements Serializable{
 
 	private static final long serialVersionUID = -2964396408970269787L;
 	@Id 
-//	@GeneratedValue(strategy = GenerationType.SEQUENCE)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "id")
 	private int id;
 	@Column(name = "status_name", unique = true)

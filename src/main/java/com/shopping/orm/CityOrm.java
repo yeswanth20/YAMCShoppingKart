@@ -20,7 +20,7 @@ public class CityOrm implements Serializable{
 
 	private static final long serialVersionUID = -2022449165234079788L;
 	@Id 
-//	@GeneratedValue(strategy = GenerationType.SEQUENCE)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "id")
 	private int id;
 	@Column(name = "city_name", unique = true)

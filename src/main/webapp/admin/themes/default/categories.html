@@ -4,7 +4,7 @@
 <script type="text/ng-template" id="nodes_renderer.html">
   <div ui-tree-handle class="tree-node tree-node-content">
     <a class="btn btn-success btn-xs" data-nodrag ng-click="toggle(this)"><span class="fa" ng-class="{'fa-caret-right': collapsed, 'fa-caret-down': !collapsed}"></span></a>
-    {{node.name}}{{node.id}}
+    {{node.name}}
     <a class="pull-right btn btn-danger btn-xs" data-nodrag ng-click="deleteCategory(node.id)"><span class="fa fa-minus"></span></a>
     <a class="pull-right btn btn-primary btn-xs" data-nodrag ng-click="addSubCategory(node.id)" style="margin-right: 8px;"><span class="fa fa-plus"></span></a>
     <a class="pull-right btn btn-primary btn-xs" data-nodrag ng-click="editCategory(node.id)" style="margin-right: 8px;"><span class="fa fa-edit"></span></a>

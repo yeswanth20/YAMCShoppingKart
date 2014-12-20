@@ -1,0 +1,59 @@
+<h3>Categories</h3>
+
+<!-- Nested node template -->
+<script type="text/ng-template" id="nodes_renderer.html">
+  <div ui-tree-handle class="tree-node tree-node-content">
+    <a class="btn btn-success btn-xs" data-nodrag ng-click="toggle(this)"><span class="fa" ng-class="{'fa-caret-right': collapsed, 'fa-caret-down': !collapsed}"></span></a>
+    {{node.name}}
+    <a class="pull-right btn btn-danger btn-xs" data-nodrag ng-click="deleteCategory(node.id)"><span class="fa fa-minus"></span></a>
+    <a class="pull-right btn btn-primary btn-xs" data-nodrag ng-click="addSubCategory(node.id)" style="margin-right: 8px;"><span class="fa fa-plus"></span></a>
+    <a class="pull-right btn btn-primary btn-xs" data-nodrag ng-click="editCategory(node.id)" style="margin-right: 8px;"><span class="fa fa-edit"></span></a>
+  </div>
+  <ol ui-tree-nodes="" ng-model="node.nodes" ng-class="{hidden: collapsed}">
+    <li ng-repeat="node in node.nodes" ui-tree-node ng-include="'nodes_renderer.html'">
+    </li>
+  </ol>
+</script>
+<div class="row">
+  
+  <div class="col-md-12">
+    <button class="btn btn-primary" ng-click="showCategoryFormFlag=true;currentCategoryName=false" ng-hide="showCategoryFormFlag">Add category</button>
+    <form role="form" ng-show="showCategoryFormFlag">
+        <h4 ng-show="currentCategoryName">
+          Add Category under : {{currentCategoryName}}
+        </h4>
+        <h4 ng-show="!currentCategoryName">
+          Add main category
+        </h4>
+        <div class="form-group">
+            <input class="form-control" ng-model="categoryFormData.categoryNameEng" placeholder="English name">
+            <!-- <p class="help-block">Example block-level help text here.</p> -->
+        </div>
+        <div class="form-group">
+            <input class="form-control" ng-model="categoryFormData.categoryNameTel" placeholder="Telugu name">
+            <!-- <p class="help-block">Example block-level help text here.</p> -->
+        </div>
+        <div class="form-group">
+            <input class="form-control" ng-model="categoryFormData.categoryNameHindi" placeholder="Hindi name">
+            <!-- <p class="help-block">Example block-level help text here.</p> -->
+        </div>
+        <div class="form-group">            
+            <input class="form-control" ng-model="categoryFormData.categoryNameTamil" placeholder="Tamil name">
+            <!-- <p class="help-block">Example block-level help text here.</p> -->
+        </div>
+        <input type="hidden" ng-model="categoryFormData.id">
+        <input type="hidden" ng-model="categoryFormData.parentCategory">
+        <input type="hidden" ng-model="categoryFormData.rootCategory">
+        <button type="button" class="btn btn-primary" ng-show="!categoryEditFlag" ng-click="createCategory()">Submit</button>
+        <button type="submit" class="btn btn-primary" ng-show="categoryEditFlag" ng-click="updateCategory()">Update</button>
+        <button type="reset" class="btn btn-default" ng-click="showCategoryFormFlag=flase">Reset</button>
+    </form>
+  </div> 
+  <div class="col-md-12 categoriesTreeDiv">
+    <div ui-tree data-drag-enabled=false>
+      <ol ui-tree-nodes="" ng-model="categoriesList" id="tree-root">
+        <li ng-repeat="node in categoriesList" ui-tree-node ng-include="'nodes_renderer.html'"></li>        
+      </ol>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,57 @@
+<h3>Brands</h3>	    
+<div class="row">
+
+
+	<div class="col-md-12">
+		<button class="btn btn-primary" ng-click="brandsFormShowFlag=true" ng-show="!brandsFormShowFlag">Add brand</button>
+		<form role="form"  ng-show="brandsFormShowFlag">
+	        <h4> Add a brand</h4>
+	        <div class="form-group">	            
+	            <input class="form-control" placeholder="English name" ng-model="brandsFormData.brandNameEng">
+	        </div>
+	        <div class="form-group">	            
+	            <input class="form-control" placeholder="Hindi name" ng-model="brandsFormData.brandNameHindi">
+	        </div>
+	        <div class="form-group">	            
+	            <input class="form-control" placeholder="Telugu name" ng-model="brandsFormData.brandNameTel">
+	        </div>
+	        <div class="form-group">
+	            <input class="form-control" placeholder="Tamil name" ng-model="brandsFormData.brandNameTamil">
+	        </div>
+	        <button type="button" class="btn btn-primary" ng-show="!brandsFormEditFlag" ng-click="createBrand()">Submit</button>
+	        <button type="button" class="btn btn-primary" ng-show="brandsFormEditFlag" ng-click="updateBrand()">Update</button>
+        	<button type="reset" class="btn btn-default">Reset</button>
+	    </form>
+	</div>
+
+	<div class="col-md-12 categoriesTreeDiv" >
+	    <div class="table-responsive">
+	        <table class="table table-bordered table-hover">
+	            <thead>
+	                <tr>
+	                    <th class="col-md-1">S.No</th>
+	                    <th>English Name</th>	                    
+	                    <th>Hindi Name</th>	                    
+	                    <th>Telugu Name</th>	                    
+	                    <th>Tamil Name</th>	                    
+	                    <th class="col-md-2">Actions</th>	                    
+	                </tr>
+	            </thead>
+	            <tbody>
+	            	<tr ng-repeat="brand in brandsList">
+	            		<td>{{$index+1}}</td>
+	            		<td ng-bind="brand.brandNameEng"></td>
+	            		<td ng-bind="brand.brandNameHindi"></td>
+	            		<td ng-bind="brand.brandNameTel"></td>
+	            		<td ng-bind="brand.brandNameTamil"></td>
+	            		<td>
+    						<a class="btn btn-primary btn-xs" ng-click="editBrand(brand.id)"><span class="fa fa-edit"></span></a>
+	            			<a class="btn btn-danger btn-xs" ng-click="deleteBrand(brand.id)"><span class="fa fa-minus"></span></a>
+    					</td>			
+	            	</tr>
+	            </tbody>
+	        </table>
+	    </div>
+	</div>
+	
+</div>
