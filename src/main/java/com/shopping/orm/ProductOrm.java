@@ -46,6 +46,9 @@ public class ProductOrm {
 	@ManyToOne
 	@JoinColumn(name="brand_id")
 	private BrandOrm brand;
+	@ManyToOne
+	@JoinColumn(name="productCategory_id")
+	private CategoriesOrm productCategory;
 	@Lob
 	@Type(type="org.hibernate.type.BinaryType")
 	@Column(columnDefinition="blob")
@@ -124,6 +127,12 @@ public class ProductOrm {
 	}
 	public void setBrand(BrandOrm brand) {
 		this.brand = brand;
+	}
+	public CategoriesOrm getproductCategory() {
+		return productCategory;
+	}
+	public void setproductCategory(CategoriesOrm productCategory) {
+		this.productCategory = productCategory;
 	}
 	public UserOrm getCreatedBy() {
 		return createdBy;

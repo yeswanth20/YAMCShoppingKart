@@ -32,6 +32,7 @@ public class ProductDaoimpl implements ProductDao{
 			productOrm.setProductNameTel(productTo.getProductNameTel());
 			productOrm.setStockAvailable(productTo.isStockAvailable());
 			productOrm.setBrand(new BrandDaoimpl().getBrandById(productTo.getBrand()));
+			productOrm.setproductCategory(new CategoriesDaoimpl().getCategoryById(productTo.getproductCategory()));
 			productOrm.setCreatedBy(new UserDaoimpl().getUserById(userId));
 			productOrm.setCreatedDate(new Date());
 			productOrm.setModifiedBy(new UserDaoimpl().getUserById(userId));
@@ -89,6 +90,7 @@ public class ProductDaoimpl implements ProductDao{
 			productOrm.setProductNameTel(productTo.getProductNameTel());
 			productOrm.setStockAvailable(productTo.isStockAvailable());
 			productOrm.setBrand(new BrandDaoimpl().getBrandById(productTo.getBrand()));
+			productOrm.setproductCategory(new CategoriesDaoimpl().getCategoryById(productTo.getproductCategory()));
 			productOrm.setCreatedBy(new UserDaoimpl().getUserById(userId));
 			productOrm.setCreatedDate(new Date());
 			productOrm.setModifiedBy(new UserDaoimpl().getUserById(userId));
@@ -159,6 +161,7 @@ public class ProductDaoimpl implements ProductDao{
 				productTo.setProductNameTel(productOrm.getProductNameTel());
 				productTo.setStockAvailable(productOrm.isStockAvailable());
 				productTo.setBrand(productOrm.getBrand().getId());
+				productTo.setproductCategory(productOrm.getproductCategory().getId());
 
 
 				ProductUnitDetailsTo productUnitDetailsTo = null;
@@ -206,6 +209,7 @@ public class ProductDaoimpl implements ProductDao{
 			productTo.setProductNameTel(productOrm.getProductNameTel());
 			productTo.setStockAvailable(productOrm.isStockAvailable());
 			productTo.setBrand(productOrm.getBrand().getId());
+			productTo.setproductCategory(productOrm.getproductCategory().getId());
 
 
 			ProductUnitDetailsTo productUnitDetailsTo = null;

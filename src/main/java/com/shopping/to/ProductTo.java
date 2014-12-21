@@ -12,6 +12,7 @@ public class ProductTo {
 	private String productNameTamil;
 	private boolean isStockAvailable;
 	private int brand;
+	private int productCategory;
 	private String productAutoGenId;
 	private byte[] productImage;
 	
@@ -73,6 +74,13 @@ public class ProductTo {
 	}
 	public void setBrand(int brand) {
 		this.brand = brand;
+	}
+	
+	public int getproductCategory() {
+		return productCategory;
+	}
+	public void setproductCategory(int productCategory) {
+		this.productCategory = productCategory;
 	}
 	public String getProductAutoGenId() {
 		return productAutoGenId;
