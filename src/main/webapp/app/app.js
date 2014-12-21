@@ -2,7 +2,7 @@ var themeBasePath = 'themes/new_theme';
 
 angular.module("shopApp",
     ['ui.router','ui.tree']).
-    value("serviceCallBaseUrl","../admin/data/json/").
+    value("serviceCallBaseUrl","../rest/").
     config(["$stateProvider","$urlRouterProvider",
         function($stateProvider,$urlRouterProvider){    
 

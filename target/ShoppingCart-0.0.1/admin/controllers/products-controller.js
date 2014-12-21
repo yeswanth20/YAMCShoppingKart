@@ -46,7 +46,7 @@ angular.module("shopApp").controller("productsController",
 				}
 
 				var rootCateogies  = _.where(categoriesList, function(rw){
-					return rw.id == rw.parentCategory;
+					return rw.parentCategory == 0;
 				});
 
 				for(var rootIndex in rootCateogies) {

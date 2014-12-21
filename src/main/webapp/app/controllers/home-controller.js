@@ -58,13 +58,32 @@ angular.module("shopApp").controller("homeController",
 			homeService.getWeights().then(function(weights){
 				$scope.weightsList = weights;
 				homeService.getProducts().then(function(products){
-					$scope.productsList = products;
+					$scope.productsList = [];
+
+					for (var index in products) {
+						products[index].unitName = _.find($scope.unitsList,function(rw){
+							return rw.id == products[index].unit;
+						});
+						$scope.productsList.push(products[index]);
+					};
 				});
 			});
 		});
 
 		$scope.addToCart = function(id) {
-			
+			var tempProduct = _.find($scope.productsList,function(rw){
+				return rw.id == id;
+			});
+			var cartProduct = {
+				id : id,
+				unit : $("#productunit"+id).val(),
+				quantity : $("#productquantity"+id).val()
+			}
+			var cartProducts = [];
+			cartProducts = getCookie("shopAppCartProducts");			
+			cartProducts.push(cartProduct);
+
+			setCookie("shopAppCartProducts",cartProducts);		
 		};
 
 	}
