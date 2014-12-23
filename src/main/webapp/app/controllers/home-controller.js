@@ -53,6 +53,17 @@ angular.module("shopApp").controller("homeController",
 
 		$scope.initializeCategories();		
 
+		var tempProducts = getCookie("shopAppCartProducts");
+		if(tempProducts!="")
+		$scope.cartProducts = JSON.parse(tempProducts);
+		else
+		$scope.cartProducts = [];
+		console.log("((((((((((((()))))))))))))))))))))))");
+		console.log($scope.cartProducts);
+		for(index in $scope.cartProducts) {
+			console.log(index+":::"+$scope.cartProducts[index]);
+		}
+
 		homeService.getUnits().then(function(result){
 			$scope.unitsList = result;
 			homeService.getWeights().then(function(weights){
@@ -61,11 +72,25 @@ angular.module("shopApp").controller("homeController",
 					$scope.productsList = [];
 
 					for (var index in products) {
-						products[index].unitName = _.find($scope.unitsList,function(rw){
-							return rw.id == products[index].unit;
-						});
+						for(var prodex in products[index].productUnitDetails)
+						{
+							var tempProduct = _.find($scope.unitsList,function(rw){
+								return rw.id == products[index].productUnitDetails[prodex].unit;
+							});
+							products[index].productUnitDetails[prodex].unitName = tempProduct.unitName;
+						}
+						if($scope.cartProducts.hasOwnProperty(products[index].id))
+						{
+							products[index].inCartFlag = true;							
+							products[index].inCartQuantity = $scope.cartProducts[products[index].id].quantity;	
+							products[index].inCartUnit = $scope.cartProducts[products[index].id].unit;
+						} else {							
+							products[index].inCartFlag = false;
+						}
 						$scope.productsList.push(products[index]);
 					};
+					console.log($scope.productsList);
+
 				});
 			});
 		});
@@ -79,12 +104,15 @@ angular.module("shopApp").controller("homeController",
 				unit : $("#productunit"+id).val(),
 				quantity : $("#productquantity"+id).val()
 			}
-			var cartProducts = [];
-			cartProducts = getCookie("shopAppCartProducts");			
-			cartProducts.push(cartProduct);
+			var cartProducts = getCookie("shopAppCartProducts");
+			if(cartProducts=="undefined");
+			cartProducts = {};
+			cartProducts[id] = cartProduct;
 
-			setCookie("shopAppCartProducts",cartProducts);		
+			setCookie("shopAppCartProducts",JSON.stringify(cartProducts));
 		};
+
+
 
 	}
 ]);

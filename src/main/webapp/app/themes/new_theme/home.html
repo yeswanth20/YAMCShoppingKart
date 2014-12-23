@@ -39,15 +39,24 @@
             <img src="base64-encode,product.image" alt="">
             <div class="">
                 <h4 class="pull-right" ng-bind="product.price"></h4>
-                <h4><a ui-sref="productview" ng-bind="product.productNameEng"></a>
+                <h4>
+                    <a ui-sref="productview" ng-bind="product.productNameEng"></a>
                 </h4>
                 <select class="form-control" id="productunit{{product.id}}">
-                  <option ng-repeat="unit in product.productUnitDetails" value="unit.unit">{{unit.unitName}}</option>
+                    <option ng-repeat="unit in product.productUnitDetails" value="{{unit.unit}}">
+                        {{unit.unitName}}
+                    </option>
                 </select>
-                <input type="text" placeholder="Enter Quanitity" class="form-control" id="productquantity{{product.id}}">
-                <button type="button" class="btn btn-primary btn-sm btn-block add_tocart_button" ng-click="addToCart(product.id)">
+                <input type="text" placeholder="Enter Quanitity" class="form-control" id="productquantity{{product.id}}" ng-show="!product.inCartFlag" >
+                <button type="button" class="btn btn-primary btn-sm btn-block add_tocart_button" ng-click="addToCart(product.id)" ng-show="!product.inCartFlag">
                   Add to cart
                 </button>
+                <!-- Split button -->
+                <div class="btn-group" ng-show="product.inCartFlag">
+                  <button type="button" class="btn btn-default" >-</button>
+                  <button type="button" class="btn btn-default">2</button>
+                  <button type="button" class="btn btn-default" >+</button>
+                </div>
             </div>
         </div>
     </div>
