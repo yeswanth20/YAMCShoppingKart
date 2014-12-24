@@ -93,9 +93,7 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-8">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Home</a></li>
-            <li><a href="#">Link</a></li>
-            <li><a href="#">Link</a></li>
+            <li ng-repeat="brand in brandsList"><a href="#">{{brand.brandName}}</a></li>
           </ul>
         </div><!-- /.navbar-collapse -->
       </div>
@@ -109,23 +107,23 @@
             <div class="Menu_list">
                 <p class="lead text-center">Shopping Cart</p>
                 <p class="text-center"><span class="glyphicon-class glyphicon glyphicon-shopping-cart"></span>2 Item/Rs 200</p>
-				<script type="text/ng-template" id="nodes_renderer.html">
-				  <div ui-tree-handle class="tree-node tree-node-content">
-				    <a data-nodrag ng-click="toggle(this)">
-				    	<span class="glyphicon" ng-class="{'glyphicon-chevron-up': collapsed, 'glyphicon-chevron-down': !collapsed}"></span>
-				    </a>
-				    {{node.name}}{{node.id}}
-				  </div>
-				  <ol ui-tree-nodes="" ng-model="node.nodes" ng-class="{hidden: collapsed}" class="list-group">
-				    <li ng-repeat="node in node.nodes" ui-tree-node ng-include="'nodes_renderer.html'" class="list-group-item">
-				    </li>
-				  </ol>
-				</script>
-				<div ui-tree data-drag-enabled=false>
-			      <ol ui-tree-nodes="" ng-model="categoriesList" id="tree-root" class="list-group">
-			        <li ng-repeat="node in categoriesList" ui-tree-node ng-include="'nodes_renderer.html'" class="list-group-item"></li>       
-			      </ol>
-			    </div>
+                <script type="text/ng-template" id="nodes_renderer.html">
+                  <div ui-tree-handle class="tree-node tree-node-content">
+                    <a data-nodrag ng-click="toggle(this)">
+                        <span class="glyphicon" ng-class="{'glyphicon-chevron-up': collapsed, 'glyphicon-chevron-down': !collapsed}"></span>
+                    </a>
+                    {{node.name}}{{node.id}}
+                  </div>
+                  <ol ui-tree-nodes="" ng-model="node.nodes" ng-class="{hidden: collapsed}" class="list-group">
+                    <li ng-repeat="node in node.nodes" ui-tree-node ng-include="'nodes_renderer.html'" class="list-group-item">
+                    </li>
+                  </ol>
+                </script>
+                <div ui-tree data-drag-enabled=false>
+                  <ol ui-tree-nodes="" ng-model="categoriesList" id="tree-root" class="list-group">
+                    <li ng-repeat="node in categoriesList" ui-tree-node ng-include="'nodes_renderer.html'" class="list-group-item"></li>       
+                  </ol>
+                </div>
 
                 
                 <!--
@@ -147,7 +145,7 @@
 
             <div class="col-md-12 Container_area">
 
-            	<div ui-view></div>              
+                <div ui-view></div>              
                     <div class="container">
 
                         <hr>
@@ -174,16 +172,16 @@
     <!-- /.container -->
 
     <!--vendor files -->
-	<script type="text/javascript" src="../assets/public/js/angular.js"></script>
-	<script type="text/javascript" src="../assets/public/js/angular-ui-router.js"></script>
-	<script type="text/javascript" src="../assets/public/js/restangular.js"></script>
-	<script type="text/javascript" src="../assets/public/js/lodash.compat.js"></script>
-	<script type="text/javascript" src="../assets/public/js/angular-sanitize.js"></script>
-	<script type="text/javascript" src="../assets/public/js/angular-animate.js"></script>
-	<script type="text/javascript" src="../assets/public/js/angular-ui-tree.js"></script>
-	<script type="text/javascript" src="../assets/public/js/ui-bootstrap-tpls-0.11.1.js"></script>
-	<script type="text/javascript" src="../assets/public/js/ng-tags-input.js"></script>
-	<script src="themes/new_theme/js/jquery.js"></script>
+    <script type="text/javascript" src="../assets/public/js/angular.js"></script>
+    <script type="text/javascript" src="../assets/public/js/angular-ui-router.js"></script>
+    <script type="text/javascript" src="../assets/public/js/restangular.js"></script>
+    <script type="text/javascript" src="../assets/public/js/lodash.compat.js"></script>
+    <script type="text/javascript" src="../assets/public/js/angular-sanitize.js"></script>
+    <script type="text/javascript" src="../assets/public/js/angular-animate.js"></script>
+    <script type="text/javascript" src="../assets/public/js/angular-ui-tree.js"></script>
+    <script type="text/javascript" src="../assets/public/js/ui-bootstrap-tpls-0.11.1.js"></script>
+    <script type="text/javascript" src="../assets/public/js/ng-tags-input.js"></script>
+    <script src="themes/new_theme/js/jquery.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
     <script src="themes/new_theme/js/bootstrap.min.js"></script>

@@ -24,6 +24,7 @@ angular.module("shopApp",
         }).state('cart', {
             url: "/cart",
             templateUrl: themeBasePath+'/cart.html',
+            controller: "cartController",
             data : {
                 action : "cart",
             }
