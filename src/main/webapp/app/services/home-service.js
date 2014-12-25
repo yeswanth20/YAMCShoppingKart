@@ -40,6 +40,18 @@ angular.module("shopApp").service("homeService",
   			return deferred.promise;
 		};
 
+		this.getBrands = function(){
+			var deferred = $q.defer();
+			$http.post(serviceCallBaseUrl+"brandService/getAll")
+			.success(function(data, status, headers, config) {				
+				deferred.resolve(data);
+			}).
+  			error(function(data, status, headers, config) {
+				deferred.reject(data);
+  			});
+  			return deferred.promise;
+		};
+
 		this.getProducts = function(){
 			var deferred = $q.defer();
 			$http.post(serviceCallBaseUrl+"productService/getAll")
