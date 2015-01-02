@@ -93,9 +93,7 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-8">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Home</a></li>
-            <li><a href="#">Link</a></li>
-            <li><a href="#">Link</a></li>
+            <li ng-repeat="brand in brandsList"><a href="#">{{brand.brandNameEng}}</a></li>
           </ul>
         </div><!-- /.navbar-collapse -->
       </div>
@@ -108,7 +106,10 @@
 
             <div class="Menu_list">
                 <p class="lead text-center">Shopping Cart</p>
-                <p class="text-center"><span class="glyphicon-class glyphicon glyphicon-shopping-cart"></span>2 Item/Rs 200</p>
+                <p class="text-center" ui-sref="cart">
+                    <span class="glyphicon-class glyphicon glyphicon-shopping-cart"></span>
+                    2 Item/Rs 200
+                </p>
 				<script type="text/ng-template" id="nodes_renderer.html">
 				  <div ui-tree-handle class="tree-node tree-node-content">
 				    <a data-nodrag ng-click="toggle(this)">
@@ -191,6 +192,8 @@
     <!-- app scripts -->
     <script src="app.js"></script>
     <script src="controllers/home-controller.js"></script>
+    <script src="controllers/cart-controller.js"></script>
+    <script src="controllers/login-controller.js"></script>
     <script src="services/home-service.js"></script>
 
 </body>

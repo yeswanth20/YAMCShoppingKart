@@ -32,6 +32,7 @@ angular.module("shopApp",
         .state('login', {
             url: "/login",
             templateUrl: themeBasePath+'/Login.html',
+            controller: "loginController",
             data : {
                 action : "login",
             }
@@ -52,6 +53,7 @@ angular.module("shopApp",
         })  
         .state('orderconformation', {
             url: "/orderconformation",
+            controller: "orderconformationController",
             templateUrl: themeBasePath+'/orderconformation.html',
             data : {
                 action : "orderconformation",

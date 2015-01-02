@@ -53,9 +53,9 @@
                 </button>
                 <!-- Split button -->
                 <div class="btn-group" ng-show="product.inCartFlag">
-                  <button type="button" class="btn btn-default" >-</button>
-                  <button type="button" class="btn btn-default">2</button>
-                  <button type="button" class="btn btn-default" >+</button>
+                  <button type="button" class="btn btn-default" ng-click="reduceCartCount(product.id)" >-</button>
+                  <button type="button" class="btn btn-default">{{product.inCartQuantity}}</button>
+                  <button type="button" class="btn btn-default" ng-click="increaseCartCount(product.id)">+</button>
                 </div>
             </div>
         </div>

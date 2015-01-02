@@ -1,6 +1,6 @@
 angular.module("shopApp").controller("homeController",
-	["$scope","homeService",
-	function($scope,homeService){
+	["$scope","$rootScope","homeService",
+	function($scope,$rootScope,homeService){
 
 		var categoriesList = {};		
 
@@ -58,8 +58,7 @@ angular.module("shopApp").controller("homeController",
 		$scope.cartProducts = JSON.parse(tempProducts);
 		else
 		$scope.cartProducts = [];
-		console.log("((((((((((((()))))))))))))))))))))))");
-		console.log($scope.cartProducts);
+		
 		for(index in $scope.cartProducts) {
 			console.log(index+":::"+$scope.cartProducts[index]);
 		}
@@ -82,14 +81,13 @@ angular.module("shopApp").controller("homeController",
 						if($scope.cartProducts.hasOwnProperty(products[index].id))
 						{
 							products[index].inCartFlag = true;							
-							products[index].inCartQuantity = $scope.cartProducts[products[index].id].quantity;	
-							products[index].inCartUnit = $scope.cartProducts[products[index].id].unit;
+							products[index].inCartQuantity = $scope.cartProducts[products[index].id].inCartQuantity;	
+							products[index].inCartUnit = $scope.cartProducts[products[index].id].inCartUnit;
 						} else {							
 							products[index].inCartFlag = false;
 						}
 						$scope.productsList.push(products[index]);
-					};
-					console.log($scope.productsList);
+					};					
 
 				});
 			});
@@ -99,20 +97,69 @@ angular.module("shopApp").controller("homeController",
 			var tempProduct = _.find($scope.productsList,function(rw){
 				return rw.id == id;
 			});
-			var cartProduct = {
-				id : id,
-				unit : $("#productunit"+id).val(),
-				quantity : $("#productquantity"+id).val()
-			}
+
+			var cartProduct = tempProduct;
+			cartProduct.id = id;
+			cartProduct.inCartUnit = $("#productunit"+id).val();
+			cartProduct.inCartQuantity = $("#productquantity"+id).val();
+
+			/*var tempDiscount = _.find(tempProduct.productUnitDetails,function(rw){
+				return rw.unit == cartProduct.inCartUnit;
+			});
+			cartProduct.discountPercentage = tempDiscount.di*/
+
 			var cartProducts = getCookie("shopAppCartProducts");
 			if(cartProducts=="undefined");
 			cartProducts = {};
 			cartProducts[id] = cartProduct;
 
 			setCookie("shopAppCartProducts",JSON.stringify(cartProducts));
+
+			var tempProductIndex = $scope.productsList.indexOf(tempProduct);
+			
+			$scope.productsList[tempProductIndex].inCartFlag = true;
+			$scope.productsList[tempProductIndex].inCartQuantity = $("#productquantity"+id).val();
+			$scope.productsList[tempProductIndex].inCartUnit = $("#productunit"+id).val();
+			
 		};
 
 
+		homeService.getBrands().then(function(result){
+			$scope.brandsList = result;
+		});
+
+		$scope.reduceCartCount = function(id) {
+
+			var cartProducts = JSON.parse(getCookie("shopAppCartProducts"));
+			var tempProduct = _.find($scope.productsList,function(rw){
+				return rw.id == id;
+			});
+			var tempProductIndex = $scope.productsList.indexOf(tempProduct);
+			cartProducts[id].inCartQuantity--;
+			$scope.productsList[tempProductIndex].inCartQuantity--;
+
+			if (cartProducts[id].inCartQuantity==0) {
+				$scope.productsList[tempProductIndex].inCartFlag = false;
+				delete cartProducts[id];
+			}
+			setCookie("shopAppCartProducts",JSON.stringify(cartProducts));
+		};
+
+		$scope.increaseCartCount = function(id) {
+			var cartProducts = JSON.parse(getCookie("shopAppCartProducts"));
+			var tempProduct = _.find($scope.productsList,function(rw){
+				return rw.id == id;
+			});
+			var tempProductIndex = $scope.productsList.indexOf(tempProduct);
+			cartProducts[id].inCartQuantity++;
+			$scope.productsList[tempProductIndex].inCartQuantity++;
+			setCookie("shopAppCartProducts",JSON.stringify(cartProducts));
+		};
+
+		$rootScope.$on("loggedIn",function(event,userInfo){
+			$rootScope.loggedInUserId = userInfo.userId;
+			$rootScope.loggedInUserName = userInfo.userName;
+		});
 
 	}
 ]);

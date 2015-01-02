@@ -19,11 +19,14 @@ import com.shopping.daofactory.ShoppingCartFactory;
 public class AuthService {
 	@POST
 	@Path("/login")
-	public Response loginAuth(@FormParam("email") String username,@FormParam("password") String password,
+	public Response loginAuth(String username, String password,
 			@Context HttpServletRequest request, @Context UriInfo uriInfo) {
 		int userId;
 		try {
+			System.out.println("username::::::::::::"+username);
+			System.out.println("password::::::::::::"+password);
 			userId = ShoppingCartFactory.getUserDao().verifyLogin(username, password);
+			System.out.println("userId::::::::::::"+userId);
 			if (userId != 0) {
 				request.setAttribute("userId", userId);
 				HttpSession httpsession = request.getSession();

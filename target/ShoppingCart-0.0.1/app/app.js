@@ -2,7 +2,7 @@ var themeBasePath = 'themes/new_theme';
 
 angular.module("shopApp",
     ['ui.router','ui.tree']).
-    value("serviceCallBaseUrl","../admin/data/json/").
+    value("serviceCallBaseUrl","../rest/").
     config(["$stateProvider","$urlRouterProvider",
         function($stateProvider,$urlRouterProvider){    
 
@@ -24,6 +24,7 @@ angular.module("shopApp",
         }).state('cart', {
             url: "/cart",
             templateUrl: themeBasePath+'/cart.html',
+            controller: "cartController",
             data : {
                 action : "cart",
             }
@@ -31,6 +32,7 @@ angular.module("shopApp",
         .state('login', {
             url: "/login",
             templateUrl: themeBasePath+'/Login.html',
+            controller: "loginController",
             data : {
                 action : "login",
             }

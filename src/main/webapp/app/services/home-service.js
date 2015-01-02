@@ -64,5 +64,19 @@ angular.module("shopApp").service("homeService",
   			return deferred.promise;
 		};
 
+		this.registerUser = function(request){
+			var deferred = $q.defer();
+			$http.post(serviceCallBaseUrl+"userService/insert",request)
+			.success(function(data, status, headers, config) {				
+				deferred.resolve(data);
+			}).
+  			error(function(data, status, headers, config) {
+				deferred.reject(data);
+  			});
+  			return deferred.promise;
+		};
+
+
+
 	}
 );
