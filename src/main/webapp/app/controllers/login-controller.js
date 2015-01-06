@@ -1,7 +1,7 @@
 angular.module("shopApp").controller("loginController",
 	["$scope","$rootScope","homeService",
 	function($scope,$rootScope,homeService){
-		alert("hiii");
+		
 		$scope.registrationFormData = {
 			"userName" : "",
 			"password" : "",
@@ -32,6 +32,19 @@ angular.module("shopApp").controller("loginController",
 						$state.go("orderconformation");
 					});
 				}
+			});
+		}
+
+		$scope.loginFormData = {
+			"userName" : "",
+			"password" : ""
+		};
+
+		$scope.loginUser = function(){
+			homeService.loginService($scope.loginFormData).then(function(loginResult){
+				$scope.loginFormData.userId = result.id;
+				$rootScope.$broadcast("loggedIn",$scope.loginFormData);
+				$state.go("orderconformation");
 			});
 		}
 

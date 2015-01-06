@@ -53,6 +53,7 @@ angular.module("shopApp",
         })  
         .state('orderconformation', {
             url: "/orderconformation",
+            controller: "orderconformationController",
             templateUrl: themeBasePath+'/orderconformation.html',
             data : {
                 action : "orderconformation",

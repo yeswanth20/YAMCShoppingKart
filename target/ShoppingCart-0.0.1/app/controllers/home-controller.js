@@ -1,6 +1,6 @@
 angular.module("shopApp").controller("homeController",
-	["$scope","homeService",
-	function($scope,homeService){
+	["$scope","$rootScope","homeService",
+	function($scope,$rootScope,homeService){
 
 		var categoriesList = {};		
 
@@ -155,6 +155,11 @@ angular.module("shopApp").controller("homeController",
 			$scope.productsList[tempProductIndex].inCartQuantity++;
 			setCookie("shopAppCartProducts",JSON.stringify(cartProducts));
 		};
+
+		$rootScope.$on("loggedIn",function(event,userInfo){
+			$rootScope.loggedInUserId = userInfo.userId;
+			$rootScope.loggedInUserName = userInfo.userName;
+		});
 
 	}
 ]);
