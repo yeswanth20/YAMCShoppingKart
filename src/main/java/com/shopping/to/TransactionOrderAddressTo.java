@@ -7,7 +7,7 @@ public class TransactionOrderAddressTo{
 	private String name;
 	private String houseNumber;
 	private String street;
-	private String area;
+	private String area; 
 	private String landmark;
 	private int city;
 	private long pincode;

@@ -26,7 +26,7 @@ public class TransactionOrderDaoimpl implements TransactionOrderDao{
 		Transaction tx = null;
 		try {
 			//Get Session Factory
-			session = HibernateUtil.getSessionFactory().openSession();
+			session = HibernateUtil.getSessionFactory().openSession(); 
 			//Set the ORM
 			TransactionOrderOrm transactionOrderOrm = new TransactionOrderOrm();
 //			transactionOrderOrm.setTxnOrderID();
@@ -93,7 +93,7 @@ public class TransactionOrderDaoimpl implements TransactionOrderDao{
 			session.close();
 			
 		}
-		return null;
+		return transactionOrderTo;
 	}
 
 	public TransactionOrderTo update(int id,
@@ -210,6 +210,7 @@ public class TransactionOrderDaoimpl implements TransactionOrderDao{
 
 	public TransactionOrderTo setTransactionOrderOrm2To(TransactionOrderOrm txnOrderOrm){
 		TransactionOrderTo txnOrderTo = new TransactionOrderTo();
+		txnOrderTo.setId(txnOrderOrm.getId());
 		txnOrderTo.setTxnOrderID(txnOrderOrm.getTxnOrderID());
 		txnOrderTo.setTransactionStatus(txnOrderOrm.getTransactionStatus().getId());
 		txnOrderTo.setTotalPrice(txnOrderOrm.getTotalPrice());
@@ -217,9 +218,11 @@ public class TransactionOrderDaoimpl implements TransactionOrderDao{
 		txnOrderTo.setDiscountValue(txnOrderOrm.getDiscountValue());
 		txnOrderTo.setPriceAfterDiscount(txnOrderOrm.getPriceAfterDiscount());
 		txnOrderTo.setProductCount(txnOrderOrm.getProductCount());
+
 		//Adding Address
 		TransactionOrderAddressTo txnAddressTo = new TransactionOrderAddressTo();
 		TransactionOrderAddressOrm txnOrderAddressOrm = txnOrderOrm.getAddress();
+		txnAddressTo.setId(txnOrderAddressOrm.getId());
 		txnAddressTo.setName(txnOrderAddressOrm.getName());
 		txnAddressTo.setHouseNumber(txnOrderAddressOrm.getHouseNumber());
 		txnAddressTo.setStreet(txnOrderAddressOrm.getStreet());
@@ -235,6 +238,7 @@ public class TransactionOrderDaoimpl implements TransactionOrderDao{
 		TransactionOrderProductListTo productListTo = null;
 		for (TransactionOrderProductListOrm productListOrm : txnOrderOrm.getProductList()){
 			productListTo = new TransactionOrderProductListTo();
+			productListTo.setId(productListOrm.getId());
 			productListTo.setUnit(productListOrm.getUnit().getId());
 			productListTo.setDiscountType(productListOrm.getDiscountType().getId());
 			productListTo.setDiscountValue(productListOrm.getDiscountValue());
@@ -258,6 +262,7 @@ public class TransactionOrderDaoimpl implements TransactionOrderDao{
 			//Get the record based on ID From DB
 			@SuppressWarnings("unchecked")
 			ArrayList<TransactionOrderOrm> lstTxnOrderOrm = (ArrayList<TransactionOrderOrm>) session.createCriteria(TransactionOrderOrm.class).list();
+			System.out.println(lstTxnOrderOrm.size());
 			TransactionOrderTo txnOrderTo = null;
 			lstTxnOrderTo = new ArrayList<TransactionOrderTo>();
 			for (TransactionOrderOrm txnOrderOrm : lstTxnOrderOrm) {
@@ -323,4 +328,8 @@ public class TransactionOrderDaoimpl implements TransactionOrderDao{
 		return result;
 	}
 
+	public static void main(String[] args) {
+		TransactionOrderDaoimpl obj = new TransactionOrderDaoimpl();
+		System.out.println(obj.getAll());
+	}
 }

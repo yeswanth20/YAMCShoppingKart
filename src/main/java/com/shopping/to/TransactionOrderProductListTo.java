@@ -11,7 +11,7 @@ public class TransactionOrderProductListTo{
 	private int weight;
 	private int product;
 	private int transactionOrder;
-	
+	 
 	//	getter& Setters
 	public int getId() {
 		return id;
