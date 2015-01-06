@@ -4,16 +4,23 @@ package com.shopping.daoimpl;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
+import java.util.List;
 
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.Criterion;
+import org.hibernate.criterion.Projection;
+import org.hibernate.criterion.ProjectionList;
+import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
 
 import com.shopping.dao.ProductDao;
 import com.shopping.hibernate.HibernateUtil;
+import com.shopping.orm.BrandOrm;
 import com.shopping.orm.ProductOrm;
 import com.shopping.orm.ProductUnitDetailsOrm;
+import com.shopping.to.BrandTo;
 import com.shopping.to.ProductTo;
 import com.shopping.to.ProductUnitDetailsTo;
 
@@ -255,6 +262,66 @@ public class ProductDaoimpl implements ProductDao{
 	public boolean delete(int id) {
 		// TODO Auto-generated method stub
 		return false;
+	}
+
+	public Collection<String> searchByCategory(int categoryId,
+			int pageNumber, int pageSize) {
+		Session session = null;
+		Collection<String> productTo=new ArrayList<String>();
+		try {
+			//Get Session Factory
+			session = HibernateUtil.getSessionFactory().openSession();
+			//Get the record based on ID From DB
+			Criteria  criteria=session.createCriteria(ProductOrm.class);
+			criteria.setFirstResult((pageNumber - 1) * pageSize);
+			criteria.setMaxResults(pageSize);
+			criteria.add(Restrictions.eq("productCategory", new CategoriesDaoimpl().getCategoryById(categoryId)));
+			ProjectionList projectionList=Projections.projectionList();
+			projectionList.add(Projections.property("productNameEng"));
+			criteria.setProjection(projectionList);
+			List<Object> productList=criteria.list();
+			for(Object productObject:productList){
+				productTo.add(productObject.toString());
+			}
+
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		finally{
+			session.clear();
+			session.close();
+		}
+		return productTo;
+	}
+
+	public Collection<String> searchByBrand(int brandId, int pageNumber,
+			int pageSize) {
+		Session session = null;
+		Collection<String> productTo=new ArrayList<String>();
+		try {
+			//Get Session Factory
+			session = HibernateUtil.getSessionFactory().openSession();
+			//Get the record based on ID From DB
+			Criteria  criteria=session.createCriteria(ProductOrm.class);
+			criteria.setFirstResult((pageNumber - 1) * pageSize);
+			criteria.setMaxResults(pageSize);
+			criteria.add(Restrictions.eq("brand",new BrandDaoimpl().getBrandById(brandId)));
+			ProjectionList projectionList=Projections.projectionList();
+			projectionList.add(Projections.property("productNameEng"));
+			criteria.setProjection(projectionList);
+			List<Object> productList=criteria.list();
+			for(Object productObject:productList){
+				productTo.add(productObject.toString());
+			}
+
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		finally{
+			session.clear();
+			session.close();
+		}
+		return productTo;
 	}
 
 

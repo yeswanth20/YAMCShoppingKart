@@ -1,5 +1,6 @@
 package com.shopping.dao;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 import com.shopping.orm.WeightsOrm;
@@ -12,5 +13,6 @@ public interface WeightsDao {
 	public Collection<WeightsTo> searchByUnitId(int unitId);
 	public Collection<WeightsTo> getAll();
 	public WeightsOrm getWeightById(int id);
+	public ArrayList<WeightsTo> searchByUnitName(String weightName,int pageNumber,int pageSize);
 	public boolean delete(int id);
 }
