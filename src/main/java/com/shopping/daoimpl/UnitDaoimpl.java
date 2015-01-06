@@ -184,6 +184,7 @@ public class UnitDaoimpl implements UnitsDao{
 	}
 
 	public ArrayList<UnitsTo> searchByUnitName(String unitName, int pageNumber, int pageSize) {
+		unitName=unitName+"%";
 		Session session = null;
 		ArrayList<UnitsOrm> unitsOrm =null;
 		ArrayList<UnitsTo> unitsTos=new ArrayList<UnitsTo>();

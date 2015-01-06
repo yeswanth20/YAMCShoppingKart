@@ -194,19 +194,21 @@ public class BrandDaoimpl implements BrandDao{
 		return brandOrm;
 	}
 
+	@SuppressWarnings("unchecked")
 	public Collection<BrandTo> searchByName(String brnadName,int pageNumber,int pageSize) {
+		brnadName=brnadName+"%";
 		Session session = null;
 		ArrayList<BrandOrm> brandOrm =null;
 		Collection<BrandTo> brandOrmsto=new ArrayList<BrandTo>();
 		try {
 			//Get Session Factory
 			session = HibernateUtil.getSessionFactory().openSession();
-
 			//Get the record based on ID From DB
 			Criteria  criteria=session.createCriteria(BrandOrm.class);
 			criteria.setFirstResult((pageNumber - 1) * pageSize);
 			criteria.setMaxResults(pageSize);
-			brandOrm =  (ArrayList<BrandOrm>) criteria.add(Restrictions.like("brandNameEng", brnadName)).list();
+			criteria.add(Restrictions.like("brandNameEng", brnadName));
+			brandOrm =  (ArrayList<BrandOrm>)criteria.list();
 			for(BrandOrm brandormlist:brandOrm){
 				BrandTo brandTo=new BrandTo();
 				brandTo.setBrandNameEng(brandormlist.getBrandNameEng());

@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
 
+import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.criterion.Restrictions;
@@ -232,6 +233,39 @@ public class WeightsDaoimpl implements WeightsDao{
 			session.close();
 		}
 		return weightsOrm;
+	}
+
+	public ArrayList<WeightsTo> searchByUnitName(String weightName,
+			int pageNumber, int pageSize) {
+		weightName=weightName+"%";
+		Session session = null;
+		ArrayList<WeightsOrm> weightsOrm =null;
+		ArrayList<WeightsTo> weightsTo=new ArrayList<WeightsTo>();
+		try {
+			//Get Session Factory
+			session = HibernateUtil.getSessionFactory().openSession();
+
+			//Get the record based on ID From DB
+			Criteria criteria=session.createCriteria(WeightsOrm.class);
+			criteria.setFirstResult((pageNumber-1)*pageSize);
+			criteria.setMaxResults(pageSize);
+			weightsOrm= (ArrayList<WeightsOrm>) criteria.add(Restrictions.like("weightName", weightName)).list();
+			for(WeightsOrm objUnitOrm:weightsOrm){
+				WeightsTo weightsTo2=new WeightsTo();
+				weightsTo2.setUnit(objUnitOrm.getUnit().getId());
+				weightsTo2.setWeightName(objUnitOrm.getWeightName());
+				weightsTo2.setWeightValue(objUnitOrm.getWeightValue());
+				weightsTo.add(weightsTo2);
+				weightsTo2=null;
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		finally{
+			session.clear();
+			session.close();
+		}
+		return weightsTo;
 	}
 
 }
