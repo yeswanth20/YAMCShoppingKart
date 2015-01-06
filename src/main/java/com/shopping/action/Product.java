@@ -9,6 +9,7 @@ import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -16,6 +17,7 @@ import javax.ws.rs.core.Response;
 import com.shopping.daofactory.ShoppingCartFactory;
 import com.shopping.orm.UserOrm;
 import com.shopping.to.ProductTo;
+import com.shopping.to.UnitsTo;
 
 @Path("/productService")
 public class Product {
@@ -133,6 +135,43 @@ public class Product {
 			return Response.status(403).entity(error).build();
 		}
 	}
+	
+	//PRODUCT Search By Brand id
+    @POST
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Path("/searchByBrand")
+    public Response searchByBrand(@QueryParam("brandId") int brandId,@QueryParam("pageNumber") int pageNumber,
+                    @QueryParam("pageSize") int pageSize,@Context HttpServletRequest request) {
+            try {
+                    Collection<String> productTo = new ArrayList<String>();
+                    productTo = ShoppingCartFactory.getProductDao().searchByBrand(brandId, pageNumber, pageSize);
+                    return Response.status(201).entity(productTo).build();
+            } catch (Exception  e) {
+                    e.printStackTrace();
+                    String error = "Unable to Find Record";
+                    return Response.status(403).entity(error).build();
+            }
+    }
+    
+	//PRODUCT Search By Category id
+    @POST
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Path("/searchByCategory")
+    public Response searchByCategory(@QueryParam("categoryId") int categoryId,@QueryParam("pageNumber") int pageNumber,
+                    @QueryParam("pageSize") int pageSize,@Context HttpServletRequest request) {
+            try {
+                    Collection<String> productTo = new ArrayList<String>();
+                    productTo = ShoppingCartFactory.getProductDao().searchByCategory(categoryId, pageNumber, pageSize);
+                    return Response.status(201).entity(productTo).build();
+            } catch (Exception  e) {
+                    e.printStackTrace();
+                    String error = "Unable to Find Record";
+                    return Response.status(403).entity(error).build();
+            }
+    }
+    
 	
 	// PRODUCT DELETE
 	@POST

@@ -9,11 +9,13 @@ import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import com.shopping.daofactory.ShoppingCartFactory;
+import com.shopping.to.BrandTo;
 import com.shopping.to.UnitsTo;
 
 @Path("/unitService")
@@ -116,6 +118,25 @@ public class Units {
 			return Response.status(403).entity(error).build();
 		}
 	}
+	
+	//UNITS Search By Name
+    @POST
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Path("/searchByName")
+    public Response searchBrands(@QueryParam("unitName") String unitName,@QueryParam("pageNumber") int pageNumber,
+                    @QueryParam("pageSize") int pageSize,@Context HttpServletRequest request) {
+            try {
+                    Collection<UnitsTo> unitTo = new ArrayList<UnitsTo>();
+                    unitTo = ShoppingCartFactory.getUnitsDao().searchByUnitName(unitName, pageNumber, pageSize);
+                    return Response.status(201).entity(unitTo).build();
+            } catch (Exception  e) {
+                    e.printStackTrace();
+                    String error = "Unable to Find Record";
+                    return Response.status(403).entity(error).build();
+            }
+    }
+	
 
 	// UNITS DELETE
 	@POST
