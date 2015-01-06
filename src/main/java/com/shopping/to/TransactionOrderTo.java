@@ -11,7 +11,7 @@ public class TransactionOrderTo {
 	private int discountType;
 	private double discountValue;
 	private double priceAfterDiscount;
-	private int productCount;
+	private int productCount; 
 	private TransactionOrderAddressTo address;
 	private Collection<TransactionOrderProductListTo> productList = new ArrayList<TransactionOrderProductListTo>();
 	

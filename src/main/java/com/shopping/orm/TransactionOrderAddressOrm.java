@@ -17,7 +17,7 @@ import javax.persistence.TemporalType;
 @Entity
 @Table(name = "Transaction_Order_Address")
 public class TransactionOrderAddressOrm implements Serializable{
-
+ 
 	private static final long serialVersionUID = 2309252268746118613L;
 	@Id 
 	@GeneratedValue(strategy = GenerationType.AUTO)

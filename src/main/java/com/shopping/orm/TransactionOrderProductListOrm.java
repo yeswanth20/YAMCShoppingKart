@@ -24,7 +24,7 @@ public class TransactionOrderProductListOrm implements Serializable{
 	@Column(name = "id")
 	private int id;
 	@ManyToOne
-	@JoinColumn(name="unit_id")
+	@JoinColumn(name="unit_id") 
 	private UnitsOrm unit;
 	@ManyToOne
 	@JoinColumn(name = "discount_type_id")

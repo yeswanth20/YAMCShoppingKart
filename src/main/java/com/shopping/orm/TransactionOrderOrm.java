@@ -25,7 +25,7 @@ import javax.persistence.TemporalType;
 public class TransactionOrderOrm implements Serializable{
 	
 	/**
-	 * 
+	 *  
 	 */
 	private static final long serialVersionUID = 2885102041112910386L;
 	@Id 
