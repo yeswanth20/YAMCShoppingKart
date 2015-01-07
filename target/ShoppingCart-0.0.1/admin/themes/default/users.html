@@ -1,0 +1,93 @@
+<!-- 	private int id;
+private String userName;
+private String password;
+
+private String mobile;
+private String emailId;
+private boolean isActive;
+private String orderedCount;
+private String totalTxnAmt;
+private int role;
+private int langId;
+private Date lastLoginDate;
+private String lastLoginIp;
+private UserAddressTo address;
+
+private int id;
+private String houseNumber;
+private String street;
+private String area;
+private String landmark;
+private int city;
+private long pincode;
+private long landlineNumber; -->
+
+<h3>Users</h3>	    
+<div class="row">
+	<div class="col-md-12">
+		<button class="btn btn-primary" ng-click="usersFormShowFlag=true" ng-show="!usersFormShowFlag">Add user</button>
+		<form role="form"  ng-show="usersFormShowFlag">
+	        <h4> Add a user</h4>
+	        <div class="form-group">	            
+	            <input class="form-control" placeholder="User name" ng-model="usersFormData.userName">
+	        </div>
+	        <div class="form-group">	            
+	            <input class="form-control" placeholder="Password" ng-model="usersFormData.password">
+	        </div>
+	        <div class="form-group">	            
+	            <input class="form-control" placeholder="Mobile" ng-model="usersFormData.mobile">
+	        </div>
+	        <div class="form-group">	            
+	            <input class="form-control" placeholder="EmailId" ng-model="usersFormData.emailId">
+	        </div>
+	        <div class="form-group">	            
+	            <input class="form-control" placeholder="Role" ng-model="usersFormData.role">
+	        </div>
+	        <div class="form-group">	            
+	            <input class="form-control" placeholder="HouseNo" ng-model="usersFormData.address.houseNumber">
+	        </div>
+	        <div class="form-group">	            
+	            <input class="form-control" placeholder="Street" ng-model="usersFormData.address.street">
+	        </div>
+	        <div class="form-group">	            
+	            <input class="form-control" placeholder="Area" ng-model="usersFormData.address.area">
+	        </div>
+	        <div class="form-group">	            
+	            <input class="form-control" placeholder="Landmark" ng-model="usersFormData.address.landmark">
+	        </div>
+	        <div class="form-group">
+	            <input class="form-control" placeholder="City" ng-model="usersFormData.address.city">
+	        </div>
+	        <div class="form-group">	            
+	            <input class="form-control" placeholder="Pincode" ng-model="usersFormData.address.pincode">
+	        </div>
+	        
+	        <button type="button" class="btn btn-primary" ng-show="!usersFormShowFlag" ng-click="createUser()">Submit</button>
+	        <button type="button" class="btn btn-primary" ng-show="usersFormShowFlag" ng-click="updateUser()">Update</button>
+        	<button type="reset" class="btn btn-default">Reset</button>
+	    </form>
+	</div>
+
+	<div class="col-md-12" >
+	    <div class="table-responsive">
+	        <table class="table table-bordered table-hover">
+	            <thead>
+	                <tr>
+	                    <th class="col-md-1">S.No</th>
+	                    <th>User Name</th>                  
+	                    <th>Mobile</th>	                    
+	                    <th>Email</th>	                    
+	                    <th>Tamil Name</th>
+	                    <th class="col-md-2">Actions</th>	                    
+	                </tr>
+	            </thead>
+	            <tbody>
+	            	<tr ng-repeat="brand in brandsList">
+
+	            	</tr>
+	            </tbody>
+	        </table>
+	    </div>
+	</div>
+
+</div>

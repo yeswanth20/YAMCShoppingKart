@@ -56,6 +56,13 @@ angular.module("shopApp",
             data:{
                 action : "discounts",
             }
+        }).state('users', {
+            url: '/users',
+            templateUrl: themeBasePath+'/users.html',
+            controller : "usersController",
+            data:{
+                action : "users",
+            }
         })
 
         $urlRouterProvider.otherwise("dashboard");
